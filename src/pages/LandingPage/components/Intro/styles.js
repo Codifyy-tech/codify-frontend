@@ -14,7 +14,7 @@ export const IntroArea = styled.div`
 `
 
 export const IntroDescripton = styled.div`
-  flex: 1.5;
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 3.125rem;

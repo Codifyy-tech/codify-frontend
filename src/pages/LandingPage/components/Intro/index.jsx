@@ -32,9 +32,8 @@ export function Intro() {
           </TitleText>
 
           <RegularText color="base-text" fontSize="text-m">
-            Conseguir um emprego não é uma tarefa fácil, especialmente no <br />
-            mercado atual. Mas nós estamos aqui para ajudar! Na Codify, você{' '}
-            <br />
+            Conseguir um emprego não é uma tarefa fácil, especialmente no
+            mercado atual. Mas nós estamos aqui para ajudar! Na Codify, você
             estará preparado para esmagar qualquer processo de seleção.
           </RegularText>
 

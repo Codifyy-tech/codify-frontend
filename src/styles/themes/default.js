@@ -14,7 +14,7 @@ export const defaultTheme = {
     'brand-blue': '#1A75E8',
   },
   textSizes: {
-    'title-l': '2.7rem',
+    'title-l': '2.6rem',
     'title-m': '2rem',
     'title-s': '1.2rem',
 
