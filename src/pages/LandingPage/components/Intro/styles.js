@@ -6,10 +6,11 @@ export const IntroContainer = styled.section`
 
 export const IntroArea = styled.div`
   display: flex;
-  padding: 6.25rem 2rem;
+  padding: 6.25rem 2rem 10rem;
 
   @media (max-width: 990px) {
     flex-direction: column;
+    padding: 3rem 2rem 3rem;
   }
 `
 
