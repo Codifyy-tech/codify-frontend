@@ -2,13 +2,13 @@ import { RegularText, TitleText } from '../../../../components/Typograph'
 import {
   IntroContainer,
   IntroArea,
-  IntroDescripton,
+  IntroDescription,
   IntroImageContainer,
 } from './styles'
 // import { Button } from '../../../../components/Button'
 
 import introImg from '../../../../assets/intro-image.svg'
-import { Button } from '../../../../components/Button'
+import { ButtonLink } from '../../../../components/Button'
 import { ArrowRight } from 'phosphor-react'
 
 const Buttons = [
@@ -25,7 +25,7 @@ export function Intro() {
   return (
     <IntroContainer>
       <IntroArea className="container">
-        <IntroDescripton>
+        <IntroDescription>
           <TitleText color="base-title" fontSize="title-l">
             Não perca a oportunidade de trabalhar na empresa dos sonhos
             <span className="circle">.</span>
@@ -38,7 +38,7 @@ export function Intro() {
           </RegularText>
 
           {Buttons.map((button) => (
-            <Button
+            <ButtonLink
               key={button.path}
               title={button.title}
               path={button.path}
@@ -47,9 +47,9 @@ export function Intro() {
               textColor={button.textColor}
             >
               Começar <ArrowRight size={22} weight="bold" />
-            </Button>
+            </ButtonLink>
           ))}
-        </IntroDescripton>
+        </IntroDescription>
 
         <IntroImageContainer>
           <img src={introImg} alt="" />

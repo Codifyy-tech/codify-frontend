@@ -1,6 +1,6 @@
 import { ButtonsContainer } from './styles'
 
-import { Button } from '../../../../../../components/Button'
+import { ButtonLink } from '../../../../../../components/Button'
 
 const Buttons = [
   {
@@ -23,7 +23,7 @@ export function ButtonsArea() {
   return (
     <ButtonsContainer>
       {Buttons.map((button) => (
-        <Button
+        <ButtonLink
           key={button.path}
           path={button.path}
           backgroundColor={button.backgroundColor}
@@ -31,7 +31,7 @@ export function ButtonsArea() {
           textColor={button.textColor}
         >
           {button.title}
-        </Button>
+        </ButtonLink>
       ))}
     </ButtonsContainer>
   )

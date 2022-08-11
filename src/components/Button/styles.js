@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const Button = styled.a`
+import { Link } from 'react-router-dom'
+
+export const Button = styled(Link)`
   background-color: ${({ theme, backgroundColor }) =>
     theme.colors[`${backgroundColor}`]};
   border: none;
@@ -8,7 +10,7 @@ export const Button = styled.a`
   border-radius: 10px;
   color: ${({ theme, textColor }) => theme.colors[`${textColor}`]};
   transition: 0.3s;
-  max-width: 160px;
+  max-width: 170px;
   text-align: center;
   font-weight: 500;
 

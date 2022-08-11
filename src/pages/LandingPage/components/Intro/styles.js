@@ -14,7 +14,7 @@ export const IntroArea = styled.div`
   }
 `
 
-export const IntroDescripton = styled.div`
+export const IntroDescription = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
