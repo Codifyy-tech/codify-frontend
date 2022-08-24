@@ -11,6 +11,12 @@ export const HeaderContainer = styled.header`
     justify-content: space-between;
     padding: 2rem 0px;
   }
+
+  @media (max-width: 1366px) {
+    .container {
+      padding: 2rem 0rem;
+    }
+  }
 `
 
 export const NavDesktopContainer = styled.ul`

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const BaseInfoContainer = styled.div`
+export const BaseInfoContainer = styled.section`
   display: flex;
   gap: 10%;
 
