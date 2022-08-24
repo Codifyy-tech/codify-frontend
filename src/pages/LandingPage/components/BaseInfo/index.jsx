@@ -1,6 +1,6 @@
 import { ButtonLink } from '../../../../components/Button'
 import { RegularText } from '../../../../components/Typograph'
-import { BaseInfoContainer, DescContainer } from './styles'
+import { BaseInfoContainer, DescContainer, ImageContainer } from './styles'
 
 const baseInfoData = [
   {
@@ -25,9 +25,9 @@ export function BaseInfo() {
       {baseInfoData.map((item, index) => {
         return (
           <BaseInfoContainer key={index}>
-            <div>
+            <ImageContainer>
               <img src={item.image} alt="" />
-            </div>
+            </ImageContainer>
             <DescContainer>
               {item.text.map((text, index) => {
                 return (

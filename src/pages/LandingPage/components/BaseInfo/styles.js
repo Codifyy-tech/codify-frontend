@@ -3,6 +3,18 @@ import styled from 'styled-components'
 export const BaseInfoContainer = styled.div`
   display: flex;
   gap: 10%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 3rem;
+  }
+`
+
+export const ImageContainer = styled.div`
+  flex: 1;
+  > img {
+    width: 100%;
+  }
 `
 
 export const DescContainer = styled.div`

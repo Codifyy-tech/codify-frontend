@@ -10,6 +10,7 @@ export const LayoutContainer = styled.div`
     .container {
       max-width: 76rem;
       margin: 0px auto;
+      padding: 1.5rem;
     }
   }
 `

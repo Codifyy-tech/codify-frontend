@@ -11,4 +11,8 @@ export const BrandsSectionContainer = styled.section`
   img {
     max-width: 10rem;
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
