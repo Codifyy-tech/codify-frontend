@@ -1,22 +1,21 @@
-import { Clipboard } from 'phosphor-react'
 import { RegularText, TitleText } from '../../../../components/Typograph'
-import { InfoContainer, TitleContainer } from './styles'
+import { BaseSectionContainer, TitleContainer } from './styles'
 
-export function InfoSection({ title, desc, children }) {
+export function BaseSection({ title, desc, children }) {
   return (
-    <InfoContainer className="container">
+    <BaseSectionContainer className="container">
       <TitleContainer>
         <TitleText color="base-title" fontSize="title-l">
           {title}
           <span className="circle">.</span>
         </TitleText>
-        <RegularText color="base-text" fontSize="text-m">
-          <strong>{desc}</strong>
+        <RegularText color="base-text" fontSize="text-m" weight="500">
+          {desc}
           <span className="circle">.</span>
         </RegularText>
       </TitleContainer>
 
       {children}
-    </InfoContainer>
+    </BaseSectionContainer>
   )
 }

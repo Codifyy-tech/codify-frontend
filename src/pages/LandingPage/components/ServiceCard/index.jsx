@@ -14,13 +14,13 @@ const serviceCardData = [
     icon: testeIcon,
   },
   {
-    title: 'Exercicios e testes técnicos',
-    desc: 'Fornecemos materiais gratuitos para que você possa praticar para testes técnicos em processos seletivos.',
+    title: 'Trilhas de aprendizado',
+    desc: 'Especialize-se em stacks específicas amplamente utilizadas e valorizadas no mercado de trabalho.',
     icon: codeIcon,
   },
   {
-    title: 'Exercicios e testes técnicos',
-    desc: 'Fornecemos materiais gratuitos para que você possa praticar para testes técnicos em processos seletivos.',
+    title: 'Receba dicas as melhores',
+    desc: 'Receba dicas de como preparar seu currículo e agir arassar em uma entrevista de emprego!',
     icon: ResumeIcon,
   },
 ]

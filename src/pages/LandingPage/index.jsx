@@ -1,8 +1,9 @@
 import { LandingPageContainer } from './styles'
 import { Intro } from '../../pages/LandingPage/components/Intro'
 import { BrandSection } from './components/BrandSection'
-import { InfoSection } from './components/InfoSection'
+import { BaseSection } from './components/BaseSection'
 import { ServiceCard } from './components/ServiceCard'
+import { BaseInfo } from './components/BaseInfo'
 
 const InfoSectionData = [
   {
@@ -13,6 +14,11 @@ const InfoSectionData = [
   {
     title: 'Conquiste aquela vaga dos seus sonhos',
     desc: 'Aproveite todos os nossos recursos de maneira gratuita',
+    children: <BaseInfo />,
+  },
+  {
+    title: 'Aprenda tecnologias',
+    desc: 'Explore trilhas das mais diversas tecnologias',
   },
 ]
 
@@ -24,9 +30,9 @@ export function LandingPage() {
 
       {InfoSectionData.map((item, index) => {
         return (
-          <InfoSection title={item.title} desc={item.desc} key={index}>
+          <BaseSection title={item.title} desc={item.desc} key={index}>
             {item.children}
-          </InfoSection>
+          </BaseSection>
         )
       })}
     </LandingPageContainer>

@@ -4,7 +4,7 @@ export const ServiceCardContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.2rem;
+  gap: 2rem;
 
   @media (max-width: 1280px) {
     gap: 0.2rem;
@@ -19,7 +19,7 @@ export const ServiceCardItem = styled.li`
   gap: 2rem;
   height: 21.875rem;
   border-radius: 20px;
-  width: 25rem;
+  width: 24rem;
   background-color: ${({ theme }) => theme.colors['base-card-service']};
   text-align: center;
   padding: 40px;

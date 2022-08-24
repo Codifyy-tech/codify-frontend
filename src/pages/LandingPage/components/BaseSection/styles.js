@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-export const InfoContainer = styled.section`
+export const BaseSectionContainer = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 4rem;
 `
 
 export const TitleContainer = styled.div`
