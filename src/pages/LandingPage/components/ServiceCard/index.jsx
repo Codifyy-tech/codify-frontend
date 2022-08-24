@@ -1,18 +1,27 @@
 import { RegularText, TitleText } from '../../../../components/Typograph'
 import { ServiceCardContainer, ServiceCardItem } from './styles'
 
+import testeIcon from '../../../../assets/test-icon.svg'
+import codeIcon from '../../../../assets/code-icon.svg'
+import ResumeIcon from '../../../../assets/resume-icon.svg'
+
+console.log(testeIcon)
+
 const serviceCardData = [
   {
     title: 'Exercicios e testes técnicos',
     desc: 'Fornecemos materiais gratuitos para que você possa praticar para testes técnicos em processos seletivos.',
+    icon: testeIcon,
   },
   {
     title: 'Exercicios e testes técnicos',
     desc: 'Fornecemos materiais gratuitos para que você possa praticar para testes técnicos em processos seletivos.',
+    icon: codeIcon,
   },
   {
     title: 'Exercicios e testes técnicos',
     desc: 'Fornecemos materiais gratuitos para que você possa praticar para testes técnicos em processos seletivos.',
+    icon: ResumeIcon,
   },
 ]
 
@@ -22,6 +31,7 @@ export function ServiceCard() {
       {serviceCardData.map((card, index) => {
         return (
           <ServiceCardItem key={index}>
+            <img src={card.icon} alt="" />
             <TitleText color="base-title" fontSize="title-s">
               {card.title}
             </TitleText>

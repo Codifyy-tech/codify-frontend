@@ -1,3 +1,4 @@
+import { Clipboard } from 'phosphor-react'
 import { RegularText, TitleText } from '../../../../components/Typograph'
 import { InfoContainer, TitleContainer } from './styles'
 
