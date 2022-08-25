@@ -1,9 +1,9 @@
 import { RegularText, TitleText } from '../../../../components/Typograph'
 import { BaseSectionContainer, TitleContainer } from './styles'
 
-export function BaseSection({ title, desc, children }) {
+export function BaseSection({ title, desc, children, animation }) {
   return (
-    <BaseSectionContainer className="container">
+    <BaseSectionContainer data-aos={animation} className="container">
       <TitleContainer>
         <TitleText color="base-title" fontSize="title-l">
           {title}

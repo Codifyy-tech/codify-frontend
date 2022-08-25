@@ -6,7 +6,7 @@ import brandTopa from '../../../../assets/brand-topa.svg'
 
 export function BrandSection() {
   return (
-    <BrandsSectionContainer className="container">
+    <BrandsSectionContainer data-aos="fade-right" className="container">
       <img src={brandFiap} alt="" />
       <img src={brandIbm} alt="" />
       <img src={brandTopa} alt="" />

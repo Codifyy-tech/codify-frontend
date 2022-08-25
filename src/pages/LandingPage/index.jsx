@@ -10,15 +10,18 @@ const InfoSectionData = [
     title: 'O que oferecemos',
     desc: 'Aproveite todos os nossos recursos de maneira gratuita',
     children: <ServiceCard />,
+    animation: 'fade-left',
   },
   {
     title: 'Conquiste aquela vaga dos seus sonhos',
     desc: 'Aproveite todos os nossos recursos de maneira gratuita',
     children: <BaseInfo />,
+    animation: 'fade-right',
   },
   {
     title: 'Aprenda tecnologias',
     desc: 'Explore trilhas das mais diversas tecnologias',
+    animation: 'fade-left',
   },
 ]
 
@@ -30,7 +33,12 @@ export function LandingPage() {
 
       {InfoSectionData.map((item, index) => {
         return (
-          <BaseSection title={item.title} desc={item.desc} key={index}>
+          <BaseSection
+            animation={item.animation}
+            title={item.title}
+            desc={item.desc}
+            key={index}
+          >
             {item.children}
           </BaseSection>
         )
