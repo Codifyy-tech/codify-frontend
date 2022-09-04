@@ -5,6 +5,9 @@ import { BaseSection } from './components/BaseSection'
 import { ServiceCard } from './components/ServiceCard'
 import { BaseInfo } from './components/BaseInfo'
 
+import techImage from '../../assets/tech-image.svg'
+import { BannerBottom } from './components/BannerBottom'
+
 const InfoSectionData = [
   {
     title: 'O que oferecemos',
@@ -21,6 +24,7 @@ const InfoSectionData = [
   {
     title: 'Aprenda tecnologias',
     desc: 'Explore trilhas das mais diversas tecnologias',
+    children: <img src={techImage} alt="" width="50%" />,
     animation: 'fade-left',
   },
 ]
@@ -43,6 +47,8 @@ export function LandingPage() {
           </BaseSection>
         )
       })}
+
+      <BannerBottom />
     </LandingPageContainer>
   )
 }
