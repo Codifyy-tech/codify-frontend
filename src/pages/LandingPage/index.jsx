@@ -24,7 +24,7 @@ const InfoSectionData = [
   {
     title: 'Aprenda tecnologias',
     desc: 'Explore trilhas das mais diversas tecnologias',
-    children: <img src={techImage} alt="" width="50%" />,
+    children: <img src={techImage} alt="" width="55%" />,
     animation: 'fade-left',
   },
 ]
