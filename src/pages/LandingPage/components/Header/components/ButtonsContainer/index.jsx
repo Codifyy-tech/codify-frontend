@@ -1,6 +1,6 @@
 import { ButtonsContainer } from './styles'
 
-import { ButtonLink } from '../../../../../../components/Button'
+import { ButtonLink } from '../../../../../../components/ButtonLink'
 
 const Buttons = [
   {

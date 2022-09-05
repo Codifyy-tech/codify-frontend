@@ -1,4 +1,4 @@
-import { ButtonLink } from '../../../../components/Button'
+import { ButtonLink } from '../../../../components/ButtonLink'
 import { RegularText } from '../../../../components/Typograph'
 import { BaseInfoContainer, DescContainer, ImageContainer } from './styles'
 

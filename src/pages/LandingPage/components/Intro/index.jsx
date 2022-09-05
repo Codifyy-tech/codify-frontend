@@ -8,7 +8,7 @@ import {
 // import { Button } from '../../../../components/Button'
 
 import introImg from '../../../../assets/intro-image.svg'
-import { ButtonLink } from '../../../../components/Button'
+import { ButtonLink } from '../../../../components/ButtonLink'
 import { ArrowRight } from 'phosphor-react'
 
 const Buttons = [
