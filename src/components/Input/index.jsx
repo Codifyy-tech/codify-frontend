@@ -1,20 +1,23 @@
-import { Input, InputContainer } from './styles'
+import { Input, InputContainer, ErrorMessage } from './styles'
 import { forwardRef } from 'react'
 
 export function InputBase(
-  { name, labelText, placeholder, typeInput, error, ...props },
+  { labelText, placeholder, typeInput, error, ...props },
   ref,
 ) {
   return (
     <InputContainer>
-      <label htmlFor={name}>{labelText}</label>
+      <label htmlFor={props.name}>{labelText}</label>
       <Input
         ref={ref}
         type={typeInput}
         placeholder={placeholder}
-        name={name}
         {...props}
+        isInvalid={!!error}
       />
+
+      {console.log(error)}
+      {error && <ErrorMessage>{error.message}</ErrorMessage>}
     </InputContainer>
   )
 }
