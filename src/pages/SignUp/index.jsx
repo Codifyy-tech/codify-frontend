@@ -136,7 +136,7 @@ export function SignUp() {
       <SignInContainer>
         <Sidebar
           title="Já tem conta?"
-          desc="FEntre na plataforma com suas credenciais cadastradas"
+          desc="Entre na plataforma com suas credenciais cadastradas"
           buttonText="Entrar"
           path="/login"
           imageUrl="https://vanilla.codifyy.tech/assets/images/signUpImage.png"
