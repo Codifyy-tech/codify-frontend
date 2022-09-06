@@ -5,7 +5,14 @@ const getFormatedDate = (currentDate) => {
 }
 
 export const SignUpValidatorSchema = yup.object({
-  name: yup.string().min(1, 'O campo nome não pode ser vazio'),
+  name: yup
+    .string()
+    .min(1, 'O campo nome não pode ser vazio')
+    .matches(
+      /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
+      'Nomes não podem conter caracteres especiais ou números.',
+    )
+    .matches(/^\s*[\S]+(\s[\S]+)+\s*$/gms, 'Digite seu nome completo'),
   email: yup
     .string()
     .email('Digite um e-mail válido')
