@@ -160,13 +160,13 @@ export function SignUp() {
                   textColor="base-white"
                   hoverBackgroundColor="base-button-hover"
                 >
-                  Entrar
+                  Cadastrar
                 </ButtonForm>
               </FormContainer>
 
               <MobileArea>
                 <RegularText fontSize="text-m" color="base-text" weight="500">
-                  Não possui uma conta? <a href="/register">Cadastre-se</a>
+                  Já possui uma conta? <a href="/login">Entre</a>
                 </RegularText>
               </MobileArea>
             </div>
