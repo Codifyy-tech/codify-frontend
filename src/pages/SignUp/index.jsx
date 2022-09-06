@@ -4,6 +4,11 @@ import {
   SignInContainer,
   SignInFormSide,
   MobileArea,
+  CepContainer,
+  SearchButton,
+  AddressFormContainer,
+  DistrictInfo,
+  ErrorMessage,
 } from './styles'
 
 import { RegularText, TitleText } from '../../components/Typograph'
@@ -18,6 +23,7 @@ import { toast } from 'react-toastify'
 import { Sidebar } from '../../components/Sidebar'
 import { SignUpValidatorSchema } from '../../utils/schema/SignUpSchema'
 import { SelectInput } from '../../components/SelectInput'
+import axios from 'axios'
 
 const formData = [
   {
@@ -86,6 +92,9 @@ export function SignUp() {
   const {
     register,
     handleSubmit,
+    getValues,
+    setValue,
+    resetField,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(SignUpValidatorSchema),
@@ -94,11 +103,30 @@ export function SignUp() {
   const { signIn, signed } = useContext(AuthContext)
 
   async function handleLogin(inputData) {
-    console.log(inputData)
     toast.success('Usuário cadastrado', {
       theme: 'colored',
     })
     await signIn(inputData)
+  }
+
+  async function handleSearch() {
+    const cep = getValues('cep')
+    try {
+      const { data } = await axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+      setValue('address', data.logradouro, { shouldValidate: true })
+      setValue('district', data.bairro, { shouldValidate: true })
+      setValue('city', data.localidade, { shouldValidate: true })
+      setValue('state', data.uf, { shouldValidate: true })
+    } catch (e) {
+      console.log('eRRO' + e)
+      toast.error('CEP não encontrado', {
+        theme: 'colored',
+      })
+      resetField('address')
+      resetField('district')
+      resetField('city')
+      resetField('state')
+    }
   }
 
   if (signed) {
@@ -124,7 +152,6 @@ export function SignUp() {
                 Preencha corretamente as informações para realizar seu cadastro.
               </RegularText>
             </div>
-            {console.log(errors)}
 
             <div>
               <FormContainer onSubmit={handleSubmit(handleLogin)} noValidate>
@@ -155,6 +182,62 @@ export function SignUp() {
                     }
                   })}
                 </InputContainer>
+
+                <AddressFormContainer>
+                  <CepContainer>
+                    <InputForm
+                      error={!!errors.cep}
+                      labelText="CEP"
+                      placeholder="Digite seu CEP"
+                      typeInput="number"
+                      {...register('cep')}
+                    />
+                    <SearchButton
+                      onClick={handleSearch}
+                      type="button"
+                      isInvalid={!!errors.cep}
+                    >
+                      Pesquisar
+                    </SearchButton>
+                  </CepContainer>
+
+                  {errors.cep && (
+                    <ErrorMessage>{errors.cep.message}</ErrorMessage>
+                  )}
+                  <InputForm
+                    error={errors.address}
+                    labelText="Endereço"
+                    typeInput="text"
+                    disabled
+                    {...register('address')}
+                  />
+
+                  <InputForm
+                    error={errors.district}
+                    labelText="Bairro"
+                    typeInput="text"
+                    disabled
+                    {...register('district')}
+                  />
+
+                  <DistrictInfo>
+                    <InputForm
+                      error={errors.city}
+                      labelText="Cidade"
+                      typeInput="text"
+                      disabled
+                      {...register('city')}
+                    />
+                    <InputForm
+                      error={errors.state}
+                      labelText="Estado"
+                      typeInput="text"
+                      disabled
+                      {...register('state')}
+                    />
+                  </DistrictInfo>
+                </AddressFormContainer>
+
                 <ButtonForm
                   backgroundColor="brand-blue"
                   textColor="base-white"

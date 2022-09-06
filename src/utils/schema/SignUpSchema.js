@@ -35,4 +35,14 @@ export const SignUpValidatorSchema = yup.object({
   genre: yup
     .mixed()
     .oneOf(['H', 'M', 'NB', 'NI'], 'Selecione uma opção válida'),
+  cep: yup
+    .string()
+    .max(8, 'CEP Inválido')
+    .min(8, 'CEP Inválido')
+    .nullable()
+    .required('Digite um CEP'),
+  address: yup.string().required('Campo obrigatório'),
+  district: yup.string().required('Campo obrigatório'),
+  state: yup.string().required('Campo obrigatório'),
+  city: yup.string().required('Campo obrigatório'),
 })

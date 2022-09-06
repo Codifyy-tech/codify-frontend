@@ -45,7 +45,6 @@ export function SignIn() {
   const { signIn, signed } = useContext(AuthContext)
 
   async function handleLogin(inputData) {
-    console.log(inputData)
     toast.error('Usuário não encontrado', {
       theme: 'colored',
     })
@@ -75,7 +74,6 @@ export function SignIn() {
                 Preencha corretamente as informações para realizar seu login.
               </RegularText>
             </div>
-            {console.log(errors)}
 
             <div>
               <FormContainer onSubmit={handleSubmit(handleLogin)} noValidate>

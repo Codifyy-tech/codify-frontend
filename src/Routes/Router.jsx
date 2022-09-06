@@ -13,6 +13,7 @@ export function Router() {
       <Route path="/" element={<LandingLayout />}>
         <Route path="/" element={<LandingPage />} />
       </Route>
+
       <Route path="/login" element={<SignIn />} />
       <Route path="/register" element={<SignUp />} />
       <Route path="/home" element={<PrivateRoute />}>

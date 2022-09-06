@@ -15,8 +15,6 @@ export function InputBase(
         {...props}
         isInvalid={!!error}
       />
-
-      {console.log(error)}
       {error && <ErrorMessage>{error.message}</ErrorMessage>}
     </InputContainer>
   )
