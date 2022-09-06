@@ -1,5 +1,6 @@
+import { AxiosError } from 'axios'
 import { useState, createContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { api } from '../services/api'
 
 export const AuthContext = createContext({})
@@ -8,7 +9,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [isFetching, setIsFetching] = useState(true)
   const [isLoading, setIsLoading] = useState(false)
-  const navigate = useNavigate()
 
   useEffect(() => {
     const token = localStorage.getItem('@Auth:token')
@@ -46,8 +46,17 @@ export const AuthProvider = ({ children }) => {
       api.defaults.headers.common.Authorization = `Bearer ${data.token}`
       setUser(data.data)
       localStorage.setItem('@Auth:token', data.token)
+      window.location.reload()
     } catch (e) {
       console.log('ERRO', e)
+      toast.error(
+        e instanceof AxiosError && e.response.data
+          ? e.response.data.message
+          : 'Erro Interno',
+        {
+          theme: 'colored',
+        },
+      )
     } finally {
       setIsLoading(false)
     }
@@ -56,12 +65,20 @@ export const AuthProvider = ({ children }) => {
   const signUp = async (inputData) => {
     try {
       setIsLoading(true)
-      const { data } = await api.post('/user/professional/register', inputData)
+      const { data } = await api.post('/user/register', inputData)
 
       setUser(data.data)
       localStorage.setItem('@Auth:token', data.token)
-      navigate('/dashboard')
+      window.location.reload()
     } catch (e) {
+      toast.error(
+        e instanceof AxiosError && e.response.data
+          ? e.response.data.message
+          : 'Erro Interno',
+        {
+          theme: 'colored',
+        },
+      )
     } finally {
       setIsLoading(false)
     }

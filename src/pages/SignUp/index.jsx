@@ -24,6 +24,7 @@ import { Sidebar } from '../../components/Sidebar'
 import { SignUpValidatorSchema } from '../../utils/schema/SignUpSchema'
 import { SelectInput } from '../../components/SelectInput'
 import axios from 'axios'
+import { PulseLoader } from 'react-spinners'
 
 const formData = [
   {
@@ -100,13 +101,10 @@ export function SignUp() {
     resolver: yupResolver(SignUpValidatorSchema),
   })
 
-  const { signIn, signed } = useContext(AuthContext)
+  const { signUp, signed, isLoading } = useContext(AuthContext)
 
-  async function handleLogin(inputData) {
-    toast.success('Usuário cadastrado', {
-      theme: 'colored',
-    })
-    await signIn(inputData)
+  async function handleRegister(inputData) {
+    await signUp(inputData)
   }
 
   async function handleSearch() {
@@ -154,7 +152,7 @@ export function SignUp() {
             </div>
 
             <div>
-              <FormContainer onSubmit={handleSubmit(handleLogin)} noValidate>
+              <FormContainer onSubmit={handleSubmit(handleRegister)} noValidate>
                 <InputContainer>
                   {formData.map((item, index) => {
                     if (item.inputType === 'select') {
@@ -243,7 +241,11 @@ export function SignUp() {
                   textColor="base-white"
                   hoverBackgroundColor="base-button-hover"
                 >
-                  Cadastrar
+                  {isLoading ? (
+                    <PulseLoader color="#FFF" size={14} />
+                  ) : (
+                    'Entrar'
+                  )}
                 </ButtonForm>
               </FormContainer>
 

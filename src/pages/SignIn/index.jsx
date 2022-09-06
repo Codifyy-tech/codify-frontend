@@ -15,8 +15,8 @@ import { useForm } from 'react-hook-form'
 import { useContext } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
 import { SignInValidatorSchema } from '../../utils/schema/loginSchema'
-import { toast } from 'react-toastify'
 import { Sidebar } from '../../components/Sidebar'
+import { PulseLoader } from 'react-spinners'
 
 const formData = [
   {
@@ -42,12 +42,11 @@ export function SignIn() {
     resolver: yupResolver(SignInValidatorSchema),
   })
 
-  const { signIn, signed } = useContext(AuthContext)
+  const { signIn, signed, isLoading } = useContext(AuthContext)
+
+  console.log(signed)
 
   async function handleLogin(inputData) {
-    toast.error('Usuário não encontrado', {
-      theme: 'colored',
-    })
     await signIn(inputData)
   }
 
@@ -96,7 +95,11 @@ export function SignIn() {
                   textColor="base-white"
                   hoverBackgroundColor="base-button-hover"
                 >
-                  Entrar
+                  {isLoading ? (
+                    <PulseLoader color="#FFF" size={14} />
+                  ) : (
+                    'Entrar'
+                  )}
                 </ButtonForm>
               </FormContainer>
 

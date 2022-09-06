@@ -6,6 +6,7 @@ export const PrivateRoute = () => {
   const { signed, isFetching } = useContext(AuthContext)
 
   if (isFetching) return 'Carregando'
+  console.log(signed)
 
   return signed ? <Outlet /> : <Navigate to="/login" />
 }

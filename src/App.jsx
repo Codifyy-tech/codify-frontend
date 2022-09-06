@@ -8,6 +8,7 @@ import 'aos/dist/aos.css'
 import { ToastContainer } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.min.css'
+import { AuthProvider } from './contexts/AuthContext'
 
 AOS.init({
   // Global settings:
@@ -35,7 +36,10 @@ function App() {
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
       <BrowserRouter>
-        <Router />
+        <AuthProvider>
+          <Router />
+        </AuthProvider>
+
         <ToastContainer />
       </BrowserRouter>
     </ThemeProvider>
