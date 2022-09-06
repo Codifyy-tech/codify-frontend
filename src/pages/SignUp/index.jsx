@@ -14,11 +14,18 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { useContext } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
-import { SignInValidatorSchema } from '../../utils/schema/loginSchema'
 import { toast } from 'react-toastify'
 import { Sidebar } from '../../components/Sidebar'
+import { SignUpValidatorSchema } from '../../utils/schema/SignUpSchema'
+import { SelectInput } from '../../components/SelectInput'
 
 const formData = [
+  {
+    labelText: 'Nome Completo ',
+    placeholder: 'Digite seu nome completo',
+    inputType: 'text',
+    name: 'name',
+  },
   {
     labelText: 'E-mail',
     placeholder: 'Digite seu e-mail',
@@ -26,27 +33,69 @@ const formData = [
     name: 'email',
   },
   {
+    labelText: 'Telefone',
+    placeholder: 'Digite seu telefone',
+    inputType: 'tel',
+    name: 'phone',
+  },
+  {
     labelText: 'Senha',
     placeholder: 'Digite sua senha',
     inputType: 'password',
     name: 'password',
   },
+  {
+    labelText: 'Confirme a senha',
+    placeholder: 'Digite sua senha',
+    inputType: 'password',
+    name: 'confirm_password',
+  },
+  {
+    labelText: 'Data de Aniversário',
+    placeholder: '',
+    inputType: 'date',
+    name: 'birth_date',
+  },
+  {
+    labelText: 'Gênero',
+    placeholder: 'São Paulo',
+    inputType: 'select',
+    name: 'genre',
+    options: [
+      {
+        value: 'H',
+        label: 'Homem (Trans ou Cis)',
+      },
+      {
+        value: 'M',
+        label: 'Mulher (Trans ou Cis)',
+      },
+      {
+        value: 'NB',
+        label: 'Não-binário',
+      },
+      {
+        value: 'NI',
+        label: 'Prefiro não informar',
+      },
+    ],
+  },
 ]
 
-export function SignIn() {
+export function SignUp() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(SignInValidatorSchema),
+    resolver: yupResolver(SignUpValidatorSchema),
   })
 
   const { signIn, signed } = useContext(AuthContext)
 
   async function handleLogin(inputData) {
     console.log(inputData)
-    toast.error('Usuário não encontrado', {
+    toast.success('Usuário cadastrado', {
       theme: 'colored',
     })
     await signIn(inputData)
@@ -58,11 +107,11 @@ export function SignIn() {
     return (
       <SignInContainer>
         <Sidebar
-          title="Cadastre-se"
-          desc="Faça seu cadastro e aproveite todos os recursos de maneira gratuita"
-          buttonText="Cadastrar"
-          path="/register"
-          imageUrl="https://vanilla.codifyy.tech/assets/images/signInImage.png"
+          title="Já tem conta?"
+          desc="FEntre na plataforma com suas credenciais cadastradas"
+          buttonText="Entrar"
+          path="/login"
+          imageUrl="https://vanilla.codifyy.tech/assets/images/signUpImage.png"
         />
 
         <SignInFormSide>
@@ -72,7 +121,7 @@ export function SignIn() {
                 Bem vindo!
               </TitleText>
               <RegularText fontSize="text-m" color="base-text" weight="500">
-                Preencha corretamente as informações para realizar seu login.
+                Preencha corretamente as informações para realizar seu cadastro.
               </RegularText>
             </div>
             {console.log(errors)}
@@ -81,16 +130,29 @@ export function SignIn() {
               <FormContainer onSubmit={handleSubmit(handleLogin)} noValidate>
                 <InputContainer>
                   {formData.map((item, index) => {
-                    return (
-                      <InputForm
-                        key={index}
-                        error={errors[item.name]}
-                        labelText={item.labelText}
-                        placeholder={item.placeholder}
-                        typeInput={item.inputType}
-                        {...register(item.name)}
-                      />
-                    )
+                    if (item.inputType === 'select') {
+                      return (
+                        <SelectInput
+                          error={errors[item.name]}
+                          key={index}
+                          labelText={item.labelText}
+                          placeholder={item.placeholder2}
+                          options={item.options}
+                          {...register(item.name)}
+                        />
+                      )
+                    } else {
+                      return (
+                        <InputForm
+                          key={index}
+                          error={errors[item.name]}
+                          labelText={item.labelText}
+                          placeholder={item.placeholder}
+                          typeInput={item.inputType}
+                          {...register(item.name)}
+                        />
+                      )
+                    }
                   })}
                 </InputContainer>
                 <ButtonForm

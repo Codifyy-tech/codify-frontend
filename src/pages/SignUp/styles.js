@@ -11,14 +11,16 @@ export const SignInFormSide = styled.main`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors['base-background']};
+  overflow: auto;
 
   > section {
     max-width: 31.25rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 2.5rem;
-    padding: 0 2rem;
+    align-self: start;
+    gap: 40px;
+    padding: 32px 32px;
+    margin-top: 10%;
   }
 `
 

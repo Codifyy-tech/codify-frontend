@@ -1,6 +1,9 @@
-import * as zod from 'zod'
+import * as yup from 'yup'
 
-export const LoginValidatorSchema = zod.object({
-  email: zod.string().email('E-mail inválido'),
-  password: zod.string().min(6, 'A senha deve pelo menos 6 caracteres'),
+export const SignInValidatorSchema = yup.object({
+  email: yup
+    .string()
+    .email('Digite um e-mail válido')
+    .required('O campo e-mail não pode ser vazio'),
+  password: yup.string().min(6, 'A senha deve pelo menos 6 caracteres'),
 })
