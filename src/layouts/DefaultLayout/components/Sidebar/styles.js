@@ -90,3 +90,16 @@ export const DesktopNav = styled.nav`
     }
   }
 `
+
+export const NavMobileSignOut = styled.nav`
+  display: flex;
+  max-width: 100%;
+  padding: 0.625rem;
+  color: ${({ theme }) => theme.colors['base-text']};
+  font-weight: 500;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors['base-white']};
+    border-radius: 8px;
+  }
+`

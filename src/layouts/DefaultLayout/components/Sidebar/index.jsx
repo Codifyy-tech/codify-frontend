@@ -1,5 +1,6 @@
 import Hamburger from 'hamburger-react'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { AuthContext } from '../../../../contexts/AuthContext'
 import { NavMobileItem } from '../../../../pages/LandingPage/components/Header/components/NavMobileItem'
 import { NavMobileContainer } from '../../../../pages/LandingPage/components/Header/styles'
 import { NavItem } from '../NavItem'
@@ -7,6 +8,7 @@ import {
   DesktopLogo,
   DesktopNav,
   MobileIcon,
+  NavMobileSignOut,
   SidebarBody,
   SidebarContainer,
   SidebarHeader,
@@ -36,15 +38,20 @@ const navData = [
 ]
 
 const NavMobileLinks = [
-  { title: 'Home', path: '/home' },
-  { title: 'Sobre', path: '/sobre' },
-  { title: 'Contato', path: '/contato' },
-  { title: 'Entrar', path: '/login' },
-  { title: 'Cadastrar', path: '/register' },
+  { title: 'Inicio', path: '/home' },
+  { title: 'Trilhas', path: '/sobre' },
+  { title: 'Testes', path: '/contato' },
+  { title: 'Configurações', path: '/login' },
 ]
 
 export function Sidebar() {
   const [isOpen, setOpen] = useState(false)
+  const { signOut } = useContext(AuthContext)
+
+  function handleSignOut() {
+    console.log('oi')
+    signOut()
+  }
 
   return (
     <SidebarContainer>
@@ -69,6 +76,9 @@ export function Sidebar() {
             {NavMobileLinks.map(({ title, path }) => (
               <NavMobileItem key={path} title={title} path={path} />
             ))}
+            <NavMobileSignOut title="Sair" onClick={handleSignOut}>
+              Sair
+            </NavMobileSignOut>
           </NavMobileContainer>
         ) : (
           ''
