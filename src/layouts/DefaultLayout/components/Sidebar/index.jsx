@@ -1,10 +1,13 @@
 import Hamburger from 'hamburger-react'
+import { SignOut } from 'phosphor-react'
 import { useContext, useState } from 'react'
+import { RegularText } from '../../../../components/Typograph'
 import { AuthContext } from '../../../../contexts/AuthContext'
 import { NavMobileItem } from '../../../../pages/LandingPage/components/Header/components/NavMobileItem'
 import { NavMobileContainer } from '../../../../pages/LandingPage/components/Header/styles'
 import { NavItem } from '../NavItem'
 import {
+  ButtonSignOut,
   DesktopLogo,
   DesktopNav,
   MobileIcon,
@@ -84,7 +87,6 @@ export function Sidebar() {
           ''
         )}
       </SidebarHeader>
-
       <SidebarBody>
         <DesktopNav>
           <ul>
@@ -101,6 +103,14 @@ export function Sidebar() {
           </ul>
         </DesktopNav>
       </SidebarBody>
+      <ButtonSignOut onClick={handleSignOut}>
+        <div>
+          <SignOut size={20} color="#686868" />
+          <RegularText fontSize="text-m" weight="500" color="base-text">
+            Sair
+          </RegularText>
+        </div>
+      </ButtonSignOut>
     </SidebarContainer>
   )
 }

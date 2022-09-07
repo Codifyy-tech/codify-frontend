@@ -73,6 +73,9 @@ export const SidebarBody = styled.div`
 `
 
 export const DesktopNav = styled.nav`
+  display: flex;
+  flex-direction: column;
+
   @media (max-width: 1000px) {
     display: none;
   }
@@ -101,5 +104,33 @@ export const NavMobileSignOut = styled.nav`
   &:hover {
     background-color: ${({ theme }) => theme.colors['base-white']};
     border-radius: 8px;
+  }
+`
+
+export const ButtonSignOut = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 0px;
+  background-color: transparent;
+
+  > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 30px;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: white;
+      border-radius: 15px;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    display: none;
   }
 `
