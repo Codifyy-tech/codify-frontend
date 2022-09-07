@@ -6,6 +6,8 @@ export const HeaderContainer = styled.header`
   padding: 0rem 2rem;
 
   > div {
+    max-width: 79rem;
+    margin: 0px auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -33,11 +35,10 @@ export const NavMobileContainer = styled.ul`
 
   @media (max-width: 768px) {
     display: block;
-
     flex-direction: column;
+    width: 100%;
     gap: 0.5rem;
     text-transform: uppercase;
-    padding: 0rem 0rem 2rem;
   }
 `
 export const MobileButton = styled.div`

@@ -6,7 +6,7 @@ export const InputContainer = styled.div`
   gap: 0.5rem;
 `
 
-export const Input = styled.input`
+export const Select = styled.select`
   width: 100%;
   border: 2px solid;
   border-color: ${({ theme, isInvalid }) =>

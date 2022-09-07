@@ -5,8 +5,6 @@ import testeIcon from '../../../../assets/test-icon.svg'
 import codeIcon from '../../../../assets/code-icon.svg'
 import ResumeIcon from '../../../../assets/resume-icon.svg'
 
-console.log(testeIcon)
-
 const serviceCardData = [
   {
     title: 'Exercicios e testes técnicos',

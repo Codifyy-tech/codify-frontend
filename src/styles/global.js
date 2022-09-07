@@ -7,9 +7,10 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  :focus {
-    outline: none;
-  }
+  input:focus { 
+        outline: none !important;
+        border-color: ${({ theme }) => theme.colors['brand-blue']};
+    }
 
   body {
     background: ${(props) => props.theme.white};
