@@ -1,14 +1,5 @@
 import styled from 'styled-components'
 
-export const LayoutContainer = styled.div`
-  display: flex;
-  background-color: var(--text-white);
-
-  @media (max-width: 1000px) {
-    flex-direction: column;
-  }
-`
-
 export const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -69,14 +60,6 @@ export const MobileIcon = styled.div`
     display: flex;
     align-items: center;
   }
-`
-
-export const MainContainer = styled.div`
-  overflow: auto;
-  width: 100%;
-  padding: 0px 32px;
-  height: 100vh;
-  flex: 10;
 `
 
 export const SidebarBody = styled.div`
