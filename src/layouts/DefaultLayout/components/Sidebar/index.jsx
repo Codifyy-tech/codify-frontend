@@ -44,7 +44,7 @@ const NavMobileLinks = [
   { title: 'Inicio', path: '/home' },
   { title: 'Trilhas', path: '/sobre' },
   { title: 'Testes', path: '/contato' },
-  { title: 'Configurações', path: '/login' },
+  { title: 'Configurações', path: '/home/profile' },
 ]
 
 export function Sidebar() {
