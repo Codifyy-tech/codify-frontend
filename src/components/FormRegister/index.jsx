@@ -57,6 +57,8 @@ export function FormRegister({
         })}
       </InputContainer>
 
+      {console.log(inputColor)}
+
       {addressForm && (
         <AddressFormContainer>
           <CepContainer>

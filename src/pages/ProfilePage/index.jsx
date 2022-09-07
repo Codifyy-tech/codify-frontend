@@ -74,10 +74,9 @@ export function ProfilePage() {
     }
 
     getData()
-  }, [user])
+  }, [token, setValue])
 
   async function handleEdit(inputData) {
-    console.log('Oi')
     try {
       setIsLoading(true)
       const { data } = await api.put('/edit', inputData, {

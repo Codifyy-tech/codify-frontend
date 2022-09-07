@@ -140,12 +140,14 @@ export function SignUp() {
             <div>
               <FormRegister
                 handleSubmit={handleSubmit(handleRegister)}
+                textButton="Cadastrar"
                 formData={formData}
                 register={register}
                 errors={errors}
                 handleSearch={handleSearch}
                 isLoading={isLoading}
                 addressForm={true}
+                inputColor="base-white"
               />
 
               <MobileArea>

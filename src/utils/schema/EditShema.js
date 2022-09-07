@@ -6,5 +6,5 @@ export const EditValidatorSchema = yup.object({
   confirm_new_password: yup
     .string()
     .required('A confirmação de senha é obrigatória')
-    .oneOf([yup.ref('password')], 'As senhas não correspondem'),
+    .oneOf([yup.ref('new_password')], 'As senhas não correspondem'),
 })
