@@ -33,11 +33,10 @@ export const NavMobileContainer = styled.ul`
 
   @media (max-width: 768px) {
     display: block;
-    width: 100%;
     flex-direction: column;
+    width: 100%;
     gap: 0.5rem;
     text-transform: uppercase;
-    padding: 0rem 0rem 2rem;
   }
 `
 export const MobileButton = styled.div`

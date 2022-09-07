@@ -20,6 +20,7 @@ export const IntroDescription = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3.125rem;
+  margin-top: 2rem;
 `
 
 export const IntroImageContainer = styled.div`

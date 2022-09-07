@@ -23,7 +23,7 @@ export const SidebarContainer = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: ${({ theme }) => theme.colors['base-background']};
-    padding: 35px 30px;
+    padding: 35px 30px 30px;
     gap: 60px;
     width: 100vw;
     height: 100%;
