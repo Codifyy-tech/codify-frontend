@@ -13,8 +13,13 @@ export const Input = styled.input`
     isInvalid ? theme.colors[`base-error`] : 'transparent'};
   padding: 1.25rem;
   border-radius: 0.6rem;
-  background-color: white;
+  background-color: ${({ theme, inputColor }) =>
+    theme.colors[`${inputColor}` ?? 'base-white']};
   font-size: ${({ theme }) => theme.textSizes[`text-m`]};
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `
 
 export const ErrorMessage = styled.span`

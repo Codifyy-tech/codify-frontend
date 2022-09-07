@@ -25,7 +25,7 @@ const navData = [
   },
   {
     title: 'Trilhas',
-    path: '/home',
+    path: '/course',
     icon: 'https://vanilla.codifyy.tech/assets/images/courseIcon.svg',
   },
   {
@@ -35,7 +35,7 @@ const navData = [
   },
   {
     title: 'Configurações',
-    path: '/home',
+    path: '/home/profile',
     icon: 'https://vanilla.codifyy.tech/assets/images/settingIcon.svg',
   },
 ]

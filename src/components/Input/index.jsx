@@ -2,7 +2,7 @@ import { Input, InputContainer, ErrorMessage } from './styles'
 import { forwardRef } from 'react'
 
 export function InputBase(
-  { labelText, placeholder, typeInput, error, ...props },
+  { labelText, placeholder, inputColor, disabled, typeInput, error, ...props },
   ref,
 ) {
   return (
@@ -12,6 +12,8 @@ export function InputBase(
         ref={ref}
         type={typeInput}
         placeholder={placeholder}
+        inputColor={inputColor}
+        disabled={disabled}
         {...props}
         isInvalid={!!error}
       />

@@ -145,6 +145,7 @@ export function SignUp() {
                 errors={errors}
                 handleSearch={handleSearch}
                 isLoading={isLoading}
+                addressForm={true}
               />
 
               <MobileArea>

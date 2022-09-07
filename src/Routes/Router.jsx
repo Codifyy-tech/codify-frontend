@@ -5,6 +5,7 @@ import { CoursePage } from '../pages/CoursePage'
 import { HomePage } from '../pages/HomePage'
 
 import { LandingPage } from '../pages/LandingPage'
+import { ProfilePage } from '../pages/ProfilePage'
 import { SignIn } from '../pages/SignIn'
 import { SignUp } from '../pages/SignUp'
 import { PrivateRoute } from './PrivateRoute'
@@ -23,6 +24,7 @@ export function Router() {
         <Route path="" element={<DefaultLayout />}>
           <Route path="" element={<HomePage />} />
           <Route path="course" element={<CoursePage />} />
+          <Route path="profile" element={<ProfilePage />} />
         </Route>
       </Route>
     </Routes>

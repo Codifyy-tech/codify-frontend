@@ -19,6 +19,9 @@ export function FormRegister({
   errors,
   handleSearch,
   isLoading,
+  inputColor,
+  textButton,
+  addressForm,
 }) {
   return (
     <FormContainer onSubmit={handleSubmit} noValidate>
@@ -32,6 +35,8 @@ export function FormRegister({
                 labelText={item.labelText}
                 placeholder={item.placeholder2}
                 options={item.options}
+                inputColor={inputColor}
+                disabled={item.disabled}
                 {...register(item.name)}
               />
             )
@@ -43,6 +48,8 @@ export function FormRegister({
                 labelText={item.labelText}
                 placeholder={item.placeholder}
                 typeInput={item.inputType}
+                inputColor={inputColor}
+                disabled={item.disabled}
                 {...register(item.name)}
               />
             )
@@ -50,65 +57,72 @@ export function FormRegister({
         })}
       </InputContainer>
 
-      <AddressFormContainer>
-        <CepContainer>
+      {addressForm && (
+        <AddressFormContainer>
+          <CepContainer>
+            <InputForm
+              error={!!errors.cep}
+              labelText="CEP"
+              placeholder="Digite seu CEP"
+              typeInput="number"
+              inputColor={inputColor}
+              {...register('cep')}
+            />
+            <SearchButton
+              onClick={handleSearch}
+              type="button"
+              isInvalid={!!errors.cep}
+            >
+              Pesquisar
+            </SearchButton>
+          </CepContainer>
+
+          {errors.cep && <ErrorMessage>{errors.cep.message}</ErrorMessage>}
           <InputForm
-            error={!!errors.cep}
-            labelText="CEP"
-            placeholder="Digite seu CEP"
-            typeInput="number"
-            {...register('cep')}
-          />
-          <SearchButton
-            onClick={handleSearch}
-            type="button"
-            isInvalid={!!errors.cep}
-          >
-            Pesquisar
-          </SearchButton>
-        </CepContainer>
-
-        {errors.cep && <ErrorMessage>{errors.cep.message}</ErrorMessage>}
-        <InputForm
-          error={errors.address}
-          labelText="Endereço"
-          typeInput="text"
-          disabled
-          {...register('address')}
-        />
-
-        <InputForm
-          error={errors.district}
-          labelText="Bairro"
-          typeInput="text"
-          disabled
-          {...register('district')}
-        />
-
-        <DistrictInfo>
-          <InputForm
-            error={errors.city}
-            labelText="Cidade"
+            error={errors.address}
+            labelText="Endereço"
             typeInput="text"
+            inputColor={inputColor}
             disabled
-            {...register('city')}
+            {...register('address')}
           />
+
           <InputForm
-            error={errors.state}
-            labelText="Estado"
+            error={errors.district}
+            labelText="Bairro"
             typeInput="text"
+            inputColor={inputColor}
             disabled
-            {...register('state')}
+            {...register('district')}
           />
-        </DistrictInfo>
-      </AddressFormContainer>
+
+          <DistrictInfo>
+            <InputForm
+              error={errors.city}
+              labelText="Cidade"
+              typeInput="text"
+              inputColor={inputColor}
+              disabled
+              {...register('city')}
+            />
+            <InputForm
+              error={errors.state}
+              labelText="Estado"
+              typeInput="text"
+              inputColor={inputColor}
+              disabled
+              {...register('state')}
+            />
+          </DistrictInfo>
+        </AddressFormContainer>
+      )}
 
       <ButtonForm
         backgroundColor="brand-blue"
         textColor="base-white"
         hoverBackgroundColor="base-button-hover"
       >
-        {isLoading ? <PulseLoader color="#FFF" size={14} /> : 'Cadastrar'}
+        {isLoading ? <PulseLoader color="#FFF" size={14} /> : `${textButton}`}
       </ButtonForm>
     </FormContainer>
   )

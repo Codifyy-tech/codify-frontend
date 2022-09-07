@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { RegularText } from '../../../../components/Typograph'
 import { AuthContext } from '../../../../contexts/AuthContext'
-import { Avatar } from '../Avatar'
+import { Avatar } from '../../../../components/Avatar'
 import { MainContainer, ProfileArea, SearchArea } from './styles'
 
 export function MainContent({ children }) {
@@ -30,7 +30,7 @@ export function MainContent({ children }) {
           <RegularText color="base-text" weight="400">
             {`${name[0]} ${name[name.length - 1]}`}
           </RegularText>
-          <Avatar letter={user.firstLetter} />
+          <Avatar letter={user.firstLetter} size="50" fontSize="title-s" />
         </ProfileArea>
       </header>
       {children}
