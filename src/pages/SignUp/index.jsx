@@ -244,7 +244,7 @@ export function SignUp() {
                   {isLoading ? (
                     <PulseLoader color="#FFF" size={14} />
                   ) : (
-                    'Entrar'
+                    'Cadastrar'
                   )}
                 </ButtonForm>
               </FormContainer>
