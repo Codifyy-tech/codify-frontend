@@ -32,7 +32,7 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <div className="container">
+      <div className="container-header">
         <img src={codifyLogoImg} alt="" />
 
         <nav>
