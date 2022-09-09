@@ -21,6 +21,11 @@ export const CloseButton = styled.button`
       color: #353535;
     }
   }
+
+  @media (max-width: 768px) {
+    top: 6%;
+    right: 10%;
+  }
 `
 
 export const Banner = styled.div`
@@ -44,7 +49,7 @@ export const ModalBody = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding: 2rem 5rem;
+  padding: 2rem 5rem 0rem;
   overflow-y: scroll;
   height: 45vh;
   &::-webkit-scrollbar {
@@ -65,6 +70,7 @@ export const ModalBody = styled.div`
 
   @media (max-width: 768px) {
     padding: 1.5rem 1.5rem;
+    height: 50vh;
     &::-webkit-scrollbar {
       width: 0rem;
     }
@@ -98,4 +104,13 @@ export const InfoContainer = styled.div`
   display: flex;
   gap: 5px;
   align-items: center;
+`
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `

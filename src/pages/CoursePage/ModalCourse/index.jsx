@@ -3,9 +3,11 @@ import { RegularText, TitleText } from '../../../components/Typograph'
 import { ReactComponent as Author } from '../../../assets/course-author.svg'
 import { ReactComponent as Time } from '../../../assets/course-time.svg'
 import { ReactComponent as Close } from '../../../assets/close-icon.svg'
+import { ButtonForm } from '../../../components/ButtonForm'
 
 import {
   Banner,
+  ButtonContainer,
   CloseButton,
   ContentCourse,
   DescCourse,
@@ -97,6 +99,17 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
               })}
             </TopicContainer>
           </ContentCourse>
+          <ButtonContainer>
+            <ButtonForm
+              path={''}
+              backgroundColor="brand-blue"
+              hoverBackgroundColor="base-button-hover"
+            >
+              <RegularText fontSize="text-m" color="base-white" weight="500">
+                Inscrever
+              </RegularText>
+            </ButtonForm>
+          </ButtonContainer>
         </ModalBody>
       </ModalContainer>
     </ReactModal>
