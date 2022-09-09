@@ -94,13 +94,7 @@ export function CoursePage() {
         </RegularText>
         <CourseList>
           {courses.map((course, index) => {
-            return (
-              <CourseCard
-                key={index}
-                course={course}
-                tech={course.technology}
-              />
-            )
+            return <CourseCard key={index} course={course} />
           })}
         </CourseList>
       </CourseArea>

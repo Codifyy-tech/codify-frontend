@@ -1,36 +1,22 @@
 import ReactModal from 'react-modal'
 import { RegularText, TitleText } from '../../../components/Typograph'
+import { ReactComponent as Author } from '../../../assets/course-author.svg'
+import { ReactComponent as Time } from '../../../assets/course-time.svg'
+import { ReactComponent as Close } from '../../../assets/close-icon.svg'
+
 import {
   Banner,
   CloseButton,
   ContentCourse,
   DescCourse,
+  InfoContainer,
   ModalBody,
   ModalContainer,
   TopicContainer,
 } from './styles'
 
-const imagesTech = {
-  HTML: {
-    url: 'https://vanilla.codifyy.tech/assets/images/htmlCourseImage.svg',
-    color: 'rgba(239, 101, 42, 0.65)',
-  },
-  Javascript: {
-    url: 'https://vanilla.codifyy.tech/assets/images/javascriptCourseImage.svg',
-    color: 'rgba(255, 244, 160, 1)',
-  },
-  Angular: {
-    url: 'https://vanilla.codifyy.tech/assets/images/angularCourseImage.svg',
-    color: 'rgba(227, 71, 106)',
-  },
-  Java: {
-    url: 'https://vanilla.codifyy.tech/assets/images/angularCourseImage.svg',
-    color: 'rgb(223,21,65)',
-  },
-  // Java: java,
-}
-
 export function ModalCourse({ isModalOpen, toggleModal, course }) {
+  console.log(course)
   return (
     <ReactModal
       isOpen={isModalOpen}
@@ -54,7 +40,7 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
           bottom: '70px',
           border: 'none',
           background: '#F2F3F6',
-          overflow: 'auto',
+          overflow: 'hidden',
           WebkitOverflowScrolling: 'touch',
           borderRadius: '10px',
           outline: 'none',
@@ -63,12 +49,12 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
       }}
     >
       <ModalContainer>
-        <Banner color={imagesTech[course.technology].color}>
+        <Banner color={course.technology.color}>
           <div>
-            <img src={imagesTech[course.technology].url} alt="" />
+            <img src={course.technology.icon} alt="" />
           </div>
           <CloseButton type="button" onClick={toggleModal}>
-            Fechar
+            <Close />
           </CloseButton>
         </Banner>
 
@@ -78,12 +64,18 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
             <RegularText fontSize="text-m" color="base-text" weight="500">
               {course.description}
             </RegularText>
-            <RegularText fontSize="text-m" color="base-text" weight="500">
-              Criado por <span>{course.author}</span>
-            </RegularText>
-            <RegularText fontSize="text-m" color="base-text" weight="500">
-              35 horas
-            </RegularText>
+            <InfoContainer>
+              <Author />
+              <RegularText fontSize="text-m" color="base-text" weight="500">
+                Criado por <span>{course.author}</span>
+              </RegularText>
+            </InfoContainer>
+            <InfoContainer>
+              <Time />
+              <RegularText fontSize="text-m" color="base-text" weight="500">
+                35 horas
+              </RegularText>
+            </InfoContainer>
           </DescCourse>
 
           <ContentCourse>

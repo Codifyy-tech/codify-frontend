@@ -14,6 +14,7 @@ export const defaultTheme = {
     'base-error': '#f84747',
     'brand-blue-dark': '#001334',
     'brand-blue': '#1A75E8',
+    'scroll-color': '#D1D1D1',
   },
   textSizes: {
     'title-l': '2.6rem',

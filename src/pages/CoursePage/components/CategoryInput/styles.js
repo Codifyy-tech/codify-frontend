@@ -34,8 +34,8 @@ export const ContentContainer = styled.div`
   gap: 0.75rem;
   font-size: ${({ theme }) => theme.textSizes['text-m']};
   border-radius: 15px;
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   cursor: pointer;
   border: 0px;
   transition: 0.2s;
