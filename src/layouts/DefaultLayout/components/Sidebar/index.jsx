@@ -42,7 +42,7 @@ const navData = [
 
 const NavMobileLinks = [
   { title: 'Inicio', path: '/home' },
-  { title: 'Trilhas', path: '/sobre' },
+  { title: 'Trilhas', path: 'home/course' },
   { title: 'Testes', path: '/contato' },
   { title: 'Configurações', path: '/home/profile' },
 ]
