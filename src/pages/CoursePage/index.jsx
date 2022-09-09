@@ -97,9 +97,7 @@ export function CoursePage() {
             return (
               <CourseCard
                 key={index}
-                title={course.title}
-                author={course.author}
-                urlImage="oi"
+                course={course}
                 tech={course.technology}
               />
             )
