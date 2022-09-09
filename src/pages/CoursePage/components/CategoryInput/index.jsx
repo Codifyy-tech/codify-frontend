@@ -2,7 +2,10 @@ import { InputContainer, ContentContainer } from './styles'
 import { forwardRef } from 'react'
 import { RegularText } from '../../../../components/Typograph'
 
-export function CategoryBase({ id, icon, label, checked, ...props }, ref) {
+export function CategoryBase(
+  { id, icon, label, checked, handleFilter, ...props },
+  ref,
+) {
   return (
     <InputContainer>
       <input
@@ -12,6 +15,7 @@ export function CategoryBase({ id, icon, label, checked, ...props }, ref) {
         name="paymentMethod"
         ref={ref}
         checked={checked}
+        onChange={handleFilter}
       />
       <label htmlFor={id}>
         <ContentContainer>

@@ -12,7 +12,6 @@ import {
 import React, { useEffect, useState } from 'react'
 import { CourseCard } from './components/CardCourse'
 import { api } from '../../services/api'
-
 import { ReactComponent as Web } from '../../assets/frontend-icon.svg'
 import { ReactComponent as Mobile } from '../../assets/mobile-icon.svg'
 import { ReactComponent as Database } from '../../assets/database-icon.svg'
@@ -38,7 +37,7 @@ export const courseCategories = {
 
 export function CoursePage() {
   const token = localStorage.getItem('@Auth:token')
-  const { register, handleSubmit } = useForm({
+  const { register } = useForm({
     resolver: yupResolver(SignInValidatorSchema),
   })
   const [courses, setCourses] = useState([])
@@ -54,7 +53,16 @@ export function CoursePage() {
     }
 
     getCourses()
-  }, [])
+  }, [token])
+
+  async function handleFilter(categorySelected) {
+    const { data } = await api.get('/list/course', {
+      params: { category: categorySelected.target.value },
+      headers: { Authorization: 'Bearer ' + token },
+    })
+
+    setCourses(data.data)
+  }
 
   return (
     <CourseContainer>
@@ -62,7 +70,7 @@ export function CoursePage() {
         <RegularText fontSize="text-s" weight="500">
           Categorias
         </RegularText>
-        <form onSubmit={handleSubmit()}>
+        <form>
           {Object.entries(courseCategories).map(
             ([key, { label, icon, checked }]) => (
               <CategoryInput
@@ -72,6 +80,7 @@ export function CoursePage() {
                 label={label}
                 value={key}
                 checked={checked}
+                handleFilter={handleFilter}
                 {...register('category')}
               />
             ),
