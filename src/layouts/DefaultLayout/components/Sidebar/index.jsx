@@ -52,7 +52,6 @@ export function Sidebar() {
   const { signOut } = useContext(AuthContext)
 
   function handleSignOut() {
-    console.log('oi')
     signOut()
   }
 
@@ -74,7 +73,7 @@ export function Sidebar() {
           </MobileIcon>
         </div>
 
-        {isOpen ? (
+        {isOpen && (
           <NavMobileContainer>
             {NavMobileLinks.map(({ title, path }) => (
               <NavMobileItem key={path} title={title} path={path} />
@@ -83,8 +82,6 @@ export function Sidebar() {
               Sair
             </NavMobileSignOut>
           </NavMobileContainer>
-        ) : (
-          ''
         )}
       </SidebarHeader>
       <SidebarBody>

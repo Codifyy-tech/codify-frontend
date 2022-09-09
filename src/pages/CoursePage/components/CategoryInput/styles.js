@@ -36,6 +36,7 @@ export const ContentContainer = styled.div`
   border-radius: 15px;
   width: 150px;
   height: 150px;
+  cursor: pointer;
   border: 0px;
   transition: 0.2s;
 
