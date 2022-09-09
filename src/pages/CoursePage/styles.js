@@ -13,6 +13,13 @@ export const CourseCategory = styled.section`
   form {
     display: flex;
     gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    form {
+      justify-content: space-evenly;
+    }
   }
 `
 
@@ -26,4 +33,8 @@ export const CourseList = styled.ul`
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    justify-content: space-evenly;
+  }
 `
