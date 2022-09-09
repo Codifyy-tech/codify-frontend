@@ -18,7 +18,7 @@ export const Banner = styled.div`
   align-items: center;
   width: 100%;
   height: 17rem;
-  background-color: rgba(255, 244, 160, 1);
+  background-color: ${({ color }) => color};
 
   div {
     width: 23rem;

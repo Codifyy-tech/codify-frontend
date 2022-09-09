@@ -10,6 +10,26 @@ import {
   TopicContainer,
 } from './styles'
 
+const imagesTech = {
+  HTML: {
+    url: 'https://vanilla.codifyy.tech/assets/images/htmlCourseImage.svg',
+    color: 'rgba(239, 101, 42, 0.65)',
+  },
+  Javascript: {
+    url: 'https://vanilla.codifyy.tech/assets/images/javascriptCourseImage.svg',
+    color: 'rgba(255, 244, 160, 1)',
+  },
+  Angular: {
+    url: 'https://vanilla.codifyy.tech/assets/images/angularCourseImage.svg',
+    color: 'rgba(227, 71, 106)',
+  },
+  Java: {
+    url: 'https://vanilla.codifyy.tech/assets/images/angularCourseImage.svg',
+    color: 'rgb(223,21,65)',
+  },
+  // Java: java,
+}
+
 export function ModalCourse({ isModalOpen, toggleModal, course }) {
   return (
     <ReactModal
@@ -43,12 +63,9 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
       }}
     >
       <ModalContainer>
-        <Banner>
+        <Banner color={imagesTech[course.technology].color}>
           <div>
-            <img
-              src="https://vanilla.codifyy.tech/assets/images/javascriptCourseImage.svg"
-              alt=""
-            />
+            <img src={imagesTech[course.technology].url} alt="" />
           </div>
           <CloseButton type="button" onClick={toggleModal}>
             Fechar
