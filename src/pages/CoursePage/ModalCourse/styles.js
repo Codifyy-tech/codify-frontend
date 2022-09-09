@@ -46,9 +46,9 @@ export const ModalBody = styled.div`
   gap: 3rem;
   padding: 2rem 5rem;
   overflow-y: scroll;
-  height: 42vh;
+  height: 45vh;
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 0.5rem;
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
@@ -61,6 +61,13 @@ export const ModalBody = styled.div`
 
   span {
     color: ${({ theme }) => theme.colors[`brand-blue`]};
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1.5rem;
+    &::-webkit-scrollbar {
+      width: 0rem;
+    }
   }
 `
 
@@ -80,6 +87,11 @@ export const TopicContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 15rem);
   gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const InfoContainer = styled.div`
