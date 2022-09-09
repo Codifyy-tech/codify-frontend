@@ -25,7 +25,7 @@ const navData = [
   },
   {
     title: 'Trilhas',
-    path: '/course',
+    path: '/home/course',
     icon: 'https://vanilla.codifyy.tech/assets/images/courseIcon.svg',
   },
   {
