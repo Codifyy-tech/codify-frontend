@@ -1,19 +1,6 @@
-import {
-  FormContainer,
-  InputContainer,
-  SignInContainer,
-  SignInFormSide,
-  MobileArea,
-  CepContainer,
-  SearchButton,
-  AddressFormContainer,
-  DistrictInfo,
-  ErrorMessage,
-} from './styles'
+import { SignInContainer, SignInFormSide, MobileArea } from './styles'
 
 import { RegularText, TitleText } from '../../components/Typograph'
-import { InputForm } from '../../components/Input'
-import { ButtonForm } from '../../components/ButtonForm'
 import { Navigate } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
@@ -22,9 +9,8 @@ import { AuthContext } from '../../contexts/AuthContext'
 import { toast } from 'react-toastify'
 import { Sidebar } from '../../components/Sidebar'
 import { SignUpValidatorSchema } from '../../utils/schema/SignUpSchema'
-import { SelectInput } from '../../components/SelectInput'
 import axios from 'axios'
-import { PulseLoader } from 'react-spinners'
+import { FormRegister } from '../../components/FormRegister'
 
 const formData = [
   {
@@ -152,102 +138,17 @@ export function SignUp() {
             </div>
 
             <div>
-              <FormContainer onSubmit={handleSubmit(handleRegister)} noValidate>
-                <InputContainer>
-                  {formData.map((item, index) => {
-                    if (item.inputType === 'select') {
-                      return (
-                        <SelectInput
-                          error={errors[item.name]}
-                          key={index}
-                          labelText={item.labelText}
-                          placeholder={item.placeholder2}
-                          options={item.options}
-                          {...register(item.name)}
-                        />
-                      )
-                    } else {
-                      return (
-                        <InputForm
-                          key={index}
-                          error={errors[item.name]}
-                          labelText={item.labelText}
-                          placeholder={item.placeholder}
-                          typeInput={item.inputType}
-                          {...register(item.name)}
-                        />
-                      )
-                    }
-                  })}
-                </InputContainer>
-
-                <AddressFormContainer>
-                  <CepContainer>
-                    <InputForm
-                      error={!!errors.cep}
-                      labelText="CEP"
-                      placeholder="Digite seu CEP"
-                      typeInput="number"
-                      {...register('cep')}
-                    />
-                    <SearchButton
-                      onClick={handleSearch}
-                      type="button"
-                      isInvalid={!!errors.cep}
-                    >
-                      Pesquisar
-                    </SearchButton>
-                  </CepContainer>
-
-                  {errors.cep && (
-                    <ErrorMessage>{errors.cep.message}</ErrorMessage>
-                  )}
-                  <InputForm
-                    error={errors.address}
-                    labelText="Endereço"
-                    typeInput="text"
-                    disabled
-                    {...register('address')}
-                  />
-
-                  <InputForm
-                    error={errors.district}
-                    labelText="Bairro"
-                    typeInput="text"
-                    disabled
-                    {...register('district')}
-                  />
-
-                  <DistrictInfo>
-                    <InputForm
-                      error={errors.city}
-                      labelText="Cidade"
-                      typeInput="text"
-                      disabled
-                      {...register('city')}
-                    />
-                    <InputForm
-                      error={errors.state}
-                      labelText="Estado"
-                      typeInput="text"
-                      disabled
-                      {...register('state')}
-                    />
-                  </DistrictInfo>
-                </AddressFormContainer>
-
-                <ButtonForm
-                  backgroundColor="brand-blue"
-                  textColor="base-white"
-                  hoverBackgroundColor="base-button-hover"
-                >
-                  {isLoading ? (
-                    <PulseLoader color="#FFF" size={14} />
-                  ) : (
-                    'Cadastrar'
-                  )}
-                </ButtonForm>
-              </FormContainer>
+              <FormRegister
+                handleSubmit={handleSubmit(handleRegister)}
+                textButton="Cadastrar"
+                formData={formData}
+                register={register}
+                errors={errors}
+                handleSearch={handleSearch}
+                isLoading={isLoading}
+                addressForm={true}
+                inputColor="base-white"
+              />
 
               <MobileArea>
                 <RegularText fontSize="text-m" color="base-text" weight="500">

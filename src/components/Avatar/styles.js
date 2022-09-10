@@ -7,6 +7,6 @@ export const AvatarContainer = styled.div`
   color: ${({ theme }) => theme.colors['base-white']};
   background-color: ${({ theme }) => theme.colors['brand-blue']};
   border-radius: 100%;
-  width: 50px;
-  height: 50px;
+  width: ${({ size }) => `${size}px`};
+  height: ${({ size }) => `${size}px`};
 `

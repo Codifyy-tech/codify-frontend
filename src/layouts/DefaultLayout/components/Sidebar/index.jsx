@@ -25,7 +25,7 @@ const navData = [
   },
   {
     title: 'Trilhas',
-    path: '/home',
+    path: '/home/course',
     icon: 'https://vanilla.codifyy.tech/assets/images/courseIcon.svg',
   },
   {
@@ -35,16 +35,16 @@ const navData = [
   },
   {
     title: 'Configurações',
-    path: '/home',
+    path: '/home/profile',
     icon: 'https://vanilla.codifyy.tech/assets/images/settingIcon.svg',
   },
 ]
 
 const NavMobileLinks = [
   { title: 'Inicio', path: '/home' },
-  { title: 'Trilhas', path: '/sobre' },
+  { title: 'Trilhas', path: 'home/course' },
   { title: 'Testes', path: '/contato' },
-  { title: 'Configurações', path: '/login' },
+  { title: 'Configurações', path: '/home/profile' },
 ]
 
 export function Sidebar() {
@@ -52,7 +52,6 @@ export function Sidebar() {
   const { signOut } = useContext(AuthContext)
 
   function handleSignOut() {
-    console.log('oi')
     signOut()
   }
 
@@ -74,7 +73,7 @@ export function Sidebar() {
           </MobileIcon>
         </div>
 
-        {isOpen ? (
+        {isOpen && (
           <NavMobileContainer>
             {NavMobileLinks.map(({ title, path }) => (
               <NavMobileItem key={path} title={title} path={path} />
@@ -83,8 +82,6 @@ export function Sidebar() {
               Sair
             </NavMobileSignOut>
           </NavMobileContainer>
-        ) : (
-          ''
         )}
       </SidebarHeader>
       <SidebarBody>
