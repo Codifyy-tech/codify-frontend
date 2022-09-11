@@ -33,7 +33,9 @@ export function CardTest({ image, title, description, tags, level }) {
               })}
             </div>
             <TagLevel className="tag--level">
-              <RegularText fontSize="text-m">{level}</RegularText>
+              <RegularText fontSize="text-m" color="base-text">
+                {level}
+              </RegularText>
             </TagLevel>
           </TagContainer>
         </div>

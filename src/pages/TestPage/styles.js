@@ -27,6 +27,10 @@ export const FilterArea = styled.div`
     padding: 20px 8% 20px 20px;
     right: 0px;
     border-radius: 15px;
+
+    span {
+      color: ${({ theme }) => theme.colors['brand-blue']};
+    }
   }
 `
 export const CheckBoxContainer = styled.ul`
