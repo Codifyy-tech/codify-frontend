@@ -35,8 +35,7 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
         },
         content: {
           position: 'absolute',
-          height: '95%',
-          top: '2%',
+          top: '5%',
           left: '7%',
           right: '7%',
           bottom: '7%',
