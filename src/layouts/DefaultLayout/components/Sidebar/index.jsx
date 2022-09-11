@@ -30,7 +30,7 @@ const navData = [
   },
   {
     title: 'Testes Técnicos',
-    path: '/home',
+    path: '/home/test',
     icon: 'https://vanilla.codifyy.tech/assets/images/techtasksIcon.svg',
   },
   {
@@ -42,8 +42,8 @@ const navData = [
 
 const NavMobileLinks = [
   { title: 'Inicio', path: '/home' },
-  { title: 'Trilhas', path: 'home/course' },
-  { title: 'Testes', path: '/contato' },
+  { title: 'Trilhas', path: '/home/course' },
+  { title: 'Testes', path: '/home/test' },
   { title: 'Configurações', path: '/home/profile' },
 ]
 

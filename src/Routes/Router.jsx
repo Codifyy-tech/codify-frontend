@@ -8,6 +8,7 @@ import { LandingPage } from '../pages/LandingPage'
 import { ProfilePage } from '../pages/ProfilePage'
 import { SignIn } from '../pages/SignIn'
 import { SignUp } from '../pages/SignUp'
+import { TestPage } from '../pages/TestPage'
 import { PrivateRoute } from './PrivateRoute'
 
 export function Router() {
@@ -25,6 +26,7 @@ export function Router() {
           <Route path="" element={<HomePage />} />
           <Route path="course" element={<CoursePage />} />
           <Route path="profile" element={<ProfilePage />} />
+          <Route path="test" element={<TestPage />} />
         </Route>
       </Route>
     </Routes>
