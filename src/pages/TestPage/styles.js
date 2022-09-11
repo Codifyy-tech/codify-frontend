@@ -33,6 +33,7 @@ export const FilterArea = styled.div`
     }
   }
 `
+
 export const CheckBoxContainer = styled.ul`
   display: flex;
   flex-direction: column;
