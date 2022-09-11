@@ -18,7 +18,6 @@ import {
 } from './styles'
 
 export function ModalCourse({ isModalOpen, toggleModal, course }) {
-  console.log(course)
   return (
     <ReactModal
       isOpen={isModalOpen}
@@ -36,7 +35,8 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
         },
         content: {
           position: 'absolute',
-          top: '7%',
+          height: '95%',
+          top: '2%',
           left: '7%',
           right: '7%',
           bottom: '7%',
@@ -99,18 +99,18 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
               })}
             </TopicContainer>
           </ContentCourse>
-          <ButtonContainer>
-            <ButtonForm
-              path={''}
-              backgroundColor="brand-blue"
-              hoverBackgroundColor="base-button-hover"
-            >
-              <RegularText fontSize="text-m" color="base-white" weight="500">
-                Inscrever
-              </RegularText>
-            </ButtonForm>
-          </ButtonContainer>
         </ModalBody>
+        <ButtonContainer>
+          <ButtonForm
+            path={''}
+            backgroundColor="brand-blue"
+            hoverBackgroundColor="base-button-hover"
+          >
+            <RegularText fontSize="text-m" color="base-white" weight="500">
+              Inscrever
+            </RegularText>
+          </ButtonForm>
+        </ButtonContainer>
       </ModalContainer>
     </ReactModal>
   )
