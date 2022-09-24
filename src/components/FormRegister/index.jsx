@@ -120,6 +120,7 @@ export function FormRegister({
       )}
 
       <ButtonForm
+        type="submit"
         backgroundColor="brand-blue"
         textColor="base-white"
         hoverBackgroundColor="base-button-hover"

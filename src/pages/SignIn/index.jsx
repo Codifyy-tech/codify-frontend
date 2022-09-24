@@ -91,6 +91,7 @@ export function SignIn() {
                   })}
                 </InputContainer>
                 <ButtonForm
+                  type="submit"
                   backgroundColor="brand-blue"
                   textColor="base-white"
                   hoverBackgroundColor="base-button-hover"

@@ -1,16 +1,42 @@
-import { useContext } from 'react'
+import { useEffect, useState, useContext } from 'react'
+
 import { RegularText, TitleText } from '../../components/Typograph'
 import { AuthContext } from '../../contexts/AuthContext'
+import { api } from '../../services/api'
 import { splitName } from '../../utils/splitName'
-import { BannerContainer, BannerDesc, BannerImage } from './styles'
+import { CardCourse } from './components/CourseCard'
+import {
+  BannerContainer,
+  BannerDesc,
+  BannerImage,
+  HomeContainer,
+  CoursesArea,
+  CourseCardArea,
+} from './styles'
 
 export function HomePage() {
   const { user } = useContext(AuthContext)
-
   const name = splitName(user.name)
 
+  const token = localStorage.getItem('@Auth:token')
+  const [courses, setCourses] = useState([])
+
+  useEffect(() => {
+    const getCourses = async () => {
+      const { data } = await api.get('/info', {
+        headers: { Authorization: 'Bearer ' + token },
+      })
+
+      console.log('curso', data.courses_registered)
+
+      setCourses(data.courses_registered)
+    }
+
+    getCourses()
+  }, [token])
+
   return (
-    <>
+    <HomeContainer>
       <BannerContainer>
         <BannerDesc>
           <TitleText as="h2" color="base-white" fontSize="title-l">
@@ -29,6 +55,24 @@ export function HomePage() {
           />
         </BannerImage>
       </BannerContainer>
-    </>
+
+      <CoursesArea>
+        <RegularText fontSize="text-m" weight="500">
+          Minhas Trilhas
+        </RegularText>
+        <CourseCardArea>
+          {courses.map((card, index) => {
+            return (
+              <CardCourse
+                key={index}
+                title={card.title}
+                description={card.description}
+                image={card.technology.icon}
+              />
+            )
+          })}
+        </CourseCardArea>
+      </CoursesArea>
+    </HomeContainer>
   )
 }
