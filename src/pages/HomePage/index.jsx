@@ -27,8 +27,7 @@ export function HomePage() {
         headers: { Authorization: 'Bearer ' + token },
       })
 
-      console.log('curso', data.courses_registered)
-
+      console.log(data.courses_registered)
       setCourses(data.courses_registered)
     }
 
@@ -65,9 +64,9 @@ export function HomePage() {
             return (
               <CardCourse
                 key={index}
-                title={card.title}
-                description={card.description}
-                image={card.technology.icon}
+                title={card.courseInfo.title}
+                description={card.courseInfo.description}
+                image={card.courseInfo.technology.icon}
               />
             )
           })}

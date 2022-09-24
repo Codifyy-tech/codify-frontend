@@ -3,6 +3,7 @@ export const defaultTheme = {
     'base-white': '#FFFFFF',
     'base-black': '#000',
     'base-background': '#F2F3F6',
+    'base-background-progressbar': '#D8DAEC',
     'base-card': '#FDFDFD',
     'base-card-service': '#FAFAFA',
     'base-input': '#FFFFFF',

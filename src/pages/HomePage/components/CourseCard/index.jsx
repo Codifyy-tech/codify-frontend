@@ -10,6 +10,7 @@ import {
 } from './styles'
 
 import PlayIcon from '../../../../assets/play-icon.svg'
+import { ProgressBar } from '../../../../components/ProgressBar'
 
 export function CardCourse({ image, title, description, color }) {
   return (
@@ -27,6 +28,7 @@ export function CardCourse({ image, title, description, color }) {
         </CardText>
 
         <IconContainer>
+          <ProgressBar completed={50} />
           <Icon src={PlayIcon} alt="" />
         </IconContainer>
       </CardDesc>

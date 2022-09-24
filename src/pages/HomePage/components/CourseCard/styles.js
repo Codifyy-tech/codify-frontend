@@ -10,6 +10,8 @@ export const CardCourseContainer = styled.li`
   flex: 1;
 
   @media (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
   }
 `
@@ -28,7 +30,7 @@ export const CardDesc = styled.ul`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 10px;
+  gap: 1rem;
 `
 
 export const CardTitle = styled.ul`
@@ -60,8 +62,17 @@ export const TagContainer = styled.ul`
 
 export const IconContainer = styled.div`
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  gap: 5rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
 `
 
 export const Icon = styled.img`

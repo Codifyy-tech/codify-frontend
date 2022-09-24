@@ -17,7 +17,7 @@ export const CourseCardArea = styled.section`
   gap: 2rem;
   grid-template-columns: repeat(2, 1fr);
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1300px) {
     grid-template-columns: 1fr;
   }
 `

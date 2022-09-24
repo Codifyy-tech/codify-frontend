@@ -35,6 +35,7 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
         },
       )
 
+      console.log(data.data)
       toast.success(data.data, {
         theme: 'colored',
       })
