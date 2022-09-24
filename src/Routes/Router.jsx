@@ -5,6 +5,7 @@ import { CoursePage } from '../pages/CoursePage'
 import { HomePage } from '../pages/HomePage'
 
 import { LandingPage } from '../pages/LandingPage'
+import { Player } from '../pages/Player'
 import { ProfilePage } from '../pages/ProfilePage'
 import { SignIn } from '../pages/SignIn'
 import { SignUp } from '../pages/SignUp'
@@ -25,6 +26,7 @@ export function Router() {
         <Route path="" element={<DefaultLayout />}>
           <Route path="" element={<HomePage />} />
           <Route path="course" element={<CoursePage />} />
+          <Route path="course/:id" element={<Player />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="test" element={<TestPage />} />
         </Route>

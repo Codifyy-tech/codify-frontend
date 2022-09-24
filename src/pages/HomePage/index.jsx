@@ -64,9 +64,10 @@ export function HomePage() {
             return (
               <CardCourse
                 key={index}
-                title={card.courseInfo.title}
-                description={card.courseInfo.description}
-                image={card.courseInfo.technology.icon}
+                title={card.course_info.title}
+                description={card.course_info.description}
+                image={card.course_info.technology.icon}
+                completed={card.progress}
               />
             )
           })}
