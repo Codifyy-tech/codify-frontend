@@ -15,8 +15,10 @@ export const ClassContainer = styled.div`
     font: inherit;
     cursor: pointer;
     color: currentColor;
-    width: 1.6em;
-    height: 1.6em;
+    min-width: 1.6em;
+    max-width: 1.6em;
+    min-height: 1.6em;
+    max-height: 1.6em;
     border-radius: 3px;
     transform: translateY(-0.075em);
     display: grid;

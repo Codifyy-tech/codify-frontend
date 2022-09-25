@@ -44,7 +44,7 @@ export const PlayerArea = styled.div`
 export const VideoArea = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 3;
+  flex: 4;
 
   > div {
     padding: 1rem;
@@ -59,7 +59,7 @@ export const Video = styled.div`
 `
 
 export const ClassesArea = styled.div`
-  flex: 1;
+  flex: 2;
 
   > form {
     display: flex;
@@ -69,6 +69,7 @@ export const ClassesArea = styled.div`
     padding: 30px 8% 30px 30px;
     right: 0px;
     border-radius: 15px;
+    height: 90vh;
     overflow: auto;
 
     span {
