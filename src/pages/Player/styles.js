@@ -14,6 +14,10 @@ export const PlayerHeader = styled.div`
   background-color: ${({ theme }) => theme.colors['base-background']};
   border-radius: 30px;
   padding: 2rem;
+
+  > div {
+    cursor: pointer;
+  }
 `
 
 export const ProfileArea = styled.div`

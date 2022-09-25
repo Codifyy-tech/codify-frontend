@@ -67,6 +67,7 @@ export function HomePage() {
                 id={card.course_info._id}
                 title={card.course_info.title}
                 description={card.course_info.description}
+                name={card.course_info.technology.name}
                 image={card.course_info.technology.icon}
                 completed={card.progress}
               />

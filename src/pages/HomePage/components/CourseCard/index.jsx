@@ -17,6 +17,7 @@ export function CardCourse({
   image,
   title,
   description,
+  name,
   color,
   completed,
   id,
@@ -35,10 +36,10 @@ export function CardCourse({
 
       <CardDesc>
         <CardTitle>
-          <TitleText fontSize="title-ms">{title}</TitleText>
+          <TitleText fontSize="title-ms">Trilha {name}</TitleText>
         </CardTitle>
         <CardText>
-          <RegularText fontSize="text-s">{description}</RegularText>
+          <RegularText fontSize="text-s">{title}</RegularText>
         </CardText>
 
         <IconContainer>

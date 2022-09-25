@@ -1,6 +1,9 @@
+import { CaretLeft } from 'phosphor-react'
+import { useNavigate, useParams } from 'react-router-dom'
+
 import { useEffect, useState, useContext } from 'react'
 import ReactPlayer from 'react-player'
-import { useParams } from 'react-router-dom'
+
 import { Avatar } from '../../components/Avatar'
 import { RegularText, TitleText } from '../../components/Typograph'
 import { AuthContext } from '../../contexts/AuthContext'
@@ -23,20 +26,30 @@ export function Player() {
   const name = user.name.split(' ')
 
   const token = localStorage.getItem('@Auth:token')
+  const navigate = useNavigate()
   const [classes, setClasses] = useState([])
+  const [technology, setTechnology] = useState('')
   const [video, setVideo] = useState('')
 
   useEffect(() => {
-    const getCourses = async () => {
+    const getClasses = async () => {
       const { data } = await api.get(`/class/${id}`, {
         headers: { Authorization: 'Bearer ' + token },
       })
 
-      console.log(data)
       setClasses(data.data)
     }
 
-    getCourses()
+    const getCourseInfo = async () => {
+      const { data } = await api.get(`/course/${id}`, {
+        headers: { Authorization: 'Bearer ' + token },
+      })
+
+      setTechnology(data.data.technology.name)
+    }
+
+    getClasses()
+    getCourseInfo()
   }, [id, token])
 
   function handleVideo(url, title, author) {
@@ -47,10 +60,18 @@ export function Player() {
     })
   }
 
+  function backPage() {
+    console.log('oi')
+    navigate(-1)
+  }
+
   return (
     <PlayerContainer>
       <PlayerHeader>
-        <TitleText>Trilha Python</TitleText>
+        <div onClick={backPage}>
+          <CaretLeft size={42} weight="bold" />
+        </div>
+        <TitleText>{`Trilha ${technology}`}</TitleText>
         <ProfileArea className="profile-area">
           <RegularText color="base-text" weight="400">
             {`${name[0]} ${name[name.length - 1]}`}
