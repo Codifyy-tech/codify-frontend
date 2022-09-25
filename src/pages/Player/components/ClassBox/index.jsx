@@ -1,6 +1,5 @@
 import { ClassContainer, ClassDesc, ClassInfo } from './styles'
 import moment from 'moment'
-
 import PlayIcon from '../../../../assets/play-icon.svg'
 import { RegularText } from '../../../../components/Typograph'
 import { api } from '../../../../services/api'
@@ -16,9 +15,10 @@ export function ClassBox({
 }) {
   const token = localStorage.getItem('@Auth:token')
 
+  const seconds = moment.duration(duration).asSeconds()
   const formattedSeconds = moment()
     .startOf('day')
-    .seconds(duration)
+    .seconds(seconds)
     .format('mm:ss')
 
   async function handleChecked(e) {
