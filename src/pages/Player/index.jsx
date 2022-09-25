@@ -40,12 +40,13 @@ export function Player() {
         headers: { Authorization: 'Bearer ' + token },
       })
 
-      const lastClass = data.data.find((classInfo) => !classInfo.watched)
+      const lastClass = data.data[data.data.length - 1]
+      const lastWatchedClass = data.data.find((classInfo) => !classInfo.watched)
       setVideo({
-        id: lastClass._id,
-        url: lastClass.url,
-        title: lastClass.title,
-        author: lastClass.author,
+        id: lastWatchedClass ? lastWatchedClass._id : lastClass._id,
+        url: lastWatchedClass ? lastWatchedClass.url : lastClass.url,
+        title: lastWatchedClass ? lastWatchedClass.title : lastClass.title,
+        author: lastWatchedClass ? lastWatchedClass.author : lastClass.author,
       })
 
       setClasses(data.data)
