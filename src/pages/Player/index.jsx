@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react'
-
+import ReactPlayer from 'react-player'
 import { useParams } from 'react-router-dom'
 import { Avatar } from '../../components/Avatar'
 import { RegularText, TitleText } from '../../components/Typograph'
@@ -24,6 +24,7 @@ export function Player() {
 
   const token = localStorage.getItem('@Auth:token')
   const [classes, setClasses] = useState([])
+  const [video, setVideo] = useState('')
 
   useEffect(() => {
     const getCourses = async () => {
@@ -37,6 +38,14 @@ export function Player() {
 
     getCourses()
   }, [id, token])
+
+  function handleVideo(url, title, author) {
+    setVideo({
+      url,
+      title,
+      author,
+    })
+  }
 
   return (
     <PlayerContainer>
@@ -52,7 +61,13 @@ export function Player() {
 
       <PlayerArea>
         <VideoArea>
-          <Video></Video>
+          <Video>
+            <ReactPlayer url={video.url} controls width="100%" height="100%" />
+          </Video>
+
+          <div>
+            <TitleText fontSize="title-m">{video.title}</TitleText>
+          </div>
         </VideoArea>
 
         <ClassesArea>
@@ -68,10 +83,12 @@ export function Player() {
                       key={index}
                       id={classInfo._id}
                       title={classInfo.title}
+                      author={classInfo.author}
                       description={classInfo.description}
                       duration={classInfo.duration}
                       url={classInfo.url}
                       watched={classInfo.watched}
+                      handleVideo={handleVideo}
                     />
                   )
                 })}

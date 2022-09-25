@@ -39,12 +39,17 @@ export const PlayerArea = styled.div`
 
 export const VideoArea = styled.div`
   display: flex;
+  flex-direction: column;
   flex: 3;
+
+  > div {
+    padding: 1rem;
+  }
 `
 
 export const Video = styled.div`
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   background-color: ${({ theme }) => theme.colors['base-background']};
   border-radius: 10px;
 `

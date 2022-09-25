@@ -6,6 +6,7 @@ export const ClassContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  cursor: pointer;
 
   input {
     appearance: none;

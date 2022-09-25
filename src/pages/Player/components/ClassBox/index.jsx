@@ -5,7 +5,15 @@ import PlayIcon from '../../../../assets/play-icon.svg'
 import { RegularText } from '../../../../components/Typograph'
 import { api } from '../../../../services/api'
 
-export function ClassBox({ title, duration, watched, url, id }) {
+export function ClassBox({
+  title,
+  duration,
+  watched,
+  url,
+  id,
+  handleVideo,
+  author,
+}) {
   const token = localStorage.getItem('@Auth:token')
 
   const formattedSeconds = moment()
@@ -13,7 +21,7 @@ export function ClassBox({ title, duration, watched, url, id }) {
     .seconds(duration)
     .format('mm:ss')
 
-  async function handleTeste(e) {
+  async function handleChecked(e) {
     await api.put(
       `/class/${id}`,
       {
@@ -26,7 +34,7 @@ export function ClassBox({ title, duration, watched, url, id }) {
   }
 
   return (
-    <ClassContainer>
+    <ClassContainer onClick={() => handleVideo(url, title, author)}>
       <ClassDesc>
         <img src={PlayIcon} alt="" />
 
@@ -39,7 +47,7 @@ export function ClassBox({ title, duration, watched, url, id }) {
       <input
         type="checkbox"
         id={id}
-        onChange={handleTeste}
+        onChange={handleChecked}
         defaultChecked={watched}
       />
     </ClassContainer>
