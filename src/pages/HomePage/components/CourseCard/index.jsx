@@ -11,10 +11,24 @@ import {
 
 import PlayIcon from '../../../../assets/play-icon.svg'
 import { ProgressBar } from '../../../../components/ProgressBar'
+import { useNavigate } from 'react-router-dom'
 
-export function CardCourse({ image, title, description, color, completed }) {
+export function CardCourse({
+  image,
+  title,
+  description,
+  color,
+  completed,
+  id,
+}) {
+  const navigate = useNavigate()
+
+  function handleNavigateToCourse() {
+    navigate(`/home/course/${id}`)
+  }
+
   return (
-    <CardCourseContainer>
+    <CardCourseContainer onClick={handleNavigateToCourse}>
       <CardImage color={color}>
         <img src={image} alt="" />
       </CardImage>

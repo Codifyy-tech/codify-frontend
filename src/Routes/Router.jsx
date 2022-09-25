@@ -26,10 +26,12 @@ export function Router() {
         <Route path="" element={<DefaultLayout />}>
           <Route path="" element={<HomePage />} />
           <Route path="course" element={<CoursePage />} />
-          <Route path="course/:id" element={<Player />} />
+
           <Route path="profile" element={<ProfilePage />} />
           <Route path="test" element={<TestPage />} />
         </Route>
+
+        <Route path="course/:id" element={<Player />} />
       </Route>
     </Routes>
   )
