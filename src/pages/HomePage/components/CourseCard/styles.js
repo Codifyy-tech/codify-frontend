@@ -67,15 +67,18 @@ export const IconContainer = styled.div`
   width: 100%;
   gap: 5rem;
 
+  svg {
+    width: 3rem;
+    height: auto;
+    border-radius: 100%;
+    background-color: #deebfe;
+    color: #1a75e8;
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
   }
-`
-
-export const Icon = styled.img`
-  width: 3rem;
-  height: auto;
 `

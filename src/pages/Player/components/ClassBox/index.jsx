@@ -1,6 +1,6 @@
 import { ClassContainer, ClassDesc, ClassInfo } from './styles'
 import moment from 'moment'
-import PlayIcon from '../../../../assets/play-icon.svg'
+import { ReactComponent as PlayIcon } from '../../../../assets/play-icon.svg'
 import { RegularText } from '../../../../components/Typograph'
 import { api } from '../../../../services/api'
 
@@ -12,6 +12,8 @@ export function ClassBox({
   id,
   handleVideo,
   author,
+  setClasses,
+  lastClass,
 }) {
   const token = localStorage.getItem('@Auth:token')
 
@@ -31,20 +33,40 @@ export function ClassBox({
         headers: { Authorization: 'Bearer ' + token },
       },
     )
+
+    setClasses((oldValue) =>
+      oldValue.map((classInfo) =>
+        classInfo._id === id
+          ? { ...classInfo, watched: !classInfo.watched }
+          : classInfo,
+      ),
+    )
   }
 
   return (
-    <ClassContainer onClick={() => handleVideo(url, title, author)}>
-      <ClassDesc>
-        <img src={PlayIcon} alt="" />
+    <ClassContainer>
+      <div onClick={() => handleVideo(url, title, author)}>
+        <input
+          className="radio"
+          type="radio"
+          name="classes"
+          id={`123${id}`}
+          defaultChecked={lastClass}
+        />
+        <label htmlFor={`123${id}`}>
+          <ClassDesc watched={watched}>
+            <PlayIcon />
 
-        <ClassInfo>
-          <RegularText fontSize="text-s">{title}</RegularText>
-          <RegularText fontSize="text-s">{formattedSeconds}</RegularText>
-        </ClassInfo>
-      </ClassDesc>
+            <ClassInfo>
+              <RegularText fontSize="text-s">{title}</RegularText>
+              <RegularText fontSize="text-s">{formattedSeconds}</RegularText>
+            </ClassInfo>
+          </ClassDesc>
+        </label>
+      </div>
 
       <input
+        className="checkbox"
         type="checkbox"
         id={id}
         onChange={handleChecked}

@@ -8,7 +8,18 @@ export const ClassContainer = styled.div`
   gap: 8px;
   cursor: pointer;
 
-  input {
+  .radio {
+    all: unset;
+  }
+
+  .radio:checked + label {
+    svg {
+      background-color: #feedde;
+      color: #e8961a;
+    }
+  }
+
+  .checkbox {
     appearance: none;
     background-color: #d8daec;
     margin: 0;
@@ -41,13 +52,21 @@ export const ClassContainer = styled.div`
     }
   }
 `
+
 export const ClassDesc = styled.div`
   display: flex;
   gap: 1rem;
+  cursor: pointer;
 
-  > img {
-    width: 35px;
-    height: auto;
+  > svg {
+    min-width: 35px;
+    max-width: 35px;
+    background-color: ${({ watched }) => (watched ? '#CCEEDE' : '#deebfe')};
+    color: ${({ watched }) => (watched ? '#04D361' : '#1a75e8')};
+    min-height: 35px;
+    max-height: 35px;
+    border-radius: 100%;
+    transition: all 0.2s;
   }
 `
 

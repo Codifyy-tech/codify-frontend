@@ -1,15 +1,14 @@
 import { RegularText, TitleText } from '../../../../components/Typograph'
+import { ReactComponent as PlayIcon } from '../../../../assets/play-icon.svg'
 import {
   CardDesc,
   CardImage,
   CardCourseContainer,
   CardText,
   CardTitle,
-  Icon,
   IconContainer,
 } from './styles'
 
-import PlayIcon from '../../../../assets/play-icon.svg'
 import { ProgressBar } from '../../../../components/ProgressBar'
 import { useNavigate } from 'react-router-dom'
 
@@ -44,7 +43,7 @@ export function CardCourse({
 
         <IconContainer>
           <ProgressBar completed={completed} />
-          <Icon src={PlayIcon} alt="" />
+          <PlayIcon />
         </IconContainer>
       </CardDesc>
     </CardCourseContainer>

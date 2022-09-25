@@ -27,6 +27,7 @@ export const FillerArea = styled.div`
   background-color: ${({ theme }) => theme.colors['brand-blue']};
   border-radius: 20px 20px 20px 20px;
   text-align: 'right';
+  transition: all 0.3s;
 
   > span {
     padding: 10px;

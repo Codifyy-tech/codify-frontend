@@ -45,9 +45,12 @@ export const VideoArea = styled.div`
   display: flex;
   flex-direction: column;
   flex: 4;
+  justify-content: space-between;
 
   > div {
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 `
 
@@ -56,6 +59,9 @@ export const Video = styled.div`
   height: 60vh;
   background-color: ${({ theme }) => theme.colors['base-background']};
   border-radius: 10px;
+
+  border-radius: 15px;
+  overflow: hidden;
 `
 
 export const ClassesArea = styled.div`
@@ -71,6 +77,18 @@ export const ClassesArea = styled.div`
     border-radius: 15px;
     height: 90vh;
     overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+    }
+    ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: ${({ theme }) => theme.colors[`brand-blue`]};
+    }
+    ::-webkit-scrollbar-track {
+      background-color: ${({ theme }) => theme.colors[`scroll-color`]};
+      border-radius: 10px;
+    }
 
     span {
       color: ${({ theme }) => theme.colors['brand-blue']};
@@ -107,5 +125,16 @@ export const ButtonArea = styled.div`
 
   .reset-filter {
     background-color: ${({ theme }) => theme.colors['brand-blue-dark']};
+  }
+`
+
+export const ProgressArea = styled.div`
+  background-color: ${({ theme }) => theme.colors['base-background']};
+  border-radius: 10px;
+  width: 60%;
+  padding: 0.8rem;
+
+  @media (max-width: 1000px) {
+    width: 100%;
   }
 `

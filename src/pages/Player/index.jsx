@@ -16,9 +16,12 @@ import {
   PlayerContainer,
   PlayerHeader,
   ProfileArea,
+  ProgressArea,
   Video,
   VideoArea,
 } from './styles'
+import { IconContainer } from '../HomePage/components/CourseCard/styles'
+import { ProgressBar } from '../../components/ProgressBar'
 
 export function Player() {
   const { id } = useParams()
@@ -35,6 +38,14 @@ export function Player() {
     const getClasses = async () => {
       const { data } = await api.get(`/class/${id}`, {
         headers: { Authorization: 'Bearer ' + token },
+      })
+
+      const lastClass = data.data.find((classInfo) => !classInfo.watched)
+      setVideo({
+        id: lastClass._id,
+        url: lastClass.url,
+        title: lastClass.title,
+        author: lastClass.author,
       })
 
       setClasses(data.data)
@@ -61,9 +72,14 @@ export function Player() {
   }
 
   function backPage() {
-    console.log('oi')
     navigate(-1)
   }
+
+  const classWatched = classes.reduce((accumulator, current) => {
+    return current.watched ? accumulator + 1 : accumulator
+  }, 0)
+
+  const progress = Math.round((classWatched * 100) / classes.length)
 
   return (
     <PlayerContainer>
@@ -82,13 +98,24 @@ export function Player() {
 
       <PlayerArea>
         <VideoArea>
-          <Video>
-            <ReactPlayer url={video.url} controls width="100%" height="100%" />
-          </Video>
-
           <div>
+            <Video>
+              <ReactPlayer
+                url={video.url}
+                pip={true}
+                controls
+                width="100%"
+                height="100%"
+              />
+            </Video>
             <TitleText fontSize="title-m">{video.title}</TitleText>
           </div>
+
+          <ProgressArea>
+            <IconContainer>
+              <ProgressBar completed={progress} />
+            </IconContainer>
+          </ProgressArea>
         </VideoArea>
 
         <ClassesArea>
@@ -110,6 +137,8 @@ export function Player() {
                       url={classInfo.url}
                       watched={classInfo.watched}
                       handleVideo={handleVideo}
+                      setClasses={setClasses}
+                      lastClass={video.id === classInfo._id}
                     />
                   )
                 })}
