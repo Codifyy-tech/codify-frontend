@@ -7,18 +7,18 @@ import ResumeIcon from '../../../../assets/resume-icon.svg'
 
 const serviceCardData = [
   {
-    title: 'Exercicios e testes técnicos',
-    desc: 'Fornecemos materiais gratuitos para que você possa praticar para testes técnicos em processos seletivos.',
-    icon: testeIcon,
-  },
-  {
     title: 'Trilhas de aprendizado',
     desc: 'Especialize-se em stacks específicas amplamente utilizadas e valorizadas no mercado de trabalho.',
     icon: codeIcon,
   },
   {
-    title: 'Receba dicas as melhores',
-    desc: 'Receba dicas de como preparar seu currículo e agir arassar em uma entrevista de emprego!',
+    title: 'Exercícios e testes técnicos',
+    desc: 'Fornecemos materiais gratuitos para que você possa praticar para testes técnicos em processos seletivos.',
+    icon: testeIcon,
+  },
+  {
+    title: 'Conquiste sua vaga',
+    desc: 'Participe ativamente de processos seletivos promovidos mensalmente por nossas empresas parceiras',
     icon: ResumeIcon,
   },
 ]
