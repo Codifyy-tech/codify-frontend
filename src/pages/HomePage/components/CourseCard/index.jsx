@@ -36,10 +36,10 @@ export function CardCourse({
       <CardDesc>
         <CardTitle>
           <TitleText fontSize="title-ms">Trilha {name}</TitleText>
+          <CardText>
+            <RegularText fontSize="text-s">{title}</RegularText>
+          </CardText>
         </CardTitle>
-        <CardText>
-          <RegularText fontSize="text-s">{title}</RegularText>
-        </CardText>
 
         <IconContainer>
           <ProgressBar completed={completed} />
