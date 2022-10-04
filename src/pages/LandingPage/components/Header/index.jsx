@@ -14,13 +14,13 @@ import { NavMobileItem } from '../../components/Header/components/NavMobileItem'
 import { ButtonsArea } from './components/ButtonsContainer'
 
 const NavDesktopLinks = [
-  { title: 'Home', path: '/home' },
+  { title: 'Home', path: '/' },
   { title: 'Sobre', path: '/sobre' },
   { title: 'Contato', path: '/contato' },
 ]
 
 const NavMobileLinks = [
-  { title: 'Home', path: '/home' },
+  { title: 'Home', path: '/' },
   { title: 'Sobre', path: '/sobre' },
   { title: 'Contato', path: '/contato' },
   { title: 'Entrar', path: '/login' },

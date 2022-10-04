@@ -42,9 +42,9 @@ export function HomePage() {
             Olá, {name[0]}!
           </TitleText>
           <RegularText color="base-white" fontSize="text-m" weight="500">
-            RegularText Ipsum is simply dummy text of the printing and
-            typesetting industry. Lorem Ipsum has been the industry standard
-            dummy text ever since the 1500s, when
+            Estamos aqui para ajudá-lo a desenvolver sua carreira. Reunimos uma
+            ampla gama de cursos de tecnologias utilizadas e valorizadas no
+            mercado de trabalho. Aproveite!
           </RegularText>
         </BannerDesc>
         <BannerImage>

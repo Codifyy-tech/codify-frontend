@@ -11,7 +11,7 @@ const baseInfoData = [
     ],
     button: {
       title: 'Começar',
-      path: '/saibamais',
+      path: '/sobre',
       backgroundColor: 'base-button',
       hoverBackgroundColor: 'base-button-hover',
       textColor: 'base-white',

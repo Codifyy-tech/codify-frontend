@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { DefaultLayout } from '../layouts/DefaultLayout'
 import { LandingLayout } from '../layouts/LandingLayout'
+import { AboutPage } from '../pages/AboutPage'
 import { CoursePage } from '../pages/CoursePage'
 import { HomePage } from '../pages/HomePage'
 
@@ -17,6 +18,7 @@ export function Router() {
     <Routes>
       <Route path="/" element={<LandingLayout />}>
         <Route path="/" element={<LandingPage />} />
+        <Route path="sobre" element={<AboutPage />} />
       </Route>
 
       <Route path="/login" element={<SignIn />} />
