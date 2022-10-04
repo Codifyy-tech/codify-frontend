@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export const AboutContainer = styled.div`
   padding-top: 2rem;
+  background-color: ${({ theme }) => theme.colors['base-background']};
+
   > div {
     display: flex;
     justify-content: center;

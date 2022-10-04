@@ -4,7 +4,7 @@ export const ProfileCardContainer = styled.div`
   display: flex;
   max-width: 30rem;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors['base-background']};
+  background-color: ${({ theme }) => theme.colors['base-card-profile']};
   padding: 0.6rem;
   border-radius: 10px;
   gap: 2rem;

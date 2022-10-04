@@ -6,6 +6,7 @@ export const defaultTheme = {
     'base-background-progressbar': '#D8DAEC',
     'base-card': '#FDFDFD',
     'base-card-service': '#FAFAFA',
+    'base-card-profile': '#E5E9ED',
     'base-input': '#FFFFFF',
     'base-button': '#1A75E8',
     'base-button-hover': '#368FFC',
