@@ -68,10 +68,7 @@ export function AboutPage() {
           como preparar seu currículo e agir em uma entrevista para que ela seja
           bem sucedida. Queremos dar aos candidatos uma plataforma onde eles
           possam encontrar tudo o que precisam para se destacar da multidão e
-          aumentar suas chances de serem contratados, de maneira gratuita. O
-          projeto se iniciou oficialmente no dia 11/03/2022. A codify é composta
-          por Cláudio Roberto, David Augusto, Lucas Amadeu, Rafael Mafort e
-          Vitor Mantovani.
+          aumentar suas chances de serem contratados, de maneira gratuita.
         </RegularText>
 
         <RegularText color="base-text" fontSize="text-l" weight="500">
