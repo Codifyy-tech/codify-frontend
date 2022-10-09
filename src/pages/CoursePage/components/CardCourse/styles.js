@@ -9,15 +9,16 @@ export const CourseCardContainer = styled.li`
 
 export const CardHeader = styled.div`
   background-color: ${({ color }) => color};
-  width: 100%;
+  min-width: 10rem;
+  max-width: 200px;
   border-radius: 15px 15px 0px 0px;
   display: flex;
   justify-content: center;
   padding: 2.5rem 3.5rem;
 
   > img {
-    width: 60%;
-    height: 60%;
+    width: 50px;
+    height: 50px;
   }
 `
 
