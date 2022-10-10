@@ -30,7 +30,7 @@ const colorTag = {
 export const TagContainer = styled.ul`
   display: flex;
   align-items: center;
-  padding: 5px 10px;
+  padding: 5px 15px;
   border-radius: 10px;
   background-color: ${({ nameTag }) => colorTag[nameTag].backgroundColor};
   color: ${({ nameTag }) => colorTag[nameTag].color};

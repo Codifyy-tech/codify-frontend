@@ -17,6 +17,14 @@ export const CardImage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  border-radius: 15px;
+  padding: 1rem;
+
+  > img {
+    max-width: 140px;
+    width: 100%;
+  }
 `
 
 export const CardDesc = styled.ul`

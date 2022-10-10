@@ -10,7 +10,7 @@ import {
   TagContainer,
 } from './styles'
 
-export function CardTest({ image, title, description, tags, level }) {
+export function CardTest({ image, title, description, tag, level }) {
   return (
     <CardTestContainer>
       <CardImage>
@@ -28,9 +28,7 @@ export function CardTest({ image, title, description, tags, level }) {
         <div>
           <TagContainer>
             <div>
-              {tags.map((nameTag, index) => {
-                return <Tag key={index} nameTag={nameTag} />
-              })}
+              <Tag nameTag={tag} />
             </div>
             <TagLevel className="tag--level">
               <RegularText fontSize="text-m" color="base-text">
