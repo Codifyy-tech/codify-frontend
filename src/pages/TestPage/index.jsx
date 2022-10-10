@@ -51,7 +51,6 @@ export function TestPage() {
   useEffect(() => {
     const getPracticalTests = async () => {
       const { data } = await api.get('/list/practicalTest', {
-        params: { company_id: '634326480aba26a0d11250cc' },
         headers: { Authorization: 'Bearer ' + token },
       })
 
