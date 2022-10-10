@@ -97,6 +97,10 @@ export function TestPage() {
     )
   }
 
+  async function handleDefaultChecked(e) {
+    setSelectedTechsId()
+  }
+
   console.log(selectedTechsId)
 
   return (
@@ -164,7 +168,7 @@ export function TestPage() {
             >
               <RegularText fontSize="text-s">Aplicar Filtros</RegularText>
             </button>
-            <button className="reset-filter" type="reset">
+            <button className="reset-filter" onClick={handleDefaultChecked}>
               <RegularText fontSize="text-s">Resetar Filtros</RegularText>
             </button>
           </ButtonArea>
