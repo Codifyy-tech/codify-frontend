@@ -47,6 +47,7 @@ export function TestPage() {
   const [companies, setCompanies] = useState([])
   const [technologies, setTechnologies] = useState([])
   const [selectedTechsId, setSelectedTechsId] = useState([])
+  const [selectedCompaniesId, setsSelectedCompaniesId] = useState([])
 
   useEffect(() => {
     const getPracticalTests = async () => {
@@ -82,19 +83,32 @@ export function TestPage() {
     e.preventDefault()
 
     const { data } = await api.get('/list/practicalTest', {
-      params: { technology_id: selectedTechsId },
+      params: {
+        technology_id: selectedTechsId,
+        company_id: selectedCompaniesId,
+      },
       headers: { Authorization: 'Bearer ' + token },
     })
 
     setTests(data.data)
   }
 
-  async function handleCheck(id) {
-    setSelectedTechsId((oldValue) =>
-      oldValue.includes(id)
-        ? oldValue.filter((itemId) => id !== itemId)
-        : [...oldValue, id],
-    )
+  async function handleCheck(id, type) {
+    console.log(id, type)
+
+    if (type === 'company') {
+      setsSelectedCompaniesId((oldValue) =>
+        oldValue.includes(id)
+          ? oldValue.filter((itemId) => id !== itemId)
+          : [...oldValue, id],
+      )
+    } else {
+      setSelectedTechsId((oldValue) =>
+        oldValue.includes(id)
+          ? oldValue.filter((itemId) => id !== itemId)
+          : [...oldValue, id],
+      )
+    }
   }
 
   async function handleDefaultChecked(e) {
@@ -136,6 +150,7 @@ export function TestPage() {
                     key={index}
                     id={tech._id}
                     value={tech.name}
+                    type="technology"
                     handleCheck={handleCheck}
                   />
                 )
@@ -152,7 +167,9 @@ export function TestPage() {
                 return (
                   <CheckBox
                     key={index}
+                    id={company._id}
                     value={company.name}
+                    type="company"
                     handleCheck={handleCheck}
                   />
                 )

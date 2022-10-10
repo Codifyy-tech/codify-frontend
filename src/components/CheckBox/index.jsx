@@ -1,6 +1,6 @@
 import { CheckBoxContainer } from './styles'
 
-export function CheckBox({ value, id, handleCheck }) {
+export function CheckBox({ value, id, handleCheck, type }) {
   return (
     <CheckBoxContainer>
       <input
@@ -8,7 +8,7 @@ export function CheckBox({ value, id, handleCheck }) {
         id={id}
         name={value}
         value={value}
-        onChange={(e) => handleCheck(e.target.id)}
+        onChange={(e) => handleCheck(e.target.id, type)}
       />
       <label htmlFor={value}> {value} </label>
     </CheckBoxContainer>
