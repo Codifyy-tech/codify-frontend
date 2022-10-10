@@ -20,6 +20,7 @@ export const CardImage = styled.div`
   background-color: white;
   border-radius: 15px;
   padding: 1rem;
+  height: 146px;
 
   > img {
     max-width: 140px;
@@ -32,6 +33,7 @@ export const CardDesc = styled.ul`
   flex-direction: column;
   width: 100%;
   gap: 10px;
+  justify-content: space-between;
 `
 
 export const CardTitle = styled.ul`
@@ -42,8 +44,9 @@ export const CardTitle = styled.ul`
 `
 
 export const CardText = styled.ul`
-  max-width: 400px;
+  max-width: 600px;
   font-weight: 300;
+  margin-top: 0.2rem;
 `
 
 export const TagContainer = styled.ul`

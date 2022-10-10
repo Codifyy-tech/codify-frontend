@@ -9,6 +9,10 @@ const colorTag = {
     backgroundColor: '#EFE0E0',
     color: '#E11F21',
   },
+  Nodejs: {
+    backgroundColor: 'rgba(171, 255, 154 , 0.57)',
+    color: '#539e43',
+  },
   Typescript: {
     backgroundColor: '#C6E1FF',
     color: '#3178C6',

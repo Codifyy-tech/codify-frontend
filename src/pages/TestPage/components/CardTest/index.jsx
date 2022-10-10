@@ -18,12 +18,14 @@ export function CardTest({ image, title, description, tag, level }) {
       </CardImage>
 
       <CardDesc>
-        <CardTitle>
-          <TitleText fontSize="title-m">{title}</TitleText>
-        </CardTitle>
-        <CardText>
-          <RegularText fontSize="text-m">{description}</RegularText>
-        </CardText>
+        <div>
+          <CardTitle>
+            <TitleText fontSize="title-m">{title}</TitleText>
+          </CardTitle>
+          <CardText>
+            <RegularText fontSize="text-m">{description}</RegularText>
+          </CardText>
+        </div>
 
         <div>
           <TagContainer>
