@@ -5,6 +5,8 @@ export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
+  height: 100%;
+  padding-bottom: 1%;
 `
 
 export const CloseButton = styled.button`
@@ -49,9 +51,8 @@ export const ModalBody = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding: 2rem 5rem 0rem;
-  overflow-y: scroll;
-  height: 45vh;
+  padding: 2rem 5rem;
+  overflow: auto;
   &::-webkit-scrollbar {
     width: 0.5rem;
   }
@@ -107,10 +108,13 @@ export const InfoContainer = styled.div`
 `
 
 export const ButtonContainer = styled.div`
-  display: flex;
   width: 50%;
   margin: 0 auto;
+  margin-top: 4rem;
   @media (max-width: 768px) {
-    width: 100%;
+    padding-top: 2rem !important;
+    width: 90%;
+    margin-top: 1rem !important;
+    padding-bottom: 2% !important;
   }
 `

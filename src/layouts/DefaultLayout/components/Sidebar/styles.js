@@ -5,9 +5,9 @@ export const SidebarContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: ${({ theme }) => theme.colors['base-background']};
-  padding: 50px;
+  padding: 50px 15px;
   height: 100vh;
-  gap: 60px;
+  gap: 40px;
 
   @media (max-width: 1000px) {
     display: flex;

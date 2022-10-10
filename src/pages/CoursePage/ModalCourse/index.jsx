@@ -16,9 +16,40 @@ import {
   ModalContainer,
   TopicContainer,
 } from './styles'
+import { api } from '../../../services/api'
+import { toast } from 'react-toastify'
+import { AxiosError } from 'axios'
 
 export function ModalCourse({ isModalOpen, toggleModal, course }) {
-  console.log(course)
+  const token = localStorage.getItem('@Auth:token')
+
+  async function handleRegister() {
+    try {
+      const { data } = await api.post(
+        '/course/user/register',
+        {
+          course_id: course._id,
+        },
+        {
+          headers: { Authorization: 'Bearer ' + token },
+        },
+      )
+
+      toast.success(data.message, {
+        theme: 'colored',
+      })
+    } catch (e) {
+      toast.error(
+        e instanceof AxiosError && e.response.data
+          ? e.response.data.message
+          : 'Erro Interno',
+        {
+          theme: 'colored',
+        },
+      )
+    }
+  }
+
   return (
     <ReactModal
       isOpen={isModalOpen}
@@ -36,7 +67,7 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
         },
         content: {
           position: 'absolute',
-          top: '7%',
+          top: '5%',
           left: '7%',
           right: '7%',
           bottom: '7%',
@@ -99,18 +130,18 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
               })}
             </TopicContainer>
           </ContentCourse>
-          <ButtonContainer>
-            <ButtonForm
-              path={''}
-              backgroundColor="brand-blue"
-              hoverBackgroundColor="base-button-hover"
-            >
-              <RegularText fontSize="text-m" color="base-white" weight="500">
-                Inscrever
-              </RegularText>
-            </ButtonForm>
-          </ButtonContainer>
         </ModalBody>
+        <ButtonContainer>
+          <ButtonForm
+            backgroundColor="brand-blue"
+            hoverBackgroundColor="base-button-hover"
+            onClick={handleRegister}
+          >
+            <RegularText fontSize="text-m" color="base-white" weight="500">
+              Inscrever
+            </RegularText>
+          </ButtonForm>
+        </ButtonContainer>
       </ModalContainer>
     </ReactModal>
   )

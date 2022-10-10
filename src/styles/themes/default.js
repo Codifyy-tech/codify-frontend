@@ -3,8 +3,10 @@ export const defaultTheme = {
     'base-white': '#FFFFFF',
     'base-black': '#000',
     'base-background': '#F2F3F6',
+    'base-background-progressbar': '#D8DAEC',
     'base-card': '#FDFDFD',
     'base-card-service': '#FAFAFA',
+    'base-card-profile': '#E5E9ED',
     'base-input': '#FFFFFF',
     'base-button': '#1A75E8',
     'base-button-hover': '#368FFC',
@@ -19,6 +21,7 @@ export const defaultTheme = {
   textSizes: {
     'title-l': '2.6rem',
     'title-m': '2rem',
+    'title-ms': '1.6rem',
     'title-s': '1.2rem',
 
     'text-m': '1rem',

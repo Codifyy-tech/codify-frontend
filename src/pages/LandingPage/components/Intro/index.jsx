@@ -14,7 +14,7 @@ import { ArrowRight } from 'phosphor-react'
 const Buttons = [
   {
     title: 'Começar',
-    path: '/saibamais',
+    path: '/sobre',
     backgroundColor: 'base-button',
     hoverBackgroundColor: 'base-button-hover',
     textColor: 'base-white',
