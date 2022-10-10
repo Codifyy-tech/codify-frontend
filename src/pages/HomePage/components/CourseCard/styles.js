@@ -24,6 +24,10 @@ export const CardImage = styled.div`
   width: 10rem;
   border-radius: 10px;
   padding: 1rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const CardDesc = styled.ul`
