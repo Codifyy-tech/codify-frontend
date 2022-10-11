@@ -4,7 +4,14 @@ import { ReactComponent as Start } from '../../../../assets/start.svg'
 import { useState } from 'react'
 import { ModalTest } from '../ModalTest'
 
-export function TestStructure({ title, icon, desc }) {
+export function TestStructure({
+  title,
+  icon,
+  desc,
+  type,
+  practicalTestId,
+  theoryTestId,
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   function toggleModal() {
@@ -32,7 +39,13 @@ export function TestStructure({ title, icon, desc }) {
           </TestButton>
         </TestDesc>
       </TestContent>
-      <ModalTest isModalOpen={isModalOpen} toggleModal={toggleModal} />
+      <ModalTest
+        isModalOpen={isModalOpen}
+        toggleModal={toggleModal}
+        type={type}
+        practicalTestId={practicalTestId}
+        theoryTestId={theoryTestId}
+      />
     </>
   )
 }

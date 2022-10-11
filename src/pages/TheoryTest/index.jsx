@@ -1,19 +1,54 @@
-import { CaretLeft } from 'phosphor-react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { useEffect, useState } from 'react'
 
-import { TitleText } from '../../components/Typograph'
+import { RegularText, TitleText } from '../../components/Typograph'
 import { api } from '../../services/api'
-import { TestContainer, TestHeader, TestBody } from '../TechTest/style'
+import { TestContainer, TestHeader, TestBody } from './style'
+import { CheckBox } from './components/CheckBox'
+
+const perguntas = [
+  {
+    description: 'Selecione todos os conceitos centrais de OOPS',
+    answers: [
+      {
+        _id: '6344263422b0666283981f28',
+        description: 'Herança',
+      },
+      {
+        _id: '634426464f9975a0ffc68306',
+        description: 'Interface',
+      },
+      {
+        _id: '6344264d4f9975a0ffc6830a',
+        description: 'Polimorfismo',
+      },
+      {
+        _id: '6344268f7b69e9cc81f7b753',
+        description: 'Abstração',
+      },
+      {
+        _id: '634426a77b69e9cc81f7b757',
+        description: 'Genéricos',
+      },
+    ],
+  },
+  {
+    description: 'Essa é a segunda pergunta java so de exmeplo',
+    answers: [
+      {
+        _id: '6345a80790b1357b7eaf231f',
+        description: 'Genéricos',
+      },
+    ],
+  },
+]
 
 export function TheoryTest() {
   const { id } = useParams()
-
   const token = localStorage.getItem('@Auth:token')
-  const navigate = useNavigate()
 
-  const [theoryTest, setTheoryTest] = useState([])
+  const [questions, setQuestions] = useState([])
 
   useEffect(() => {
     const getTestInfo = async () => {
@@ -21,28 +56,41 @@ export function TheoryTest() {
         headers: { Authorization: 'Bearer ' + token },
       })
 
-      setTheoryTest(data.data)
+      console.log(data.data)
+      setQuestions(data.data)
     }
 
     getTestInfo()
   }, [id, token])
 
-  function backPage() {
-    navigate(-1)
+  async function handleCheck(id, type) {
+    console.log('oi')
   }
 
   return (
     <TestContainer>
       <TestHeader>
-        <div onClick={backPage}>
-          <CaretLeft size={42} weight="bold" />
-        </div>
-        <span>
-          <TitleText>Teste Teórico</TitleText>
-        </span>
+        <TitleText>Teste Teórico</TitleText>
       </TestHeader>
 
-      <TestBody></TestBody>
+      <TestBody>
+        <TitleText fontSize="title-s">
+          <span>1.</span> {perguntas[0].description}
+        </TitleText>
+
+        <form action="">
+          {questions[1].answers.map((answer) => {
+            return (
+              <CheckBox
+                key={answer._id}
+                id={answer._id}
+                value={answer.description}
+                handleCheck={handleCheck}
+              />
+            )
+          })}
+        </form>
+      </TestBody>
     </TestContainer>
   )
 }

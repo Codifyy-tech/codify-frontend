@@ -13,19 +13,41 @@ import {
 import { InfoTest } from '../InfoTest'
 import { useNavigate } from 'react-router-dom'
 
-export function ModalTest({ isModalOpen, toggleModal }) {
+export function ModalTest({
+  isModalOpen,
+  toggleModal,
+  type,
+  practicalTestId,
+  theoryTestId,
+}) {
   const navigate = useNavigate()
 
-  function handleNavigateToTheoryTest() {
-    navigate(`/home/test/theorytest`)
+  function handleNavigateToTest() {
+    if (type === 0) {
+      navigate(`/home/test/theorytest/${theoryTestId}`)
+    } else {
+      navigate(`/home/test/practicalTest/${practicalTestId}`)
+    }
   }
 
-  const testInfo = [
+  const theoryTestInfo = [
     {
       text: 'O teste possui 10 questões alternativas',
     },
     {
       text: 'Em caso de reprovação, só poderá refazer o teste após 10 dias',
+    },
+    {
+      text: 'Ao iniciar o teste, ',
+    },
+  ]
+
+  const practicalTestInfo = [
+    {
+      text: 'Pinto Pinto',
+    },
+    {
+      text: 'peroca peroca peroca',
     },
   ]
 
@@ -71,15 +93,19 @@ export function ModalTest({ isModalOpen, toggleModal }) {
         </HeaderInfo>
 
         <ModalBody>
-          {testInfo.map((item, key) => {
-            return <InfoTest item={item.text} key={key} />
-          })}
+          {type === 0
+            ? theoryTestInfo.map((item, key) => {
+                return <InfoTest item={item.text} key={key} />
+              })
+            : practicalTestInfo.map((item, key) => {
+                return <InfoTest item={item.text} key={key} />
+              })}
         </ModalBody>
         <ButtonContainer>
           <ButtonForm
             backgroundColor="brand-blue"
             hoverBackgroundColor="base-button-hover"
-            onClick={handleNavigateToTheoryTest}
+            onClick={handleNavigateToTest}
           >
             <RegularText fontSize="text-m" color="base-white" weight="500">
               Iniciar

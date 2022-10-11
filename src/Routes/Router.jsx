@@ -37,7 +37,7 @@ export function Router() {
 
         <Route path="course/:id" element={<Player />} />
         <Route path="test/:id" element={<TechTest />} />
-        <Route path="test/theorytest/" element={<TheoryTest />} />
+        <Route path="test/theorytest/:id" element={<TheoryTest />} />
       </Route>
     </Routes>
   )

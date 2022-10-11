@@ -21,6 +21,10 @@ export function TechTest() {
   const token = localStorage.getItem('@Auth:token')
   const navigate = useNavigate()
   const [company, setCompany] = useState({})
+  // const [level, setLevel] = useState('')
+  const [technologyId, setTechnologyId] = useState('')
+  const [theoryTestId, setTheoryTestId] = useState('')
+  const [practicalTestId, setPracticalTestId] = useState('')
 
   const InfoPracticalData = [
     {
@@ -34,25 +38,39 @@ export function TechTest() {
       title: 'Teste Teórico',
       icon: <Unlocked />,
       desc: 'Questionário de perguntas teóricas para avaliar sua competência. Sendo aprovado, você será liberado para o teste prático.',
+      type: 0,
     },
     {
       title: 'Teste Prático',
       icon: <Locked />,
       desc: 'Projeto para colocar seus conhecimentos em prática. Após enviar o desafio, você receberá automaticamente um selo de concluído.',
+      type: 1,
     },
   ]
 
   useEffect(() => {
-    const getTestInfo = async () => {
+    const getPracticalTestInfo = async () => {
       const { data } = await api.get(`/practicalTest/${id}`, {
         headers: { Authorization: 'Bearer ' + token },
       })
 
+      setPracticalTestId(data.data._id)
+      setTechnologyId(data.data.technology_id._id)
       setCompany(data.data.company)
     }
 
-    getTestInfo()
-  }, [id, token])
+    const getTheoryTestInfo = async () => {
+      const { data } = await api.get(`/list/theoryTest`, {
+        params: { technology_id: technologyId, level: 'Intermediário' },
+        headers: { Authorization: 'Bearer ' + token },
+      })
+
+      setTheoryTestId(data.data[0]._id)
+    }
+
+    getPracticalTestInfo()
+    getTheoryTestInfo()
+  }, [id, technologyId, token])
 
   function backPage() {
     navigate(-1)
@@ -96,6 +114,9 @@ export function TechTest() {
                 title={item.title}
                 icon={item.icon}
                 desc={item.desc}
+                type={item.type}
+                theoryTestId={theoryTestId}
+                practicalTestId={practicalTestId}
               />
             )
           })}
