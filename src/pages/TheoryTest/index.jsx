@@ -1,48 +1,12 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import { useEffect, useState } from 'react'
 
-import { RegularText, TitleText } from '../../components/Typograph'
+import { TitleText } from '../../components/Typograph'
 import { api } from '../../services/api'
-import { TestContainer, TestHeader, TestBody } from './style'
-import { CheckBox } from './components/CheckBox'
-
-const perguntas = [
-  {
-    description: 'Selecione todos os conceitos centrais de OOPS',
-    answers: [
-      {
-        _id: '6344263422b0666283981f28',
-        description: 'Herança',
-      },
-      {
-        _id: '634426464f9975a0ffc68306',
-        description: 'Interface',
-      },
-      {
-        _id: '6344264d4f9975a0ffc6830a',
-        description: 'Polimorfismo',
-      },
-      {
-        _id: '6344268f7b69e9cc81f7b753',
-        description: 'Abstração',
-      },
-      {
-        _id: '634426a77b69e9cc81f7b757',
-        description: 'Genéricos',
-      },
-    ],
-  },
-  {
-    description: 'Essa é a segunda pergunta java so de exmeplo',
-    answers: [
-      {
-        _id: '6345a80790b1357b7eaf231f',
-        description: 'Genéricos',
-      },
-    ],
-  },
-]
+import { TestContainer, TestHeader, TestBody, ButtonContainer } from './style'
+import { RadioButton } from './components/RadioButton'
+import { ButtonForm } from '../../components/ButtonForm'
 
 export function TheoryTest() {
   const { id } = useParams()
@@ -53,6 +17,9 @@ export function TheoryTest() {
       answers: ['Carregando', 'Carregando'],
     },
   ])
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [isFinishQuestion, setIsFinishQuestion] = useState(false)
+  const [answerChosen, setAnswerChosen] = useState([])
 
   useEffect(() => {
     const getTestInfo = async () => {
@@ -60,16 +27,45 @@ export function TheoryTest() {
         headers: { Authorization: 'Bearer ' + token },
       })
 
-      console.log(data.data)
       setQuestions(data.data)
     }
 
     getTestInfo()
-  }, [id, token])
+  }, [id, token, answerChosen])
 
-  async function handleCheck(id, type) {
-    console.log('oi')
+  async function handleCheck(answerId, questionId) {
+    const exists = answerChosen.every(
+      (question) => question[questionId] === undefined,
+    )
+
+    if (!exists) {
+      console.log('bbbbbbbbbb', test)
+      const newQuestions = answerChosen.filter((question, index) => {
+        return test[index] === questionId
+      })
+
+      console.log('aaaaaaaaaaa', newQuestions)
+
+      setAnswerChosen([...newQuestions, { [questionId]: answerId }])
+    } else {
+      setAnswerChosen([...answerChosen, { [questionId]: answerId }])
+    }
   }
+
+  async function nextQuestion() {
+    if (currentQuestion === questions.length - 2) {
+      setIsFinishQuestion(true)
+    }
+    if (currentQuestion + 1 === questions.length) {
+      console.log('Acabou porra!')
+    } else {
+      setCurrentQuestion((oldValue) => {
+        return (oldValue += 1)
+      })
+    }
+  }
+
+  console.log(answerChosen)
 
   return (
     <TestContainer>
@@ -79,13 +75,15 @@ export function TheoryTest() {
 
       <TestBody>
         <TitleText fontSize="title-s">
-          <span>1.</span> {perguntas[0].description}
+          <span>{currentQuestion + 1}.</span>{' '}
+          {questions[currentQuestion].description}
         </TitleText>
 
         <form action="">
-          {questions[0].answers.map((answer) => {
+          {questions[currentQuestion].answers.map((answer) => {
             return (
-              <CheckBox
+              <RadioButton
+                questionId={questions[currentQuestion]._id}
                 key={answer._id}
                 id={answer._id}
                 value={answer.description}
@@ -94,6 +92,15 @@ export function TheoryTest() {
             )
           })}
         </form>
+        <ButtonContainer>
+          <ButtonForm
+            onClick={nextQuestion}
+            backgroundColor="brand-blue"
+            textColor="base-white"
+          >
+            {isFinishQuestion ? 'Finalizar Teste' : 'Próxima pergunta'}
+          </ButtonForm>
+        </ButtonContainer>
       </TestBody>
     </TestContainer>
   )

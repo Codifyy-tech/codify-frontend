@@ -49,3 +49,7 @@ export const ProfileArea = styled.div`
     display: none;
   }
 `
+
+export const ButtonContainer = styled.div`
+  max-width: 15%;
+`

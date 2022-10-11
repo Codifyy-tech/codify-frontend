@@ -1,14 +1,14 @@
 import { CheckBoxContainer } from './styles'
 
-export function CheckBox({ value, id, handleCheck, type }) {
+export function RadioButton({ value, id, handleCheck, type, questionId }) {
   return (
     <CheckBoxContainer>
       <input
-        type="checkbox"
+        type="radio"
         id={id}
-        name={value}
+        name={questionId}
         value={value}
-        onChange={(e) => handleCheck(e.target.id, type)}
+        onChange={(e) => handleCheck(e.target.id, e.target.name)}
       />
       <label htmlFor={value}> {value} </label>
     </CheckBoxContainer>
