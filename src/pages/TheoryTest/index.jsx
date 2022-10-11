@@ -39,18 +39,18 @@ export function TheoryTest() {
     )
 
     if (!exists) {
-      console.log('bbbbbbbbbb', test)
       const newQuestions = answerChosen.filter((question, index) => {
-        return test[index] === questionId
+        console.log(Object.keys(question))
+        return Object.keys(question)[0] !== questionId
       })
-
-      console.log('aaaaaaaaaaa', newQuestions)
 
       setAnswerChosen([...newQuestions, { [questionId]: answerId }])
     } else {
       setAnswerChosen([...answerChosen, { [questionId]: answerId }])
     }
   }
+
+  console.log('resposta:', answerChosen)
 
   async function nextQuestion() {
     if (currentQuestion === questions.length - 2) {
@@ -64,8 +64,6 @@ export function TheoryTest() {
       })
     }
   }
-
-  console.log(answerChosen)
 
   return (
     <TestContainer>
