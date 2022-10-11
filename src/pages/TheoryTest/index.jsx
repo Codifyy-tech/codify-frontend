@@ -48,7 +48,11 @@ export function TheoryTest() {
   const { id } = useParams()
   const token = localStorage.getItem('@Auth:token')
 
-  const [questions, setQuestions] = useState([])
+  const [questions, setQuestions] = useState([
+    {
+      answers: ['Carregando', 'Carregando'],
+    },
+  ])
 
   useEffect(() => {
     const getTestInfo = async () => {
@@ -79,7 +83,7 @@ export function TheoryTest() {
         </TitleText>
 
         <form action="">
-          {questions[1].answers.map((answer) => {
+          {questions[0].answers.map((answer) => {
             return (
               <CheckBox
                 key={answer._id}
