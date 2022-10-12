@@ -7,6 +7,7 @@ import { api } from '../../services/api'
 import { TestContainer, TestHeader, TestBody, ButtonContainer } from './style'
 import { RadioButton } from './components/RadioButton'
 import { ButtonForm } from '../../components/ButtonForm'
+import { ArrowLeft } from 'phosphor-react'
 
 export function TheoryTest() {
   const { id } = useParams()
@@ -33,7 +34,11 @@ export function TheoryTest() {
     getTestInfo()
   }, [id, token, answerChosen])
 
+  const [choice, setChoice] = useState(false)
+
   async function handleCheck(answerId, questionId) {
+    setChoice(true)
+
     const exists = answerChosen.every(
       (question) => question[questionId] === undefined,
     )
@@ -50,8 +55,6 @@ export function TheoryTest() {
     }
   }
 
-  console.log('resposta:', answerChosen)
-
   async function nextQuestion() {
     if (currentQuestion === questions.length - 2) {
       setIsFinishQuestion(true)
@@ -63,6 +66,23 @@ export function TheoryTest() {
         return (oldValue += 1)
       })
     }
+
+    setChoice(false)
+  }
+
+  async function previousQuestion() {
+    if (currentQuestion === questions.length - 2) {
+      setIsFinishQuestion(true)
+    }
+    if (currentQuestion + 1 === questions.length) {
+      console.log('Acabou porra!')
+    } else {
+      setCurrentQuestion((oldValue) => {
+        return (oldValue -= 1)
+      })
+    }
+
+    setChoice(false)
   }
 
   return (
@@ -92,9 +112,17 @@ export function TheoryTest() {
         </form>
         <ButtonContainer>
           <ButtonForm
-            onClick={nextQuestion}
+            backgroundColor="base-white"
+            textColor="brand-blue"
+            onClick={previousQuestion}
+          >
+            <ArrowLeft size={22} weight="bold" /> Voltar
+          </ButtonForm>
+          <ButtonForm
+            onClick={choice ? nextQuestion : ''}
             backgroundColor="brand-blue"
             textColor="base-white"
+            hoverBackgroundColor="base-button-hover"
           >
             {isFinishQuestion ? 'Finalizar Teste' : 'Próxima pergunta'}
           </ButtonForm>

@@ -51,5 +51,7 @@ export const ProfileArea = styled.div`
 `
 
 export const ButtonContainer = styled.div`
-  max-width: 15%;
+  display: flex;
+  flex-direction: row !important;
+  max-width: 40%;
 `
