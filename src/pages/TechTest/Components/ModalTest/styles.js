@@ -24,7 +24,8 @@ export const CloseButton = styled.button`
 
 export const HeaderInfo = styled.div`
   display: flex;
-  padding: 3rem;
+  padding: 2.5rem;
+  gap: 1.3rem;
   justify-content: space-between;
   align-items: center;
 `
@@ -41,11 +42,16 @@ export const ModalBody = styled.div`
 export const ButtonContainer = styled.div`
   width: 50%;
   margin: 0 auto;
+  position: absolute;
+  left: 25%;
+  bottom: 0;
   margin-top: 4rem;
+  padding-bottom: 2% !important;
   @media (max-width: 768px) {
     padding-top: 2rem !important;
     width: 90%;
+    left: 5%;
     margin-top: 1rem !important;
-    padding-bottom: 2% !important;
+    padding-bottom: 5% !important;
   }
 `

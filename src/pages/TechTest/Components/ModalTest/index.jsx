@@ -57,6 +57,7 @@ export function ModalTest({
       ariaHideApp={false}
       onRequestClose={toggleModal}
       appElement={document.getElementById('root')}
+      className="Modal"
       style={{
         overlay: {
           position: 'fixed',
@@ -68,7 +69,7 @@ export function ModalTest({
         },
         content: {
           position: 'absolute',
-          top: '5%',
+          top: '20%',
           left: '7%',
           right: '7%',
           bottom: '30%',
