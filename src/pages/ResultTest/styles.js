@@ -33,18 +33,26 @@ export const TestBody = styled.div`
     width: 100%;
   }
 
-  span {
-    color: ${({ theme }) => theme.colors['brand-blue']};
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
   @media (max-width: 600px) {
     padding: 2rem;
+
+    img {
+      width: 40% !important;
+    }
+  }
+`
+
+export const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem !important;
+  width: 60% !important;
+  text-align: center;
+  align-items: center;
+  padding: 1rem;
+
+  @media (max-width: 768px) {
+    width: 100% !important;
   }
 `
 

@@ -103,7 +103,7 @@ export function TheoryTest() {
 
       setResultPage(true)
 
-      setResultTest(data.data.result)
+      setResultTest(data.data)
     } catch (e) {
       toast.error(
         e instanceof AxiosError && e.response.data
