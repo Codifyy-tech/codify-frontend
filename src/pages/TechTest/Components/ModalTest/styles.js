@@ -31,9 +31,11 @@ export const HeaderInfo = styled.div`
 export const ModalBody = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem 5rem;
+  padding: 2rem;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  gap: 0.5rem;
 `
 
 export const ButtonContainer = styled.div`

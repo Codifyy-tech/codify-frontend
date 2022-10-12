@@ -4,7 +4,7 @@ export const TitleText = styled.h1`
   color: ${({ theme, color }) => theme.colors[`${color}`]};
   font-size: ${({ theme, fontSize }) => theme.textSizes[`${fontSize}`]};
   font-family: ${({ theme }) => theme.fonts.regular};
-  line-height: 130%;
+  line-height: 150%;
   font-weight: ${({ weight }) => weight ?? 800};
 
   > .circle {
