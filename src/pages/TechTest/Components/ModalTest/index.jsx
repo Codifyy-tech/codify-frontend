@@ -12,6 +12,7 @@ import {
 } from './styles'
 import { InfoTest } from '../InfoTest'
 import { useNavigate } from 'react-router-dom'
+import './style.css'
 
 export function ModalTest({
   isModalOpen,

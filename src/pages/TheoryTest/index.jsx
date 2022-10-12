@@ -16,6 +16,7 @@ import { ButtonForm } from '../../components/ButtonForm'
 import { ArrowLeft } from 'phosphor-react'
 import { toast } from 'react-toastify'
 import { AxiosError } from 'axios'
+import { ResultTest } from '../ResultTest'
 
 export function TheoryTest() {
   const { id } = useParams()
@@ -29,6 +30,8 @@ export function TheoryTest() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [isFinishQuestion, setIsFinishQuestion] = useState(false)
   const [answerChosen, setAnswerChosen] = useState([])
+  const [resultTest, setResultTest] = useState([])
+  const [resultPage, setResultPage] = useState(false)
 
   useEffect(() => {
     const getTestInfo = async () => {
@@ -98,9 +101,9 @@ export function TheoryTest() {
         },
       )
 
-      toast.success(data.message, {
-        theme: 'colored',
-      })
+      setResultPage(true)
+
+      setResultTest(data.data.result)
     } catch (e) {
       toast.error(
         e instanceof AxiosError && e.response.data
@@ -114,57 +117,63 @@ export function TheoryTest() {
   }
 
   return (
-    <TestContainer>
-      <TestHeader>
-        <TitleText>Teste Teórico</TitleText>
-      </TestHeader>
+    <>
+      {resultPage ? (
+        <ResultTest resultTest={resultTest} />
+      ) : (
+        <TestContainer>
+          <TestHeader>
+            <TitleText>Teste Teórico</TitleText>
+          </TestHeader>
 
-      <TestBody>
-        <TitleText fontSize="title-s">
-          <span>{currentQuestion + 1}.</span>{' '}
-          {questions[currentQuestion].description}
-        </TitleText>
+          <TestBody>
+            <TitleText fontSize="title-s">
+              <span>{currentQuestion + 1}.</span>{' '}
+              {questions[currentQuestion].description}
+            </TitleText>
 
-        <form action="">
-          {questions[currentQuestion].answers.map((answer) => {
-            return (
-              <RadioButton
-                questionId={questions[currentQuestion]._id}
-                key={answer._id}
-                id={answer._id}
-                value={answer.description}
-                handleCheck={handleCheck}
-                answerChosen={answerChosen}
-              />
-            )
-          })}
-        </form>
-        <ButtonContainer>
-          <ButtonBack onClick={previousQuestion}>
-            <ArrowLeft size={22} weight="bold" /> Voltar
-          </ButtonBack>
-          {isFinishQuestion ? (
-            <ButtonForm
-              onClick={finishTest}
-              backgroundColor="brand-blue"
-              textColor="base-white"
-              hoverBackgroundColor="base-button-hover"
-              type="submit"
-            >
-              Finalizar Teste
-            </ButtonForm>
-          ) : (
-            <ButtonForm
-              onClick={nextQuestion}
-              backgroundColor="brand-blue"
-              textColor="base-white"
-              hoverBackgroundColor="base-button-hover"
-            >
-              Próxima pergunta
-            </ButtonForm>
-          )}
-        </ButtonContainer>
-      </TestBody>
-    </TestContainer>
+            <form action="">
+              {questions[currentQuestion].answers.map((answer) => {
+                return (
+                  <RadioButton
+                    questionId={questions[currentQuestion]._id}
+                    key={answer._id}
+                    id={answer._id}
+                    value={answer.description}
+                    handleCheck={handleCheck}
+                    answerChosen={answerChosen}
+                  />
+                )
+              })}
+            </form>
+            <ButtonContainer>
+              <ButtonBack onClick={previousQuestion}>
+                <ArrowLeft size={22} weight="bold" /> Voltar
+              </ButtonBack>
+              {isFinishQuestion ? (
+                <ButtonForm
+                  onClick={finishTest}
+                  backgroundColor="brand-blue"
+                  textColor="base-white"
+                  hoverBackgroundColor="base-button-hover"
+                  type="submit"
+                >
+                  Finalizar Teste
+                </ButtonForm>
+              ) : (
+                <ButtonForm
+                  onClick={nextQuestion}
+                  backgroundColor="brand-blue"
+                  textColor="base-white"
+                  hoverBackgroundColor="base-button-hover"
+                >
+                  Próxima pergunta
+                </ButtonForm>
+              )}
+            </ButtonContainer>
+          </TestBody>
+        </TestContainer>
+      )}
+    </>
   )
 }

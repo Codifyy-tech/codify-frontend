@@ -51,16 +51,8 @@ export const TestBody = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row !important;
-  max-width: 35%;
+  max-width: 50%;
   @media (max-width: 600px) {
     max-width: 90%;
   }
-`
-
-export const ButtonBack = styled.div`
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  color: ${({ theme }) => theme.colors['brand-blue']};
-  gap: 0.5rem;
 `
