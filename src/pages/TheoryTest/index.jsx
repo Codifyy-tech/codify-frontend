@@ -15,6 +15,7 @@ import { RadioButton } from './components/RadioButton'
 import { ButtonForm } from '../../components/ButtonForm'
 import { ArrowLeft } from 'phosphor-react'
 import { toast } from 'react-toastify'
+import { AxiosError } from 'axios'
 
 export function TheoryTest() {
   const { id } = useParams()
@@ -85,6 +86,33 @@ export function TheoryTest() {
     }
   }
 
+  async function finishTest() {
+    try {
+      const { data } = await api.post(
+        '/theoryTest/result',
+        {
+          answer_list: answerChosen,
+        },
+        {
+          headers: { Authorization: 'Bearer ' + token },
+        },
+      )
+
+      toast.success(data.message, {
+        theme: 'colored',
+      })
+    } catch (e) {
+      toast.error(
+        e instanceof AxiosError && e.response.data
+          ? e.response.data.message
+          : 'Erro Interno',
+        {
+          theme: 'colored',
+        },
+      )
+    }
+  }
+
   return (
     <TestContainer>
       <TestHeader>
@@ -115,14 +143,26 @@ export function TheoryTest() {
           <ButtonBack onClick={previousQuestion}>
             <ArrowLeft size={22} weight="bold" /> Voltar
           </ButtonBack>
-          <ButtonForm
-            onClick={nextQuestion}
-            backgroundColor="brand-blue"
-            textColor="base-white"
-            hoverBackgroundColor="base-button-hover"
-          >
-            {isFinishQuestion ? 'Finalizar Teste' : 'Próxima pergunta'}
-          </ButtonForm>
+          {isFinishQuestion ? (
+            <ButtonForm
+              onClick={finishTest}
+              backgroundColor="brand-blue"
+              textColor="base-white"
+              hoverBackgroundColor="base-button-hover"
+              type="submit"
+            >
+              Finalizar Teste
+            </ButtonForm>
+          ) : (
+            <ButtonForm
+              onClick={nextQuestion}
+              backgroundColor="brand-blue"
+              textColor="base-white"
+              hoverBackgroundColor="base-button-hover"
+            >
+              Próxima pergunta
+            </ButtonForm>
+          )}
         </ButtonContainer>
       </TestBody>
     </TestContainer>
