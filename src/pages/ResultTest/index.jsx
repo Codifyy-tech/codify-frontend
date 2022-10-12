@@ -49,7 +49,7 @@ export function ResultTest({ resultTest }) {
             textColor="base-white"
             hoverBackgroundColor="base-button-hover"
           >
-            Ver resultado
+            Voltar para home
           </ButtonForm>
         </ButtonContainer>
       </TestBody>

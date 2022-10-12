@@ -33,6 +33,10 @@ export const TestBody = styled.div`
     width: 100%;
   }
 
+  img {
+    width: 15% !important;
+  }
+
   @media (max-width: 600px) {
     padding: 2rem;
 
