@@ -8,6 +8,7 @@ import { TestContainer, TestHeader, TestBody, ButtonContainer } from './style'
 import { RadioButton } from './components/RadioButton'
 import { ButtonForm } from '../../components/ButtonForm'
 import { ArrowLeft } from 'phosphor-react'
+import { toast } from 'react-toastify'
 
 export function TheoryTest() {
   const { id } = useParams()
@@ -34,18 +35,13 @@ export function TheoryTest() {
     getTestInfo()
   }, [id, token, answerChosen])
 
-  const [choice, setChoice] = useState(false)
-
   async function handleCheck(answerId, questionId) {
-    setChoice(true)
-
     const exists = answerChosen.every(
       (question) => question[questionId] === undefined,
     )
 
     if (!exists) {
       const newQuestions = answerChosen.filter((question, index) => {
-        console.log(Object.keys(question))
         return Object.keys(question)[0] !== questionId
       })
 
@@ -56,33 +52,32 @@ export function TheoryTest() {
   }
 
   async function nextQuestion() {
-    if (currentQuestion === questions.length - 2) {
-      setIsFinishQuestion(true)
-    }
-    if (currentQuestion + 1 === questions.length) {
-      console.log('Acabou porra!')
+    if (currentQuestion + 1 <= answerChosen.length) {
+      if (currentQuestion === questions.length - 2) {
+        setIsFinishQuestion(true)
+      }
+      if (currentQuestion + 1 === questions.length) {
+        console.log('Acabou porra!')
+      } else {
+        setCurrentQuestion((oldValue) => {
+          return (oldValue += 1)
+        })
+      }
     } else {
-      setCurrentQuestion((oldValue) => {
-        return (oldValue += 1)
+      toast.error('Selecione uma alternativa', {
+        theme: 'colored',
       })
     }
-
-    setChoice(false)
   }
 
   async function previousQuestion() {
-    if (currentQuestion === questions.length - 2) {
-      setIsFinishQuestion(true)
-    }
-    if (currentQuestion + 1 === questions.length) {
-      console.log('Acabou porra!')
-    } else {
+    setIsFinishQuestion(false)
+    if (currentQuestion !== 0) {
       setCurrentQuestion((oldValue) => {
         return (oldValue -= 1)
       })
     }
-
-    setChoice(false)
+    // setChoice(true)
   }
 
   return (
@@ -106,6 +101,7 @@ export function TheoryTest() {
                 id={answer._id}
                 value={answer.description}
                 handleCheck={handleCheck}
+                answerChosen={answerChosen}
               />
             )
           })}
@@ -119,7 +115,7 @@ export function TheoryTest() {
             <ArrowLeft size={22} weight="bold" /> Voltar
           </ButtonForm>
           <ButtonForm
-            onClick={choice ? nextQuestion : ''}
+            onClick={nextQuestion}
             backgroundColor="brand-blue"
             textColor="base-white"
             hoverBackgroundColor="base-button-hover"
