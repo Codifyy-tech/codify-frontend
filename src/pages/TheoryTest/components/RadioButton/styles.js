@@ -4,7 +4,7 @@ export const CheckBoxContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 
   input {
     appearance: none;
@@ -12,18 +12,17 @@ export const CheckBoxContainer = styled.div`
     margin: 0;
     font: inherit;
     cursor: pointer;
-    color: currentColor;
-    width: 1.1em;
-    height: 1.1em;
-    border-radius: 3px;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5px;
     transform: translateY(-0.075em);
     display: grid;
     place-content: center;
 
     &::before {
       content: '';
-      width: 0.65em;
-      height: 0.65em;
+      width: 0.8em;
+      height: 0.8em;
       transform: scale(0);
       transition: 120ms transform ease-in-out;
       box-shadow: inset 1em 1em ${({ theme }) => theme.colors[`brand-blue`]};
@@ -35,5 +34,10 @@ export const CheckBoxContainer = styled.div`
     &:checked::before {
       transform: scale(1);
     }
+  }
+
+  label {
+    color: ${({ theme }) => theme.colors['base-text']};
+    font-size: ${({ theme }) => theme.textSizes['text-m']};
   }
 `

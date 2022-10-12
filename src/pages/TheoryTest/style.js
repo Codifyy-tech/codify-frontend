@@ -36,6 +36,12 @@ export const TestBody = styled.div`
   span {
     color: ${({ theme }) => theme.colors['brand-blue']};
   }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 `
 
 export const ProfileArea = styled.div`
@@ -53,5 +59,16 @@ export const ProfileArea = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row !important;
-  max-width: 40%;
+  max-width: 24%;
+  @media (max-width: 600px) {
+    max-width: 90%;
+  }
+`
+
+export const ButtonBack = styled.div`
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  color: ${({ theme }) => theme.colors['brand-blue']};
+  gap: 0.5rem;
 `

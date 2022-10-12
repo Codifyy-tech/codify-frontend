@@ -4,7 +4,13 @@ import { useEffect, useState } from 'react'
 
 import { TitleText } from '../../components/Typograph'
 import { api } from '../../services/api'
-import { TestContainer, TestHeader, TestBody, ButtonContainer } from './style'
+import {
+  TestContainer,
+  TestHeader,
+  TestBody,
+  ButtonContainer,
+  ButtonBack,
+} from './style'
 import { RadioButton } from './components/RadioButton'
 import { ButtonForm } from '../../components/ButtonForm'
 import { ArrowLeft } from 'phosphor-react'
@@ -77,7 +83,6 @@ export function TheoryTest() {
         return (oldValue -= 1)
       })
     }
-    // setChoice(true)
   }
 
   return (
@@ -107,13 +112,9 @@ export function TheoryTest() {
           })}
         </form>
         <ButtonContainer>
-          <ButtonForm
-            backgroundColor="base-white"
-            textColor="brand-blue"
-            onClick={previousQuestion}
-          >
+          <ButtonBack onClick={previousQuestion}>
             <ArrowLeft size={22} weight="bold" /> Voltar
-          </ButtonForm>
+          </ButtonBack>
           <ButtonForm
             onClick={nextQuestion}
             backgroundColor="brand-blue"
