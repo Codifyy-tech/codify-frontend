@@ -38,7 +38,7 @@ export function ModalTest({
       text: 'Em caso de reprovação, só poderá refazer o teste após 10 dias',
     },
     {
-      text: 'Ao iniciar o teste, ',
+      text: 'Caso você saia do teste antes de terminar, o seu progresso será perdido',
     },
   ]
 
@@ -71,7 +71,7 @@ export function ModalTest({
           top: '5%',
           left: '7%',
           right: '7%',
-          bottom: '40%',
+          bottom: '30%',
           border: 'none',
           background: '#F2F3F6',
           overflow: 'hidden',
@@ -85,7 +85,7 @@ export function ModalTest({
       <ModalContainer>
         <HeaderInfo>
           <div>
-            <TitleText fontSize="title-m">Informações do teste</TitleText>
+            <TitleText fontSize="title-ms">Informações do teste</TitleText>
           </div>
           <CloseButton type="button" onClick={toggleModal}>
             <Close />

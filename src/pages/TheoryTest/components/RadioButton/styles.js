@@ -12,8 +12,10 @@ export const CheckBoxContainer = styled.div`
     margin: 0;
     font: inherit;
     cursor: pointer;
-    width: 2rem;
-    height: 2rem;
+    min-width: 2rem;
+    min-height: 2rem;
+    max-width: 2rem;
+    max-height: 2rem;
     border-radius: 5px;
     transform: translateY(-0.075em);
     display: grid;
@@ -39,5 +41,6 @@ export const CheckBoxContainer = styled.div`
   label {
     color: ${({ theme }) => theme.colors['base-text']};
     font-size: ${({ theme }) => theme.textSizes['text-m']};
+    font-weight: 500;
   }
 `

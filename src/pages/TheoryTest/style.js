@@ -23,7 +23,7 @@ export const TestBody = styled.div`
   gap: 4rem;
   align-items: center;
   border-radius: 30px;
-  padding: 2rem;
+  padding: 1rem 20rem;
 
   > div {
     display: flex;
@@ -42,21 +42,15 @@ export const TestBody = styled.div`
     flex-direction: column;
     gap: 20px;
   }
-`
-
-export const ProfileArea = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 20px;
-  cursor: pointer;
 
   @media (max-width: 600px) {
-    display: none;
+    padding: 2rem;
   }
 `
 
 export const ButtonContainer = styled.div`
+  position: absolute;
+  bottom: 5rem;
   display: flex;
   flex-direction: row !important;
   max-width: 24%;
