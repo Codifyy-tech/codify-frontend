@@ -11,6 +11,8 @@ import { ProfilePage } from '../pages/ProfilePage'
 import { SignIn } from '../pages/SignIn'
 import { SignUp } from '../pages/SignUp'
 import { TestPage } from '../pages/TestPage'
+import { TechTest } from '../pages/TechTest'
+import { TheoryTest } from '../pages/TheoryTest'
 import { PrivateRoute } from './PrivateRoute'
 
 export function Router() {
@@ -34,6 +36,8 @@ export function Router() {
         </Route>
 
         <Route path="course/:id" element={<Player />} />
+        <Route path="test/:id" element={<TechTest />} />
+        <Route path="test/theorytest/:id" element={<TheoryTest />} />
       </Route>
     </Routes>
   )
