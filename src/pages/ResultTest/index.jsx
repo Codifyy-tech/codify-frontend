@@ -5,14 +5,33 @@ import {
   TestBody,
   ButtonContainer,
   TextContainer,
+  AccordionContainer,
+  ResultContainer,
+  TitleContainer,
+  AllAccoradion,
 } from './styles'
 import { ButtonForm } from '../../components/ButtonForm'
 import PassTest from '../../assets/passTest.png'
 import FailedTest from '../../assets/failtest.png'
 import { useContext } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
+import { useNavigate } from 'react-router-dom'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion'
+
+import 'react-accessible-accordion/dist/fancy-example.css'
+import { CheckCircle, XCircle } from 'phosphor-react'
 
 export function ResultTest({ resultTest }) {
+  console.log(resultTest)
+
+  const navigate = useNavigate()
+
   const { user } = useContext(AuthContext)
   const name = user.name.split(' ')
 
@@ -29,6 +48,10 @@ export function ResultTest({ resultTest }) {
     },
   }
 
+  function backHome() {
+    navigate('/home')
+  }
+
   return (
     <TestContainer>
       <TestHeader>
@@ -43,16 +66,77 @@ export function ResultTest({ resultTest }) {
             {message[resultTest.approved].message}
           </RegularText>
         </TextContainer>
-        <ButtonContainer>
-          <ButtonForm
-            backgroundColor="brand-blue"
-            textColor="base-white"
-            hoverBackgroundColor="base-button-hover"
-          >
-            Voltar para home
-          </ButtonForm>
-        </ButtonContainer>
       </TestBody>
+      <AllAccoradion>
+        <TitleContainer>
+          <RegularText fontSize="text-sx" color="base-black" weight="500">
+            Confira o gabarito
+          </RegularText>
+        </TitleContainer>
+        <AccordionContainer>
+          <Accordion allowMultipleExpanded={true}>
+            {resultTest.questions.map((item, index) => {
+              console.log(item)
+              return (
+                <AccordionItem key={index}>
+                  <AccordionItemHeading>
+                    <AccordionItemButton>
+                      Questão {index + 1}
+                      {item.scored ? (
+                        <CheckCircle
+                          size={32}
+                          weight="fill"
+                          color={'#3EDA44'}
+                        />
+                      ) : (
+                        <XCircle size={32} weight="fill" color={'#FF0000'} />
+                      )}
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel>
+                    <ResultContainer>
+                      <RegularText
+                        fontSize="text-m"
+                        color="base-black"
+                        weight="800"
+                      >
+                        {item.question}
+                      </RegularText>
+                      <div>
+                        <RegularText
+                          fontSize="text-m"
+                          color="base-text"
+                          weight="600"
+                        >
+                          <span className="circle">Respota Correta:</span>{' '}
+                          {item.answer_correct}
+                        </RegularText>
+                        <RegularText
+                          fontSize="text-m"
+                          color="base-text"
+                          weight="600"
+                        >
+                          <span className="circle">Sua resposta:</span>{' '}
+                          {item.answer_user}
+                        </RegularText>
+                      </div>
+                    </ResultContainer>
+                  </AccordionItemPanel>
+                </AccordionItem>
+              )
+            })}
+          </Accordion>
+        </AccordionContainer>
+      </AllAccoradion>
+      <ButtonContainer onClick={backHome}>
+        <ButtonForm
+          backgroundColor="brand-blue"
+          textColor="base-white"
+          hoverBackgroundColor="base-button-hover"
+        >
+          Voltar para home
+        </ButtonForm>
+      </ButtonContainer>
     </TestContainer>
   )
 }

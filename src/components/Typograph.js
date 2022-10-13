@@ -17,4 +17,8 @@ export const RegularText = styled.p`
   font-size: ${({ theme, fontSize }) => theme.textSizes[`${fontSize}`]};
   line-height: 160%;
   font-weight: ${({ weight }) => weight ?? 400};
+
+  .circle {
+    color: ${({ theme }) => theme.colors['brand-blue']};
+  }
 `

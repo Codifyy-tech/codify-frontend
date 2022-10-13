@@ -20,18 +20,10 @@ export const TestBody = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 4rem;
+  gap: 1rem;
   align-items: center;
   border-radius: 30px;
   padding: 1rem 20rem;
-
-  > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    width: 100%;
-  }
 
   img {
     width: 15% !important;
@@ -63,8 +55,132 @@ export const TextContainer = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row !important;
-  max-width: 50%;
+  width: 20%;
+  padding-bottom: 2rem;
+  margin: 0 auto;
   @media (max-width: 600px) {
-    max-width: 90%;
+    width: 60%;
   }
+`
+
+export const AccordionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  .accordion {
+    border: 1px solid #fdfdfd;
+    border-radius: 2px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .accordion__item + .accordion__item {
+    border-top: 1px solid #fdfdfd;
+    border-radius: 15px;
+  }
+
+  .accordion__button {
+    background-color: #f2f3f6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #000;
+    font-weight: 800;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 10px;
+  }
+
+  .accordion__button:hover {
+    background-color: #ddd;
+  }
+
+  .accordion__button:before {
+    display: inline-block;
+    content: '';
+    min-height: 10px;
+    min-width: 10px;
+    margin-right: 12px;
+    border-bottom: 3px solid #1a75e8;
+    border-right: 3px solid #1a75e8;
+    transform: rotate(-45deg);
+    transition: -webkit-transform 0.2s ease-in-out;
+    -ms-transition: -ms-transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .accordion__button[aria-expanded='true']::before,
+  .accordion__button[aria-selected='true']::before {
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+  }
+
+  [hidden] {
+    display: none;
+  }
+
+  .accordion__panel {
+    padding: 20px;
+    animation: fadein 0.35s ease-in;
+  }
+
+  /* -------------------------------------------------- */
+  /* ---------------- Animation part ------------------ */
+  /* -------------------------------------------------- */
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .accordion__button:before {
+      border-bottom: 2px solid #1a75e8;
+      border-right: 2px solid #1a75e8;
+    }
+
+    .accordion {
+      width: 90%;
+    }
+  }
+`
+
+export const ResultContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+`
+
+export const TitleContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 10.5%;
+
+  @media (max-width: 768px) {
+    padding-left: 6%;
+  }
+`
+
+export const AllAccoradion = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 `
