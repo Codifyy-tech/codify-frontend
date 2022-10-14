@@ -3,6 +3,7 @@ import { TestButton, TestContent, TestDesc, TestType } from './style'
 import { ReactComponent as Start } from '../../../../assets/start.svg'
 import { useState } from 'react'
 import { ModalTest } from '../ModalTest'
+import { toast } from 'react-toastify'
 
 export function TestStructure({
   title,
@@ -11,10 +12,17 @@ export function TestStructure({
   type,
   practicalTestId,
   theoryTestId,
+  isPracticalOpen,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   function toggleModal() {
+    console.log(isPracticalOpen)
+    if (!isPracticalOpen && type === 1)
+      return toast.error('Teste não liberado', {
+        theme: 'colored',
+      })
+
     setIsModalOpen(!isModalOpen)
   }
 

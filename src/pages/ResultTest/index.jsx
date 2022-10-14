@@ -49,7 +49,7 @@ export function ResultTest({ resultTest }) {
   }
 
   function backHome() {
-    navigate('/home')
+    navigate(-1)
   }
 
   return (
@@ -134,7 +134,7 @@ export function ResultTest({ resultTest }) {
           textColor="base-white"
           hoverBackgroundColor="base-button-hover"
         >
-          Voltar para home
+          {resultTest.approved ? 'Fazer teste técnico' : 'Tentar novamente'}
         </ButtonForm>
       </ButtonContainer>
     </TestContainer>

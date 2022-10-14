@@ -129,6 +129,7 @@ export function TechTest() {
                 icon={item.icon}
                 desc={item.desc}
                 type={item.type}
+                isPracticalOpen={isPracticalOpen}
                 theoryTestId={theoryTestId}
                 practicalTestId={practicalTestId}
               />
