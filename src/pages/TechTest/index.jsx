@@ -1,4 +1,4 @@
-import { CaretLeft } from 'phosphor-react'
+import { CaretLeft, CircleWavyCheck } from 'phosphor-react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { useEffect, useState, useContext } from 'react'
@@ -25,6 +25,7 @@ export function TechTest() {
   const [technologyId, setTechnologyId] = useState('')
   const [theoryTestId, setTheoryTestId] = useState('')
   const [practicalTestId, setPracticalTestId] = useState('')
+  const [isPracticalOpen, setIsPracticalOpen] = useState(false)
 
   const InfoPracticalData = [
     {
@@ -32,22 +33,6 @@ export function TechTest() {
       desc: 'Pratique seus conhecimentos com questionários e projetos reais utilizados pelas empresas',
     },
   ]
-
-  const InfoTest = [
-    {
-      title: 'Teste Teórico',
-      icon: <Unlocked />,
-      desc: 'Questionário de perguntas teóricas para avaliar sua competência. Sendo aprovado, você será liberado para o teste prático.',
-      type: 0,
-    },
-    {
-      title: 'Teste Prático',
-      icon: <Locked />,
-      desc: 'Projeto para colocar seus conhecimentos em prática. Após enviar o desafio, você receberá automaticamente um selo de concluído.',
-      type: 1,
-    },
-  ]
-
   useEffect(() => {
     const getPracticalTestInfo = async () => {
       const { data } = await api.get(`/practicalTest/${id}`, {
@@ -68,9 +53,38 @@ export function TechTest() {
       setTheoryTestId(data.data[0]._id)
     }
 
+    const getTheoryResultInfo = async () => {
+      console.log(theoryTestId)
+      const { data } = await api.get(`/theoryTest/approved/${theoryTestId}`, {
+        headers: { Authorization: 'Bearer ' + token },
+      })
+
+      setIsPracticalOpen(data.approved)
+    }
+
     getPracticalTestInfo()
     getTheoryTestInfo()
-  }, [id, technologyId, token])
+    getTheoryResultInfo()
+  }, [id, technologyId, theoryTestId, token])
+
+  const InfoTest = [
+    {
+      title: 'Teste Teórico',
+      icon: isPracticalOpen ? (
+        <CircleWavyCheck size={32} color="#e6b25d" weight="fill" />
+      ) : (
+        <Unlocked />
+      ),
+      desc: 'Questionário de perguntas teóricas para avaliar sua competência. Sendo aprovado, você será liberado para o teste prático.',
+      type: 0,
+    },
+    {
+      title: 'Teste Prático',
+      icon: isPracticalOpen ? <Unlocked /> : <Locked />,
+      desc: 'Projeto para colocar seus conhecimentos em prática. Após enviar o desafio, você receberá automaticamente um selo de concluído.',
+      type: 1,
+    },
+  ]
 
   function backPage() {
     navigate(-1)

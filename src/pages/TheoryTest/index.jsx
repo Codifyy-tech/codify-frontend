@@ -94,6 +94,7 @@ export function TheoryTest() {
       const { data } = await api.post(
         '/theoryTest/result',
         {
+          theory_test_id: id,
           answer_list: answerChosen,
         },
         {
@@ -102,8 +103,8 @@ export function TheoryTest() {
       )
 
       setResultPage(true)
-
       setResultTest(data.data)
+      console.log(data.data)
     } catch (e) {
       toast.error(
         e instanceof AxiosError && e.response.data
