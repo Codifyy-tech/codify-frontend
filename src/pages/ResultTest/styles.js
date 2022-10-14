@@ -203,15 +203,50 @@ export const ImproveContainer = styled.div`
 export const CourseContainer = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.colors['base-background']};
-  width: 700px;
+  width: 45%;
+  justify-content: space-between;
+  border-radius: 15px;
+  gap: 1rem;
+  padding: 2rem;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-direction: column;
+    gap: 5rem;
+  }
+`
+
+export const RecommendCourseContainer = styled.div`
+  display: flex;
+  background-color: ${({ theme }) => theme.colors['base-background']};
+  width: 45%;
   height: 300px;
   flex-direction: column;
   border-radius: 15px;
-  gap: 0.5rem;
-  padding: 2rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const TopicsContainer = styled.div`
   display: flex;
-  background-color: ${({ theme }) => theme.colors['base-background']};
+  flex-direction: column;
+  gap: 1rem;
+`
+
+export const Topic = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`
+
+export const BannerTitle = styled.div`
+  padding: 1rem 2rem;
 `
