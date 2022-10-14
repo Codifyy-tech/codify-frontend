@@ -106,14 +106,14 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
             <InfoContainer>
               <Time />
               <RegularText fontSize="text-m" color="base-text" weight="500">
-                35 horas
+                {course.total_hours} horas
               </RegularText>
             </InfoContainer>
           </DescCourse>
 
           <ContentCourse>
             <TitleText fontSize="title-s">
-              Conteúdo da trilha - 120 aulas
+              Conteúdo da trilha - {course.total_classes} aulas
             </TitleText>
             <TopicContainer>
               {course.topics.map((topic, index) => {
