@@ -9,6 +9,10 @@ import {
   ResultContainer,
   TitleContainer,
   AllAccoradion,
+  RecommendContainer,
+  ContentContainer,
+  CourseContainer,
+  ImproveContainer,
 } from './styles'
 import { ButtonForm } from '../../components/ButtonForm'
 import PassTest from '../../assets/passTest.png'
@@ -45,11 +49,14 @@ export function ResultTest({ resultTest }) {
       title: `Não foi dessa vez, ${name[0]}!`,
       message: `Você atingiu ${resultTest.result}% de acerto e não conseguiu passar no teste. Não desamine, estamos torcendo por você`,
       image: FailedTest,
+      courseRecommend: {
+        title: 'Estude para melhorar sua nota',
+      },
     },
   }
 
-  function backHome() {
-    navigate('/home')
+  function goPage() {
+    resultTest.approved ? navigate('/home') : navigate('/home/course')
   }
 
   return (
@@ -67,74 +74,97 @@ export function ResultTest({ resultTest }) {
           </RegularText>
         </TextContainer>
       </TestBody>
-      <AllAccoradion>
-        <TitleContainer>
-          <RegularText fontSize="text-sx" color="base-black" weight="500">
-            Confira o gabarito
-          </RegularText>
-        </TitleContainer>
-        <AccordionContainer>
-          <Accordion allowMultipleExpanded={true}>
-            {resultTest.questions.map((item, index) => {
-              console.log(item)
-              return (
-                <AccordionItem key={index}>
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      Questão {index + 1}
-                      {item.scored ? (
-                        <CheckCircle
-                          size={32}
-                          weight="fill"
-                          color={'#3EDA44'}
-                        />
-                      ) : (
-                        <XCircle size={32} weight="fill" color={'#FF0000'} />
-                      )}
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                    <ResultContainer>
-                      <RegularText
-                        fontSize="text-m"
-                        color="base-black"
-                        weight="800"
-                      >
-                        {item.question}
-                      </RegularText>
-                      <div>
+      <ContentContainer>
+        <AllAccoradion>
+          <TitleContainer>
+            <RegularText fontSize="text-sx" color="base-black" weight="500">
+              Confira o gabarito
+            </RegularText>
+          </TitleContainer>
+          <AccordionContainer>
+            <Accordion allowMultipleExpanded={true}>
+              {resultTest.questions.map((item, index) => {
+                console.log(item)
+                return (
+                  <AccordionItem key={index}>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>
+                        Questão {index + 1}
+                        {item.scored ? (
+                          <CheckCircle
+                            size={32}
+                            weight="fill"
+                            color={'#3EDA44'}
+                          />
+                        ) : (
+                          <XCircle size={32} weight="fill" color={'#FF0000'} />
+                        )}
+                      </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <ResultContainer>
                         <RegularText
                           fontSize="text-m"
-                          color="base-text"
-                          weight="600"
+                          color="base-black"
+                          weight="800"
                         >
-                          <span className="circle">Respota Correta:</span>{' '}
-                          {item.answer_correct}
+                          {item.question}
                         </RegularText>
-                        <RegularText
-                          fontSize="text-m"
-                          color="base-text"
-                          weight="600"
-                        >
-                          <span className="circle">Sua resposta:</span>{' '}
-                          {item.answer_user}
-                        </RegularText>
-                      </div>
-                    </ResultContainer>
-                  </AccordionItemPanel>
-                </AccordionItem>
-              )
-            })}
-          </Accordion>
-        </AccordionContainer>
-      </AllAccoradion>
-      <ButtonContainer onClick={backHome}>
+                        <div>
+                          <RegularText
+                            fontSize="text-m"
+                            color="base-text"
+                            weight="600"
+                          >
+                            <span className="circle">Respota Correta:</span>{' '}
+                            {item.answer_correct}
+                          </RegularText>
+                          <RegularText
+                            fontSize="text-m"
+                            color="base-text"
+                            weight="600"
+                          >
+                            <span className="circle">Sua resposta:</span>{' '}
+                            {item.answer_user}
+                          </RegularText>
+                        </div>
+                      </ResultContainer>
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                )
+              })}
+            </Accordion>
+          </AccordionContainer>
+        </AllAccoradion>
+
+        {resultTest.approved ? (
+          ''
+        ) : (
+          <RecommendContainer>
+            <TitleContainer>
+              <RegularText fontSize="text-sx" color="base-black" weight="500">
+                {message[resultTest.approved].courseRecommend.title}
+              </RegularText>
+            </TitleContainer>
+            <ImproveContainer>
+              <CourseContainer></CourseContainer>
+              <CourseContainer>
+                <RegularText fontSize="title-s" color="base-black" weight="600">
+                  Tópicos a melhorar<span className="circle">.</span>
+                </RegularText>
+              </CourseContainer>
+            </ImproveContainer>
+          </RecommendContainer>
+        )}
+      </ContentContainer>
+
+      <ButtonContainer onClick={goPage}>
         <ButtonForm
           backgroundColor="brand-blue"
           textColor="base-white"
           hoverBackgroundColor="base-button-hover"
         >
-          Voltar para home
+          {resultTest.approved ? 'Voltar para home' : 'Encaminhar para trilha'}
         </ButtonForm>
       </ButtonContainer>
     </TestContainer>
