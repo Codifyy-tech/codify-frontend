@@ -72,7 +72,7 @@ export const AccordionContainer = styled.div`
   .accordion {
     border: 1px solid #fdfdfd;
     border-radius: 2px;
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -150,10 +150,6 @@ export const AccordionContainer = styled.div`
       border-bottom: 2px solid #1a75e8;
       border-right: 2px solid #1a75e8;
     }
-
-    .accordion {
-      width: 90%;
-    }
   }
 `
 
@@ -172,15 +168,50 @@ export const ResultContainer = styled.div`
 export const TitleContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  padding-left: 10.5%;
-
-  @media (max-width: 768px) {
-    padding-left: 6%;
-  }
 `
 
 export const AllAccoradion = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+`
+
+export const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 7rem;
+  gap: 4rem;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 2rem;
+  }
+`
+
+export const RecommendContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`
+
+export const ImproveContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+`
+
+export const CourseContainer = styled.div`
+  display: flex;
+  background-color: ${({ theme }) => theme.colors['base-background']};
+  width: 700px;
+  height: 300px;
+  flex-direction: column;
+  border-radius: 15px;
+  gap: 0.5rem;
+  padding: 2rem;
+`
+
+export const TopicsContainer = styled.div`
+  display: flex;
+  background-color: ${({ theme }) => theme.colors['base-background']};
 `
