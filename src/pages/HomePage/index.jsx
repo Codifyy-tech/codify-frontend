@@ -27,7 +27,6 @@ export function HomePage() {
         headers: { Authorization: 'Bearer ' + token },
       })
 
-      console.log(data.courses_registered)
       setCourses(data.courses_registered)
     }
 

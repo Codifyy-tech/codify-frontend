@@ -8,12 +8,21 @@ export const TestContainer = styled.div`
 
 export const TestHeader = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.colors['base-background']};
   border-radius: 30px;
   padding: 2rem;
   margin: 2rem;
+
+  > div {
+    flex: 1;
+    cursor: pointer;
+  }
+
+  > h1 {
+    flex: 1.4;
+  }
 `
 
 export const TestBody = styled.div`

@@ -15,7 +15,11 @@ export function CardTest({ image, title, description, tag, level, id }) {
   const navigate = useNavigate()
 
   function handleNavigateToTest() {
-    navigate(`/home/test/${id}`)
+    navigate(`/home/test/${id}`, {
+      state: {
+        title,
+      },
+    })
   }
 
   return (

@@ -48,7 +48,6 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('@Auth:token', data.token)
       window.location.reload()
     } catch (e) {
-      console.log('ERRO', e)
       toast.error(
         e instanceof AxiosError && e.response.data
           ? e.response.data.message

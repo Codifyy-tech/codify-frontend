@@ -39,8 +39,6 @@ import { CheckCircle, XCircle } from 'phosphor-react'
 import { Banner } from '../CoursePage/ModalCourse/styles'
 
 export function ResultTest({ resultTest }) {
-  console.log(resultTest)
-
   const navigate = useNavigate()
 
   const { user } = useContext(AuthContext)
@@ -91,7 +89,6 @@ export function ResultTest({ resultTest }) {
           <AccordionContainer>
             <Accordion allowMultipleExpanded={true}>
               {resultTest.questions.map((item, index) => {
-                console.log(item)
                 return (
                   <AccordionItem key={index}>
                     <AccordionItemHeading>

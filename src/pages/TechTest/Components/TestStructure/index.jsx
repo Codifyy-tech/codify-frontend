@@ -9,6 +9,7 @@ export function TestStructure({
   title,
   icon,
   desc,
+  company,
   type,
   practicalTestId,
   theoryTestId,
@@ -17,7 +18,6 @@ export function TestStructure({
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   function toggleModal() {
-    console.log(isPracticalOpen)
     if (!isPracticalOpen && type === 1)
       return toast.error('Teste não liberado para seu usuário', {
         theme: 'colored',
@@ -48,6 +48,7 @@ export function TestStructure({
         </TestDesc>
       </TestContent>
       <ModalTest
+        company={company}
         isModalOpen={isModalOpen}
         toggleModal={toggleModal}
         type={type}

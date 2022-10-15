@@ -65,8 +65,6 @@ export function TestPage() {
   }
 
   async function handleCheck(id, type) {
-    console.log(id, type)
-
     if (type === 'company') {
       setsSelectedCompaniesId((oldValue) =>
         oldValue.includes(id)

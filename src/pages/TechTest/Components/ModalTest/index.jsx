@@ -18,6 +18,7 @@ export function ModalTest({
   isModalOpen,
   toggleModal,
   type,
+  company,
   practicalTestId,
   theoryTestId,
 }) {
@@ -27,7 +28,9 @@ export function ModalTest({
     if (type === 0) {
       navigate(`/home/test/theorytest/${theoryTestId}`)
     } else {
-      navigate(`/home/test/practicalTest/${practicalTestId}`)
+      navigate(`/home/test/practicalTest/${practicalTestId}`, {
+        state: { company },
+      })
     }
   }
 

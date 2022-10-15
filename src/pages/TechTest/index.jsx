@@ -1,5 +1,5 @@
 import { CaretLeft, CircleWavyCheck } from 'phosphor-react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 import { useEffect, useState, useContext } from 'react'
 
@@ -17,11 +17,12 @@ export function TechTest() {
   const { id } = useParams()
   const { user } = useContext(AuthContext)
   const name = user.name.split(' ')
+  const {
+    state: { title },
+  } = useLocation()
 
   const token = localStorage.getItem('@Auth:token')
   const navigate = useNavigate()
-  const [company, setCompany] = useState({})
-  // const [level, setLevel] = useState('')
   const [technologyId, setTechnologyId] = useState('')
   const [theoryTestId, setTheoryTestId] = useState('')
   const [practicalTestId, setPracticalTestId] = useState('')
@@ -39,10 +40,8 @@ export function TechTest() {
         headers: { Authorization: 'Bearer ' + token },
       })
 
-      console.log(data.data)
       setPracticalTestId(data.data._id)
       setTechnologyId(data.data.technology_id._id)
-      setCompany(data.data.company)
     }
 
     const getTheoryTestInfo = async () => {
@@ -55,7 +54,6 @@ export function TechTest() {
     }
 
     const getTheoryResultInfo = async () => {
-      console.log(theoryTestId)
       const { data } = await api.get(`/theoryTest/approved/${theoryTestId}`, {
         headers: { Authorization: 'Bearer ' + token },
       })
@@ -98,7 +96,7 @@ export function TechTest() {
           <CaretLeft size={42} weight="bold" />
         </div>
         <span>
-          <TitleText>{`${company.name}`}</TitleText>
+          <TitleText>{`${title}`}</TitleText>
         </span>
         <ProfileArea className="profile-area">
           <RegularText color="base-text" weight="400">
@@ -126,6 +124,7 @@ export function TechTest() {
             return (
               <TestStructure
                 key={index}
+                company={title}
                 title={item.title}
                 icon={item.icon}
                 desc={item.desc}

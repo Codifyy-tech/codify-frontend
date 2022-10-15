@@ -1,7 +1,7 @@
 /* eslint-disable react/no-children-prop */
 import { useEffect, useState, useCallback } from 'react'
 
-import { useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 import { TitleText } from '../../components/Typograph'
 import { TestContainer, TestHeader, TestBody } from './style'
@@ -9,12 +9,17 @@ import ReactMarkdown from 'react-markdown'
 import { api } from '../../services/api'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula'
+import { CaretLeft } from 'phosphor-react'
 
 export function PracticalTest() {
   const { id } = useParams()
   const token = localStorage.getItem('@Auth:token')
   const [testData, setTestData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
+  const navigate = useNavigate()
+  const {
+    state: { company },
+  } = useLocation()
 
   const getTestDetails = useCallback(async () => {
     try {
@@ -28,19 +33,24 @@ export function PracticalTest() {
     } finally {
       setIsLoading(false)
     }
-  }, [id])
+  }, [id, token])
 
   useEffect(() => {
     getTestDetails()
   }, [getTestDetails])
 
-  console.log(isLoading)
+  function backPage() {
+    navigate(-1)
+  }
 
   return (
     <>
       <TestContainer>
         <TestHeader>
-          <TitleText>{testData.title}</TitleText>
+          <div onClick={backPage}>
+            <CaretLeft size={42} weight="bold" />
+          </div>
+          <TitleText>{`Desafio ${company}`}</TitleText>
         </TestHeader>
 
         <TestBody>
