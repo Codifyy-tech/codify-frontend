@@ -19,7 +19,7 @@ export function TestStructure({
   function toggleModal() {
     console.log(isPracticalOpen)
     if (!isPracticalOpen && type === 1)
-      return toast.error('Teste não liberado', {
+      return toast.error('Teste não liberado para seu usuário', {
         theme: 'colored',
       })
 

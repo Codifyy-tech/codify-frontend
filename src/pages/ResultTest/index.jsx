@@ -229,7 +229,7 @@ export function ResultTest({ resultTest }) {
         )}
       </ContentContainer>
 
-      <ButtonContainer onClick={backPage}>
+      <ButtonContainer onClick={goPage}>
         <ButtonForm
           backgroundColor="brand-blue"
           textColor="base-white"

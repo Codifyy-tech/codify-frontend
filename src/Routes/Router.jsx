@@ -14,6 +14,7 @@ import { TestPage } from '../pages/TestPage'
 import { TechTest } from '../pages/TechTest'
 import { TheoryTest } from '../pages/TheoryTest'
 import { PrivateRoute } from './PrivateRoute'
+import { PracticalTest } from '../pages/PracticalTest'
 
 export function Router() {
   return (
@@ -38,6 +39,7 @@ export function Router() {
         <Route path="course/:id" element={<Player />} />
         <Route path="test/:id" element={<TechTest />} />
         <Route path="test/theorytest/:id" element={<TheoryTest />} />
+        <Route path="test/practicaltest/:id" element={<PracticalTest />} />
       </Route>
     </Routes>
   )

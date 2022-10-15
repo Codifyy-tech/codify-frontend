@@ -39,6 +39,7 @@ export function TechTest() {
         headers: { Authorization: 'Bearer ' + token },
       })
 
+      console.log(data.data)
       setPracticalTestId(data.data._id)
       setTechnologyId(data.data.technology_id._id)
       setCompany(data.data.company)
