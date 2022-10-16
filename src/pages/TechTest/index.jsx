@@ -66,7 +66,7 @@ export function TechTest() {
     getPracticalTestInfo()
     getTheoryTestInfo()
     getTheoryResultInfo()
-  }, [id, technologyId, theoryTestId, token])
+  }, [id, level, technologyId, theoryTestId, token])
 
   const InfoTest = [
     {
