@@ -17,7 +17,7 @@ export const GraphicContainer = styled.div`
   section {
     display: flex;
     width: 100%;
-    height: 400px;
+    height: 450px;
   }
 
   @media (max-width: 768px) {
@@ -50,14 +50,30 @@ export const UsersContainer = styled.div`
 export const GendersContainer = styled.div`
   display: grid !important;
   padding: 0rem !important;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 100px);
+  grid-template-areas:
+    'male female'
+    'nonbinary  nonbinary';
 
   > div {
-    border: 0.1px solid #d1d1d1;
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .area0 {
+    grid-area: male;
+    border-top: 0.1px solid #d1d1d1;
+    border-right: 0.1px solid #d1d1d1;
+    border-bottom: 0.1px solid #d1d1d1;
+  }
+  .area1 {
+    grid-area: female;
+    border-top: 0.1px solid #d1d1d1;
+    border-left: 0.1px solid #d1d1d1;
+    border-bottom: 0.1px solid #d1d1d1;
+  }
+  .area2 {
+    grid-area: nonbinary;
   }
 `
