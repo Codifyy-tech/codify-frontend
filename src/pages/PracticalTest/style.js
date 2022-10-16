@@ -77,7 +77,7 @@ export const TestBody = styled.div`
   }
 
   pre {
-    background: ${({ theme }) => theme.colors['base-background']};
+    background: #282c34;
     border-radius: 10px;
     padding: 1rem;
 

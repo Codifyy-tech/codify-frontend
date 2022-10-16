@@ -8,7 +8,7 @@ import { TestContainer, TestHeader, TestBody } from './style'
 import ReactMarkdown from 'react-markdown'
 import { api } from '../../services/api'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula'
+import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { CaretLeft } from 'phosphor-react'
 
 export function PracticalTest() {
