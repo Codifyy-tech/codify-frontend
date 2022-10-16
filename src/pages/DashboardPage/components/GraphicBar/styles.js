@@ -6,4 +6,8 @@ export const GraphicContainer = styled.section`
   height: 590px;
   padding-bottom: 20px;
   width: 90%;
+
+  @media (max-width: 1366px) {
+    height: 450px;
+  }
 `

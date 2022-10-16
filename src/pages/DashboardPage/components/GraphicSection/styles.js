@@ -5,17 +5,59 @@ export const GraphicContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 90%;
   gap: 3rem;
 
   > .bottom-graphics {
     display: flex;
-    width: 90%;
-    height: 500px;
-    gap: 4rem;
+    width: 100%;
+    gap: 2rem;
+  }
 
-    rect {
-      flex: 1;
+  section {
+    display: flex;
+    width: 100%;
+    height: 400px;
+  }
+
+  @media (max-width: 768px) {
+    section {
+      height: 400px;
     }
+
+    .bottom-graphics {
+      flex-direction: column;
+    }
+  }
+`
+
+export const UsersContainer = styled.div`
+  background-color: ${({ theme }) => theme.colors['base-background']};
+  border-radius: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    display: flex;
+    padding: 2rem;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+`
+
+export const GendersContainer = styled.div`
+  display: grid !important;
+  padding: 0rem !important;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 100px);
+
+  > div {
+    border: 0.1px solid #d1d1d1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `

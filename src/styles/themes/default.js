@@ -19,6 +19,7 @@ export const defaultTheme = {
     'scroll-color': '#D1D1D1',
   },
   textSizes: {
+    'title-lx': '3.2rem',
     'title-l': '2.6rem',
     'title-m': '2rem',
     'title-ms': '1.6rem',

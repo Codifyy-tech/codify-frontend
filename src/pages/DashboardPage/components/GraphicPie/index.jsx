@@ -23,7 +23,7 @@ export function MyResponsivePie({ data }) {
     <GraphicContainer>
       <ResponsivePie
         data={data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        margin={{ top: 40, right: 50, bottom: 80, left: 80 }}
         startAngle={-156}
         endAngle={245}
         innerRadius={0.4}

@@ -1,6 +1,7 @@
+import { RegularText, TitleText } from '../../../../components/Typograph'
 import { MyResponsiveBar } from '../GraphicBar'
 import { MyResponsivePie } from '../GraphicPie'
-import { GraphicContainer } from './styles'
+import { GendersContainer, GraphicContainer, UsersContainer } from './styles'
 
 const dataBar = [
   {
@@ -47,13 +48,67 @@ const dataPie = [
   },
 ]
 
+const qtdUsers = [
+  {
+    title: 'Masculino',
+    value: 100,
+  },
+  {
+    title: 'Feminino',
+    value: 50,
+  },
+  {
+    title: 'Não binário',
+    value: 40,
+  },
+]
+
 export function GraphicBase() {
   return (
     <GraphicContainer>
       <MyResponsiveBar data={dataBar} />
       <div className="bottom-graphics">
-        <MyResponsivePie data={dataPie} />
-        <MyResponsivePie data={dataPie} />
+        <section>
+          <MyResponsivePie data={dataPie} />
+        </section>
+        <section>
+          <UsersContainer>
+            <div>
+              <TitleText color="base-text" fontSize="title-m" weight="500">
+                Usuários totais
+              </TitleText>
+              <RegularText
+                color="brand-blue-dark"
+                fontSize="title-lx"
+                weight="800"
+              >
+                180
+              </RegularText>
+            </div>
+            <GendersContainer>
+              {qtdUsers.map((item, index) => {
+                return (
+                  <div key={index} className={`area${index}`}>
+                    <TitleText
+                      color="base-text"
+                      fontSize="title-s"
+                      weight="500"
+                    >
+                      {item.title}
+                    </TitleText>
+                    <RegularText
+                      color="brand-blue-dark"
+                      fontSize="title-m"
+                      weight="800"
+                    >
+                      {item.value}
+                    </RegularText>
+                  </div>
+                )
+              })}
+            </GendersContainer>
+          </UsersContainer>
+        </section>
       </div>
     </GraphicContainer>
   )
