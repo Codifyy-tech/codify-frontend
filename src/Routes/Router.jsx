@@ -17,6 +17,7 @@ import { PrivateRoute } from './PrivateRoute'
 import { PracticalTest } from '../pages/PracticalTest'
 import { DashboardLayout } from '../layouts/DashboardLayout'
 import { DashboardPage } from '../pages/DashboardPage'
+import { UsersProfile } from '../pages/UsersProfile'
 
 export function Router() {
   return (
@@ -47,6 +48,7 @@ export function Router() {
       <Route path="/dashboard" element={<PrivateRoute />}>
         <Route path="" element={<DashboardLayout />}>
           <Route path="" element={<DashboardPage />} />
+          <Route path="profiles" element={<UsersProfile />} />
         </Route>
       </Route>
     </Routes>
