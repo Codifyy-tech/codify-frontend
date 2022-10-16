@@ -27,6 +27,7 @@ export function TechTest() {
   const [theoryTestId, setTheoryTestId] = useState('')
   const [practicalTestId, setPracticalTestId] = useState('')
   const [isPracticalOpen, setIsPracticalOpen] = useState(false)
+  const [level, setLevel] = useState(false)
 
   const InfoPracticalData = [
     {
@@ -40,13 +41,14 @@ export function TechTest() {
         headers: { Authorization: 'Bearer ' + token },
       })
 
+      setLevel(data.data.level)
       setPracticalTestId(data.data._id)
       setTechnologyId(data.data.technology_id._id)
     }
 
     const getTheoryTestInfo = async () => {
       const { data } = await api.get(`/list/theoryTest`, {
-        params: { technology_id: technologyId, level: 'Intermediário' },
+        params: { technology_id: technologyId, level },
         headers: { Authorization: 'Bearer ' + token },
       })
 
