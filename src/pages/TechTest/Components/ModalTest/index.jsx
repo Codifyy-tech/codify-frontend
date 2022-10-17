@@ -36,22 +36,13 @@ export function ModalTest({
 
   const theoryTestInfo = [
     {
-      text: 'O teste possui 10 questões alternativas',
-    },
-    {
-      text: 'Em caso de reprovação, só poderá refazer o teste após 10 dias',
-    },
-    {
-      text: 'Caso você saia do teste antes de terminar, o seu progresso será perdido',
+      text: 'O teste possui 10 questões com respostas alternativas e tem o objetivo de avaliar seus conhecimentos. Para ser considerado aprovado, você deve obter pelo menos 80% do teste correto. Não se preocupe, você poderá refazer quantas vezes quiser.',
     },
   ]
 
   const practicalTestInfo = [
     {
-      text: 'Pinto Pinto',
-    },
-    {
-      text: 'peroca peroca peroca',
+      text: 'Este teste é apenas para fins de treinamento, com o objetivo de prepará-lo para situações do mundo real onde seu desempenho profissional será testado, praticando com testes antigos utilizados pela empresa em seus processos seletivos. Não é um processo de seleção para uma posição.',
     },
   ]
 
@@ -90,7 +81,7 @@ export function ModalTest({
       <ModalContainer>
         <HeaderInfo>
           <div>
-            <TitleText fontSize="title-ms">Informações do teste</TitleText>
+            <TitleText fontSize="title-ms">Atenção</TitleText>
           </div>
           <CloseButton type="button" onClick={toggleModal}>
             <Close />

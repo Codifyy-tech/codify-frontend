@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react'
 import { RegularText, TitleText } from '../../../../components/Typograph'
+import { api } from '../../../../services/api'
 import { MyResponsiveBar } from '../GraphicBar'
 import { MyResponsivePie } from '../GraphicPie'
 import { GendersContainer, GraphicContainer, UsersContainer } from './styles'
@@ -30,40 +32,58 @@ const dataBar = [
   },
 ]
 
-const dataPie = [
-  {
-    id: 'Masculino',
-    label: 'Masculino',
-    value: 135,
-  },
-  {
-    id: 'Feminino',
-    label: 'Feminino',
-    value: 563,
-  },
-  {
-    id: 'Não Binário',
-    label: 'Não Binário',
-    value: 283,
-  },
-]
-
-const qtdUsers = [
-  {
-    title: 'Masculino',
-    value: 100,
-  },
-  {
-    title: 'Feminino',
-    value: 50,
-  },
-  {
-    title: 'Não binário',
-    value: 40,
-  },
-]
-
 export function GraphicBase() {
+  const token = localStorage.getItem('@Auth:token')
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    const getInfoPlataform = async () => {
+      const { data } = await api.get(`/dashboard`, {
+        headers: { Authorization: 'Bearer ' + token },
+      })
+      setUsers(data)
+    }
+
+    getInfoPlataform()
+  }, [token])
+
+  const dataPie = [
+    {
+      id: 'Masculino',
+      label: 'Masculino',
+      value: users.male,
+    },
+    {
+      id: 'Feminino',
+      label: 'Feminino',
+      value: users.female,
+    },
+    {
+      id: 'Não Binário',
+      label: 'Não Binário',
+      value: users.non_binary,
+    },
+  ]
+
+  const qtdUsers = [
+    {
+      title: 'Masculino',
+      value: users.male,
+    },
+    {
+      title: 'Feminino',
+      value: users.female,
+    },
+    {
+      title: 'Não binário',
+      value: users.non_binary,
+    },
+    {
+      title: 'Não informado',
+      value: users.uninformed,
+    },
+  ]
+
   return (
     <GraphicContainer>
       <MyResponsiveBar data={dataBar} />
@@ -82,7 +102,7 @@ export function GraphicBase() {
                 fontSize="title-lx"
                 weight="800"
               >
-                180
+                {users.total}
               </RegularText>
             </div>
             <GendersContainer>

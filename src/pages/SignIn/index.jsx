@@ -44,8 +44,6 @@ export function SignIn() {
 
   const { signIn, signed, isLoading, user } = useContext(AuthContext)
 
-  console.log(user)
-
   async function handleLogin(inputData) {
     await signIn(inputData)
   }
