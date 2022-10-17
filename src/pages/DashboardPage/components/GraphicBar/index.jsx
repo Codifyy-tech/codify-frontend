@@ -24,8 +24,6 @@ const theme = {
 }
 
 export function MyResponsiveBar({ data, colors }) {
-  console.log(data)
-
   return (
     <GraphicContainer>
       <ResponsiveBar

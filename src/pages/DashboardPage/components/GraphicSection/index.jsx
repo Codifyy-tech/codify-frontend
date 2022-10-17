@@ -47,8 +47,6 @@ export function GraphicBase() {
     getInfoPlataform()
   }, [token])
 
-  console.log(users)
-
   const dataPie = [
     {
       id: 'Masculino',
