@@ -10,17 +10,17 @@ import {
   UserInfo,
 } from './styles'
 import { useState, useEffect } from 'react'
-import { ModalUser } from '../ModalUser'
 
 import { api } from '../../../../services/api'
+import { useNavigate } from 'react-router-dom'
 
 export function UsersCard() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const [allUsers, setAllUsers] = useState([])
+  const navigate = useNavigate()
   const token = localStorage.getItem('@Auth:token')
 
-  function toggleModal() {
-    setIsModalOpen(!isModalOpen)
+  function changePage(userId) {
+    navigate(`user/${userId}`)
   }
 
   useEffect(() => {
@@ -37,10 +37,10 @@ export function UsersCard() {
 
   return (
     <>
-      <CardsContainer onClick={toggleModal}>
+      <CardsContainer>
         {allUsers.map((user) => {
           return (
-            <CardContainer key={user._id}>
+            <CardContainer key={user._id} onClick={() => changePage(user._id)}>
               <CardImage>
                 <TitleText fontSize="title-l" weight="400" color="base-white">
                   {user.first_letter}
@@ -80,8 +80,6 @@ export function UsersCard() {
           )
         })}
       </CardsContainer>
-
-      <ModalUser isModalOpen={isModalOpen} toggleModal={toggleModal} />
     </>
   )
 }

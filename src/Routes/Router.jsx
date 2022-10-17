@@ -18,6 +18,7 @@ import { PracticalTest } from '../pages/PracticalTest'
 import { DashboardLayout } from '../layouts/DashboardLayout'
 import { DashboardPage } from '../pages/DashboardPage'
 import { UsersProfile } from '../pages/UsersProfile'
+import { UserInfo } from '../pages/UsersProfile/components/UserInfo'
 
 export function Router() {
   return (
@@ -49,6 +50,7 @@ export function Router() {
         <Route path="" element={<DashboardLayout />}>
           <Route path="" element={<DashboardPage />} />
           <Route path="profiles" element={<UsersProfile />} />
+          <Route path="profiles/user/:id" element={<UserInfo />} />
         </Route>
       </Route>
     </Routes>
