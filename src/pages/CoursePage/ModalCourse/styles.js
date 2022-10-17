@@ -111,6 +111,13 @@ export const ButtonContainer = styled.div`
   width: 50%;
   margin: 0 auto;
   margin-top: 4rem;
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   @media (max-width: 768px) {
     padding-top: 2rem !important;
     width: 90%;
