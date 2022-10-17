@@ -102,7 +102,6 @@ export function SignUp() {
       setValue('city', data.localidade, { shouldValidate: true })
       setValue('state', data.uf, { shouldValidate: true })
     } catch (e) {
-      console.log('eRRO' + e)
       toast.error('CEP não encontrado', {
         theme: 'colored',
       })

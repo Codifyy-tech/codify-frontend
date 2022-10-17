@@ -14,6 +14,11 @@ import { TestPage } from '../pages/TestPage'
 import { TechTest } from '../pages/TechTest'
 import { TheoryTest } from '../pages/TheoryTest'
 import { PrivateRoute } from './PrivateRoute'
+import { PracticalTest } from '../pages/PracticalTest'
+import { DashboardLayout } from '../layouts/DashboardLayout'
+import { DashboardPage } from '../pages/DashboardPage'
+import { UsersProfile } from '../pages/UsersProfile'
+import { UserInfo } from '../pages/UsersProfile/components/UserInfo'
 
 export function Router() {
   return (
@@ -38,6 +43,15 @@ export function Router() {
         <Route path="course/:id" element={<Player />} />
         <Route path="test/:id" element={<TechTest />} />
         <Route path="test/theorytest/:id" element={<TheoryTest />} />
+        <Route path="test/practicaltest/:id" element={<PracticalTest />} />
+      </Route>
+
+      <Route path="/dashboard" element={<PrivateRoute />}>
+        <Route path="" element={<DashboardLayout />}>
+          <Route path="" element={<DashboardPage />} />
+          <Route path="profiles" element={<UsersProfile />} />
+          <Route path="profiles/user/:id" element={<UserInfo />} />
+        </Route>
       </Route>
     </Routes>
   )

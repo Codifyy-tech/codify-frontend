@@ -42,16 +42,16 @@ export function SignIn() {
     resolver: yupResolver(SignInValidatorSchema),
   })
 
-  const { signIn, signed, isLoading } = useContext(AuthContext)
-
-  console.log(signed)
+  const { signIn, signed, isLoading, user } = useContext(AuthContext)
 
   async function handleLogin(inputData) {
     await signIn(inputData)
   }
 
   if (signed) {
-    return <Navigate to="/home" />
+    if (user.type === 'user') return <Navigate to="/home" />
+    if (user.type === 'admin') return <Navigate to="/home" />
+    if (user.type === 'company') return <Navigate to="/dashboard" />
   } else {
     return (
       <SignInContainer>

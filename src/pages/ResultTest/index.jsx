@@ -13,9 +13,15 @@ import {
   ContentContainer,
   CourseContainer,
   ImproveContainer,
+  TopicsContainer,
+  RecommendCourseContainer,
+  BannerTitle,
+  Topic,
 } from './styles'
 import { ButtonForm } from '../../components/ButtonForm'
 import PassTest from '../../assets/passTest.png'
+import RightTopic from '../../assets/rigth-topic.svg'
+import WrongTopic from '../../assets/wrong-topic.svg'
 import FailedTest from '../../assets/failtest.png'
 import { useContext } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
@@ -30,10 +36,9 @@ import {
 
 import 'react-accessible-accordion/dist/fancy-example.css'
 import { CheckCircle, XCircle } from 'phosphor-react'
+import { Banner } from '../CoursePage/ModalCourse/styles'
 
 export function ResultTest({ resultTest }) {
-  console.log(resultTest)
-
   const navigate = useNavigate()
 
   const { user } = useContext(AuthContext)
@@ -56,7 +61,7 @@ export function ResultTest({ resultTest }) {
   }
 
   function goPage() {
-    resultTest.approved ? navigate('/home') : navigate('/home/course')
+    resultTest.approved ? navigate(-1) : navigate(`/home/course`)
   }
 
   return (
@@ -84,7 +89,6 @@ export function ResultTest({ resultTest }) {
           <AccordionContainer>
             <Accordion allowMultipleExpanded={true}>
               {resultTest.questions.map((item, index) => {
-                console.log(item)
                 return (
                   <AccordionItem key={index}>
                     <AccordionItemHeading>
@@ -147,11 +151,75 @@ export function ResultTest({ resultTest }) {
               </RegularText>
             </TitleContainer>
             <ImproveContainer>
-              <CourseContainer></CourseContainer>
+              <RecommendCourseContainer>
+                <Banner color={resultTest.technology.color}>
+                  <div>
+                    <img src={resultTest.technology.icon} alt="" />
+                  </div>
+                </Banner>
+                <BannerTitle>
+                  <RegularText
+                    fontSize="title-m"
+                    color="base-black"
+                    weight="600"
+                  >
+                    Trilha {resultTest.technology.name}
+                  </RegularText>
+                </BannerTitle>
+              </RecommendCourseContainer>
               <CourseContainer>
-                <RegularText fontSize="title-s" color="base-black" weight="600">
-                  Tópicos a melhorar<span className="circle">.</span>
-                </RegularText>
+                <div>
+                  <RegularText
+                    fontSize="title-s"
+                    color="base-black"
+                    weight="600"
+                  >
+                    Tópicos que você domina<span className="circle">.</span>
+                  </RegularText>
+                  <TopicsContainer>
+                    {resultTest.right_topics.map((item, index) => {
+                      return (
+                        <Topic key={index}>
+                          <img src={RightTopic} alt="" />
+                          <RegularText
+                            fontSize="text-m"
+                            color="base-text"
+                            weight="600"
+                          >
+                            {item}
+                          </RegularText>
+                        </Topic>
+                      )
+                    })}
+                  </TopicsContainer>
+                </div>
+                <div>
+                  <RegularText
+                    fontSize="title-s"
+                    color="base-black"
+                    weight="600"
+                  >
+                    Tópicos a melhorar<span className="circle">.</span>
+                  </RegularText>
+                  <TopicsContainer>
+                    {resultTest.wrong_topics.map((item, index) => {
+                      return (
+                        <Topic key={index}>
+                          <img src={WrongTopic} alt="" />
+
+                          <RegularText
+                            key={index}
+                            fontSize="text-m"
+                            color="base-text"
+                            weight="600"
+                          >
+                            {item}
+                          </RegularText>
+                        </Topic>
+                      )
+                    })}
+                  </TopicsContainer>
+                </div>
               </CourseContainer>
             </ImproveContainer>
           </RecommendContainer>
@@ -164,7 +232,9 @@ export function ResultTest({ resultTest }) {
           textColor="base-white"
           hoverBackgroundColor="base-button-hover"
         >
-          {resultTest.approved ? 'Voltar para home' : 'Encaminhar para trilha'}
+          {resultTest.approved
+            ? 'Ir para teste prático'
+            : 'Encaminhar para trilha'}
         </ButtonForm>
       </ButtonContainer>
     </TestContainer>

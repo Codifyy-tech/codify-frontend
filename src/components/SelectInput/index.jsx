@@ -27,7 +27,6 @@ export function SelectBase(
         })}
       </Select>
 
-      {console.log(error)}
       {error && <ErrorMessage>{error.message}</ErrorMessage>}
     </InputContainer>
   )
