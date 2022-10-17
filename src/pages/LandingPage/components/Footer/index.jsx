@@ -12,22 +12,22 @@ import { TitleText, RegularText } from '../../../../components/Typograph'
 const contatoList = [
   {
     text: 'Contato',
-    path: '#',
+    path: '/sobre',
     type: 'title',
   },
   {
     text: 'História',
-    path: '#',
+    path: '/sobre',
     type: 'paragraph',
   },
   {
     text: 'Sobre',
-    path: '#',
+    path: '/sobre',
     type: 'paragraph',
   },
   {
-    text: 'Notícias',
-    path: '#',
+    text: 'Youtube',
+    path: 'https://www.youtube.com/channel/UCGAthpbMZFj-ZN_J364kkvw',
     type: 'paragraph',
   },
 ]
@@ -74,7 +74,7 @@ export function Footer() {
                 )
               } else {
                 return (
-                  <a href={link.path}>
+                  <a href={link.path} target="_blank" rel="noreferrer">
                     <RegularText fontSize="text-m" weight={500}>
                       {link.text}
                     </RegularText>
@@ -94,7 +94,7 @@ export function Footer() {
                 )
               } else {
                 return (
-                  <a href={link.path}>
+                  <a href={link.path} target="_blank" rel="noreferrer">
                     <RegularText fontSize="text-m" weight={500}>
                       {link.text}
                     </RegularText>

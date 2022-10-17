@@ -19,9 +19,14 @@ import {
 import { api } from '../../../services/api'
 import { toast } from 'react-toastify'
 import { AxiosError } from 'axios'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ArrowRight } from 'phosphor-react'
 
 export function ModalCourse({ isModalOpen, toggleModal, course }) {
   const token = localStorage.getItem('@Auth:token')
+  const navigate = useNavigate()
+  const [userRegistered, setUserRegistered] = useState(false)
 
   async function handleRegister() {
     try {
@@ -35,6 +40,7 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
         },
       )
 
+      setUserRegistered(true)
       toast.success(data.message, {
         theme: 'colored',
       })
@@ -48,6 +54,10 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
         },
       )
     }
+  }
+
+  function navigateFromCourse() {
+    navigate('/home')
   }
 
   return (
@@ -132,15 +142,27 @@ export function ModalCourse({ isModalOpen, toggleModal, course }) {
           </ContentCourse>
         </ModalBody>
         <ButtonContainer>
-          <ButtonForm
-            backgroundColor="brand-blue"
-            hoverBackgroundColor="base-button-hover"
-            onClick={handleRegister}
-          >
-            <RegularText fontSize="text-m" color="base-white" weight="500">
-              Inscrever
-            </RegularText>
-          </ButtonForm>
+          {!userRegistered ? (
+            <ButtonForm
+              backgroundColor="brand-blue"
+              hoverBackgroundColor="base-button-hover"
+              onClick={handleRegister}
+            >
+              <RegularText fontSize="text-m" color="base-white" weight="500">
+                Inscrever
+              </RegularText>
+            </ButtonForm>
+          ) : (
+            <ButtonForm
+              backgroundColor="brand-blue"
+              hoverBackgroundColor="base-button-hover"
+              onClick={navigateFromCourse}
+            >
+              <RegularText fontSize="text-m" color="base-white" weight="500">
+                Acessar Trilha <ArrowRight size={22} weight="bold" />
+              </RegularText>
+            </ButtonForm>
+          )}
         </ButtonContainer>
       </ModalContainer>
     </ReactModal>

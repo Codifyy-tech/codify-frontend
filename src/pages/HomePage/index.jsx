@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthContext'
 import { api } from '../../services/api'
 import { splitName } from '../../utils/splitName'
 import { CardCourse } from './components/CourseCard'
+import { EmptyCourse } from './EmpytCourse'
 import {
   BannerContainer,
   BannerDesc,
@@ -58,21 +59,25 @@ export function HomePage() {
         <RegularText fontSize="text-m" weight="500">
           Minhas Trilhas
         </RegularText>
-        <CourseCardArea>
-          {courses.map((card, index) => {
-            return (
-              <CardCourse
-                key={index}
-                id={card.course_info._id}
-                title={card.course_info.title}
-                description={card.course_info.description}
-                name={card.course_info.technology.name}
-                image={card.course_info.technology.icon}
-                completed={card.progress}
-              />
-            )
-          })}
-        </CourseCardArea>
+        {courses.length ? (
+          <CourseCardArea>
+            {courses.map((card, index) => {
+              return (
+                <CardCourse
+                  key={index}
+                  id={card.course_info._id}
+                  title={card.course_info.title}
+                  description={card.course_info.description}
+                  name={card.course_info.technology.name}
+                  image={card.course_info.technology.icon}
+                  completed={card.progress}
+                />
+              )
+            })}
+          </CourseCardArea>
+        ) : (
+          <EmptyCourse />
+        )}
       </CoursesArea>
     </HomeContainer>
   )

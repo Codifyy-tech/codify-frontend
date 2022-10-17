@@ -10,44 +10,6 @@ import { api } from '../../services/api'
 import { EditValidatorSchema } from '../../utils/schema/EditShema'
 import { ProfileContainer } from './styles'
 
-const formData = [
-  {
-    labelText: 'Nome Completo ',
-    placeholder: 'Digite seu nome completo',
-    inputType: 'text',
-    name: 'name',
-    disabled: true,
-  },
-  {
-    labelText: 'E-mail',
-    placeholder: 'Digite seu e-mail',
-    inputType: 'email',
-    name: 'email',
-    disabled: true,
-  },
-  {
-    labelText: 'Senha Atual',
-    placeholder: 'Digite sua senha',
-    inputType: 'password',
-    name: 'current_password',
-    disabled: false,
-  },
-  {
-    labelText: 'Nova Senha',
-    placeholder: 'Digite sua senha',
-    inputType: 'password',
-    name: 'new_password',
-    disabled: false,
-  },
-  {
-    labelText: 'Confirme a nova senha',
-    placeholder: 'Digite sua senha',
-    inputType: 'password',
-    name: 'confirm_new_password',
-    disabled: false,
-  },
-]
-
 export function ProfilePage() {
   const token = localStorage.getItem('@Auth:token')
   const { user } = useContext(AuthContext)
@@ -63,6 +25,44 @@ export function ProfilePage() {
   } = useForm({
     resolver: yupResolver(EditValidatorSchema),
   })
+
+  const formData = [
+    {
+      labelText: 'Nome Completo ',
+      placeholder: user.name,
+      inputType: 'text',
+      name: 'name',
+      disabled: true,
+    },
+    {
+      labelText: 'E-mail',
+      placeholder: user.email,
+      inputType: 'email',
+      name: 'email',
+      disabled: true,
+    },
+    {
+      labelText: 'Senha Atual',
+      placeholder: 'Digite sua senha',
+      inputType: 'password',
+      name: 'current_password',
+      disabled: false,
+    },
+    {
+      labelText: 'Nova Senha',
+      placeholder: 'Digite sua senha',
+      inputType: 'password',
+      name: 'new_password',
+      disabled: false,
+    },
+    {
+      labelText: 'Confirme a nova senha',
+      placeholder: 'Digite sua senha',
+      inputType: 'password',
+      name: 'confirm_new_password',
+      disabled: false,
+    },
+  ]
 
   useEffect(() => {
     const getData = async () => {

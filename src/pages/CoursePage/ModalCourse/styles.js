@@ -17,11 +17,8 @@ export const CloseButton = styled.button`
   border: none;
 
   svg {
-    color: #686868;
-    transition: 0.3s;
-    &:hover {
-      color: #353535;
-    }
+    color: #353535;
+
   }
 
   @media (max-width: 768px) {
@@ -111,6 +108,13 @@ export const ButtonContainer = styled.div`
   width: 50%;
   margin: 0 auto;
   margin-top: 4rem;
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   @media (max-width: 768px) {
     padding-top: 2rem !important;
     width: 90%;
