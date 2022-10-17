@@ -52,7 +52,7 @@ export const GendersContainer = styled.div`
   padding: 0rem !important;
   grid-template-areas:
     'male female'
-    'nonbinary  nonbinary';
+    'nonbinary uninformed';
 
   > div {
     padding: 10px;
@@ -70,10 +70,15 @@ export const GendersContainer = styled.div`
   .area1 {
     grid-area: female;
     border-top: 0.1px solid #d1d1d1;
-    border-left: 0.1px solid #d1d1d1;
     border-bottom: 0.1px solid #d1d1d1;
   }
   .area2 {
     grid-area: nonbinary;
+    border-right: 0.1px solid #d1d1d1;
+    border-bottom: 0.1px solid #d1d1d1;
+  }
+  .area3 {
+    grid-area: uninformed;
+    border-bottom: 0.1px solid #d1d1d1;
   }
 `
