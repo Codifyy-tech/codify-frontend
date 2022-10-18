@@ -40,19 +40,10 @@ const InfoList = [
   },
   {
     text: 'Contato',
-    path: '#',
+    path: 'mailto:suportecodifyy@gmail.com?',
     type: 'paragraph',
   },
-  {
-    text: 'Termos e condições',
-    path: '#',
-    type: 'paragraph',
-  },
-  {
-    text: 'Política de privacidade',
-    path: '#',
-    type: 'paragraph',
-  },
+
 ]
 
 export function Footer() {
