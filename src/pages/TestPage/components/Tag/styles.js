@@ -9,6 +9,10 @@ const colorTag = {
     backgroundColor: '#EFE0E0',
     color: '#E11F21',
   },
+  HTML: {
+    backgroundColor: '#FFB596',
+    color: '#FF5C00',
+  },
   Nodejs: {
     backgroundColor: 'rgba(171, 255, 154 , 0.57)',
     color: '#539e43',
@@ -18,6 +22,10 @@ const colorTag = {
     color: '#3178C6',
   },
   React: {
+    backgroundColor: '#9feaff48',
+    color: '#00C8FF',
+  },
+  'React Native': {
     backgroundColor: '#9feaff48',
     color: '#00C8FF',
   },
